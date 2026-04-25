@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://dsa7slegyxeuk"]
+
+[ext_resource type="Texture2D" uid="uid://b7whhgkg41bkj" path="res://assets/forest/big_mushroom.png" id="1_odvlf"]
+[ext_resource type="Texture2D" uid="uid://boy1oo3je6aps" path="res://assets/forest/big_mushroom_idle.png" id="2_f253x"]
+[ext_resource type="Script" uid="uid://b3himh0nlgnx2" path="res://scripts/bounce.gd" id="4_q511n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_758yr"]
+size = Vector2(22, 2.5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dn840"]
+atlas = ExtResource("1_odvlf")
+region = Rect2(0, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q511n"]
+atlas = ExtResource("1_odvlf")
+region = Rect2(32, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v1ott"]
+atlas = ExtResource("1_odvlf")
+region = Rect2(64, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0jinl"]
+atlas = ExtResource("1_odvlf")
+region = Rect2(96, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_peug8"]
+atlas = ExtResource("1_odvlf")
+region = Rect2(128, 0, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e7dc6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dn840")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q511n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v1ott")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0jinl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_peug8")
+}],
+"loop": false,
+"name": &"bounce",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_f253x")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_07ppt"]
+size = Vector2(25, 10)
+
+[node name="big_mushroom" type="Node2D" unique_id=265076040]
+
+[node name="bounce" type="Area2D" parent="." unique_id=768240928]
+collision_layer = 64
+script = ExtResource("4_q511n")
+
+[node name="collision" type="CollisionShape2D" parent="bounce" unique_id=1695114843]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_758yr")
+debug_color = Color(0.19666603, 0.6326093, 0.31680578, 0.41960785)
+
+[node name="anim" type="AnimatedSprite2D" parent="bounce" unique_id=1347293961]
+sprite_frames = SubResource("SpriteFrames_e7dc6")
+animation = &"bounce"
+autoplay = "idle"
+
+[node name="mushroom" type="StaticBody2D" parent="." unique_id=817221257]
+collision_layer = 2
+
+[node name="collision" type="CollisionShape2D" parent="mushroom" unique_id=797046353]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_07ppt")
+
+[connection signal="body_entered" from="bounce" to="bounce" method="_on_body_entered"]

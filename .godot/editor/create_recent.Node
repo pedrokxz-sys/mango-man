@@ -1,0 +1,14 @@
+CollisionShape2D
+Area2D
+ProgressBar
+CanvasLayer
+Sprite2D
+TouchScreenButton
+Label
+TextEdit
+Timer
+RayCast2D
+AnimationPlayer
+CharacterBody2D
+Node2D
+RemoteTransform2D

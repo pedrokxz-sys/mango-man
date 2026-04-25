@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://bxgu37jjx01bq"]
+
+[ext_resource type="Script" uid="uid://cr5kckerwk3mg" path="res://scripts/moving_plataform.gd" id="1_bg6xt"]
+[ext_resource type="Texture2D" uid="uid://dti4uo17gnvig" path="res://assets/forest/driftwood.png" id="2_067et"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kqqyq"]
+atlas = ExtResource("2_067et")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5y8k4"]
+atlas = ExtResource("2_067et")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ugl66"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kqqyq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5y8k4")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 1.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hdtt3"]
+size = Vector2(30, 13)
+
+[node name="driftwood" type="Node2D" unique_id=1594138345]
+script = ExtResource("1_bg6xt")
+move_speed = 2.0
+
+[node name="wood" type="AnimatableBody2D" parent="." unique_id=1261100300]
+collision_layer = 2
+
+[node name="anim" type="AnimatedSprite2D" parent="wood" unique_id=1028068743]
+sprite_frames = SubResource("SpriteFrames_ugl66")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="collision" type="CollisionShape2D" parent="wood" unique_id=1711230099]
+position = Vector2(0, -4.5)
+shape = SubResource("RectangleShape2D_hdtt3")
+one_way_collision = true

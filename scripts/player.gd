@@ -54,9 +54,9 @@ func _physics_process(delta: float) -> void:
 		velocity = knockback_vector
 
 	# iniciar ataque
-	if Input.is_action_just_pressed("ui_attack") and !is_attacking:
+	if Input.is_action_just_pressed("ui_collect") and !is_attacking:
 		is_attacking = true
-		animator.play("attack")
+		animator.play("collect")
 
 	handle_animation(direction)
 
@@ -84,7 +84,7 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 
 #quando a animaçao de ataque terminar o estado de ataque e falso
 func _on_animator_animation_finished(anim_name: StringName) -> void:
-	if anim_name == "attack":
+	if anim_name == "collect":
 		is_attacking = false
 
 func follow_camera(camera):

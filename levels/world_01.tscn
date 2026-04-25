@@ -29,6 +29,8 @@
 [ext_resource type="Texture2D" uid="uid://dre8fvu34ohsw" path="res://assets/buttons/ui_button_right_pressed.png" id="25_xjnak"]
 [ext_resource type="Texture2D" uid="uid://b5jd0rkilr34m" path="res://assets/buttons/ui_button_up_pressed.png" id="27_qannr"]
 [ext_resource type="PackedScene" uid="uid://ca4rqpf4caooi" path="res://actors/health_bar.tscn" id="29_gmex4"]
+[ext_resource type="Texture2D" uid="uid://cvrf4cf3bn0ok" path="res://assets/buttons/ui_button_collect_normal.png" id="29_imfvm"]
+[ext_resource type="Texture2D" uid="uid://bvfmyyd8cnrxs" path="res://assets/buttons/ui_button_collect_pressed.png" id="30_7k4mt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fwd2m"]
 texture = ExtResource("6_j8rs1")
@@ -352,11 +354,17 @@ action = "ui_right"
 visibility_mode = 1
 
 [node name="ui_up" type="TouchScreenButton" parent="controls" unique_id=767535806]
-position = Vector2(339, 126)
+position = Vector2(339, 132)
 texture_normal = ExtResource("24_qannr")
 texture_pressed = ExtResource("27_qannr")
 action = "ui_accept"
 visibility_mode = 1
+
+[node name="ui_collect" type="TouchScreenButton" parent="controls" unique_id=549616919]
+position = Vector2(358, 87)
+texture_normal = ExtResource("29_imfvm")
+texture_pressed = ExtResource("30_7k4mt")
+action = "ui_collect"
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1732923701]
 

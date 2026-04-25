@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://mc3obmltfsw7" path="res://assets/player/player_fall.png" id="4_tue77"]
 
 [sub_resource type="Animation" id="Animation_rkwqa"]
-resource_name = "attack"
+resource_name = "collect"
 length = 0.4
 step = 0.1
 tracks/0/type = "value"
@@ -382,7 +382,7 @@ tracks/5/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rkwqa"]
 _data = {
-&"attack": SubResource("Animation_rkwqa"),
+&"collect": SubResource("Animation_rkwqa"),
 &"fall": SubResource("Animation_ua707"),
 &"idle": SubResource("Animation_33vod"),
 &"jump": SubResource("Animation_e7yfm"),
@@ -406,12 +406,12 @@ script = ExtResource("1_esgq3")
 
 [node name="animator" type="AnimationPlayer" parent="." unique_id=883103886]
 libraries/ = SubResource("AnimationLibrary_rkwqa")
-speed_scale = 0.2
 
 [node name="texture" type="Sprite2D" parent="." unique_id=1409039780]
 position = Vector2(0, -11)
-texture = ExtResource("2_kjkj0")
-hframes = 5
+texture = ExtResource("3_kjkj0")
+offset = Vector2(0, -4)
+hframes = 4
 
 [node name="hitbox" type="Area2D" parent="texture" unique_id=688035733]
 position = Vector2(0, 11)

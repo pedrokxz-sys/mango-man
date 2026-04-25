@@ -1,6 +1,7 @@
 extends Area2D
 
-#se um corpo tacar na fallzone ele some
+@export var damage := 16
+
 func _on_body_entered(body: Node2D) -> void:
-	if body.has_method("take_damage"):
-		body.take_damage(Vector2(0,-850))
+	if body.name == "player" and body.has_method("take_damage"):
+		body.take_damage(self)

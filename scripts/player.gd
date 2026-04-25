@@ -97,13 +97,18 @@ func follow_camera(camera):
 	remote.remote_path = camera_path
 
 func take_damage(damage_area: Area2D) -> void:
-	var enemy = damage_area.get_parent()  # pega o hedgehog
-	
-	if health > 0:
-		health -= enemy.damage
-		health_changed.emit()
-	else:
-		queue_free()
+	var damage_value := 0
+
+	# se veio de inimigo
+	if damage_area.get_parent().has_variable("damage"):
+		damage_value = damage_area.get_parent().damage
+	# se veio da fallzone
+	elif damage_area.has_variable("damage"):
+		damage_value = damage_area.damage
+
+
+	health -= damage_value
+	health_changed.emit()
 
 	# knockback
 	var knockback_force := Vector2.ZERO

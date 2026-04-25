@@ -419,7 +419,7 @@ collision_layer = 16
 collision_mask = 4
 
 [node name="collision" type="CollisionShape2D" parent="texture/hitbox" unique_id=1603705449]
-position = Vector2(11, -11.5)
+position = Vector2(12, -12)
 shape = SubResource("RectangleShape2D_tue77")
 disabled = true
 
@@ -429,18 +429,18 @@ shape = SubResource("RectangleShape2D_j8rs1")
 
 [node name="ray_right" type="RayCast2D" parent="." unique_id=1459918875]
 position = Vector2(1, -8)
-target_position = Vector2(6, 0)
+target_position = Vector2(7, 0)
 collision_mask = 4
 
 [node name="ray_left" type="RayCast2D" parent="." unique_id=72968516]
 position = Vector2(-1, -8)
-target_position = Vector2(-6, 0)
+target_position = Vector2(-7, 0)
 collision_mask = 4
 
 [node name="hurtbox" type="Area2D" parent="." unique_id=1406179756]
 position = Vector2(0, -9)
 collision_layer = 32
-collision_mask = 4
+collision_mask = 16
 
 [node name="collision" type="CollisionShape2D" parent="hurtbox" unique_id=1407728944]
 position = Vector2(0, -1.25)
@@ -448,4 +448,4 @@ shape = SubResource("RectangleShape2D_33vod")
 
 [connection signal="animation_finished" from="animator" to="." method="_on_animator_animation_finished"]
 [connection signal="body_entered" from="texture/hitbox" to="." method="_on_hitbox_body_entered"]
-[connection signal="body_entered" from="hurtbox" to="." method="_on_hurtbox_body_entered"]
+[connection signal="area_entered" from="hurtbox" to="." method="_on_hurtbox_area_entered"]

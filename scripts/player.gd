@@ -10,10 +10,11 @@ const JUMP_FORCE = -300.0
 @onready var remote := $remote as RemoteTransform2D
 
 signal health_changed()
-
-@export var health : int = 48
-
+@export var health : int = 48:
+	set(value):
+		health = value
 var damage_areas
+
 #vetor do knockback
 var knockback_vector := Vector2.ZERO
 #estado de atacando
@@ -22,11 +23,7 @@ var is_attacking : bool = false
 func _ready() -> void:
 	damage_areas = get_tree().get_nodes_in_group("damage")
 	for damage_area in damage_areas:
-		damage_area.body_entered.connect(_on_damage_area_body_entered.bind(damage_area))
-
-func _on_damage_area_body_entered(body: Node2D, damage_area: Area2D) -> void:
-	if body == self:
-		take_damage(damage_area)
+		damage_area.area_entered.connect(take_damage.bind(damage_area))
 
 func _physics_process(delta: float) -> void:
 	# gravidade
@@ -66,8 +63,6 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
-
-
 #animaçoes
 func handle_animation(direction):
 	if is_attacking:
@@ -96,32 +91,30 @@ func follow_camera(camera):
 	var camera_path = camera.get_path()
 	remote.remote_path = camera_path
 
-func take_damage(damage_area: Area2D) -> void:
-	var damage_value := 0
+func _on_hurtbox_area_entered(area: Area2D) -> void:
+	if area.is_in_group("damage"):
+		var dmg: int = area.damage
 
-	# se veio de inimigo
-	if damage_area.get_parent().has_variable("damage"):
-		damage_value = damage_area.get_parent().damage
-	# se veio da fallzone
-	elif damage_area.has_variable("damage"):
-		damage_value = damage_area.damage
+		var dx: float = global_position.x - area.global_position.x
+		var dir: float = 1.0 if dx >= 0.0 else -1.0
+		var knock: Vector2 = Vector2(dir * 250.0, -250.0)
 
+		take_damage(dmg, knock)
 
-	health -= damage_value
+func take_damage(damage: int, knockback: Vector2) -> void:
+	health -= damage
 	health_changed.emit()
 
-	# knockback
-	var knockback_force := Vector2.ZERO
-	
-	if $ray_right.is_colliding():
-		knockback_force = Vector2(-300, -300)
-	elif $ray_left.is_colliding():
-		knockback_force = Vector2(300, -300)
+	knockback_vector = knockback
 
-	knockback_vector = knockback_force
-	
 	var tween := get_tree().create_tween()
-	tween.parallel().tween_property(self, "knockback_vector", Vector2.ZERO, 0.25)
-	
-	texture.modulate = Color(1,0,0,1)
-	tween.parallel().tween_property(texture, "modulate", Color(1,1,1,1), 0.25)
+
+	# volta o knockback ao normal
+	tween.tween_property(self, "knockback_vector", Vector2.ZERO, 0.25)
+
+	# efeito vermelho
+	texture.modulate = Color(1, 0, 0, 1)
+	tween.parallel().tween_property(texture, "modulate", Color(1, 1, 1, 1), 0.25)
+
+	if health <= 0:
+		queue_free()

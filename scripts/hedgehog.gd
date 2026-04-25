@@ -18,7 +18,7 @@ var is_a_ball := false
 
 #direçao que ele começa o jogo
 @export var diretion := -1
-@export var damage := 16
+
 #isso so toca uma vez pra ajeitar a direçao do ouri no começo do jogo
 func _ready() -> void:
 	texture.scale.x = diretion * -1

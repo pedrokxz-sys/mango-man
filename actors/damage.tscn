@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://cegw4c7dlnm4f"]
+
+[ext_resource type="Script" uid="uid://8ukcgvbcphux" path="res://scripts/damage.gd" id="1_g6i0e"]
+
+[node name="damage" type="Area2D" unique_id=428252771 groups=["damage"]]
+collision_layer = 16
+collision_mask = 32
+script = ExtResource("1_g6i0e")

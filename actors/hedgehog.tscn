@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://yj82o37pasrv" path="res://assets/animals/hedgehog/hedgehog_walking.png" id="1_jtxr5"]
 [ext_resource type="Texture2D" uid="uid://bpkro4d2q3eo3" path="res://assets/animals/hedgehog/hedgehog_ball.png" id="2_68u8f"]
 [ext_resource type="Texture2D" uid="uid://boko6d6bggk8j" path="res://assets/animals/hedgehog/hedgehog_rolling.png" id="3_idqth"]
+[ext_resource type="PackedScene" uid="uid://cegw4c7dlnm4f" path="res://actors/damage.tscn" id="5_idqth"]
 
 [sub_resource type="Animation" id="Animation_ijuys"]
 length = 0.001
@@ -180,8 +181,8 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wsckb"]
 size = Vector2(10, 9)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_68u8f"]
-size = Vector2(10, 9)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ijuys"]
+size = Vector2(12, 11)
 
 [node name="hedgehog" type="CharacterBody2D" unique_id=1282746952 groups=["animals"]]
 position = Vector2(0, -7)
@@ -213,12 +214,13 @@ collision_mask = 6
 wait_time = 3.0
 one_shot = true
 
-[node name="hitbox" type="Area2D" parent="." unique_id=590614622 groups=["damage"]]
-collision_layer = 4
+[node name="damage" parent="." unique_id=428252771 instance=ExtResource("5_idqth")]
+collision_layer = 16
+collision_mask = 32
 
-[node name="collision" type="CollisionShape2D" parent="hitbox" unique_id=1526051700]
-position = Vector2(1, 2.5)
-shape = SubResource("RectangleShape2D_68u8f")
+[node name="collision" type="CollisionShape2D" parent="damage" unique_id=1089222508]
+position = Vector2(1, 2)
+shape = SubResource("RectangleShape2D_ijuys")
 
 [connection signal="animation_finished" from="animator" to="." method="_on_animator_animation_finished"]
 [connection signal="timeout" from="rolling_timer" to="." method="_on_rolling_timer_timeout"]

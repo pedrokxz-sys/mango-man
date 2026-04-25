@@ -119,4 +119,5 @@ func take_damage(damage_area: Area2D) -> void:
 	tween.parallel().tween_property(self, "knockback_vector", Vector2.ZERO, 0.25)
 	
 	texture.modulate = Color(1,0,0,1)
+	
 	tween.parallel().tween_property(texture, "modulate", Color(1,1,1,1), 0.25)

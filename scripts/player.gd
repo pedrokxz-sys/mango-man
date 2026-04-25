@@ -97,7 +97,7 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 
 		var dx: float = global_position.x - area.global_position.x
 		var dir: float = 1.0 if dx >= 0.0 else -1.0
-		var knock: Vector2 = Vector2(dir * 250.0, -250.0)
+		var knock: Vector2 = Vector2(dir * 250.0, -450.0)
 
 		take_damage(dmg, knock)
 

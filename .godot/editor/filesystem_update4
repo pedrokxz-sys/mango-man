@@ -1,9 +1,0 @@
-res://actors/player.tscn
-res://scripts/player.gd
-res://actors/hedgehog.tscn
-res://scripts/damage.gd
-res://actors/damage.tscn
-res://levels/world_01.tscn
-res://scripts/hedgehog.gd
-res://scripts/spikes.gd
-res://scripts/spike.gd

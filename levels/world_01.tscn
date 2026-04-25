@@ -104,6 +104,9 @@ sources/2 = SubResource("TileSetAtlasSource_l86n5")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_14a6h"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gmex4"]
+size = Vector2(688, 20)
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_or7x1"]
 texture = ExtResource("6_j8rs1")
 1:1/0 = 0
@@ -285,6 +288,15 @@ texture_repeat = 2
 texture = ExtResource("17_6ibfi")
 region_enabled = true
 region_rect = Rect2(0, 0, 128, 16)
+
+[node name="fallzone" type="Node2D" parent="prefabs" unique_id=85467959]
+position = Vector2(1360, 200)
+
+[node name="damage" parent="prefabs/fallzone" unique_id=498708985 instance=ExtResource("19_imfvm")]
+
+[node name="collision" type="CollisionShape2D" parent="prefabs/fallzone/damage" unique_id=1558668191]
+position = Vector2(-16, 0)
+shape = SubResource("RectangleShape2D_gmex4")
 
 [node name="animals" type="Node2D" parent="." unique_id=1253146135]
 

@@ -5,6 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://dd1a88pavcx2a" path="res://assets/animals/rabbit/rabbit_startle.png" id="2_1cftp"]
 [ext_resource type="Texture2D" uid="uid://ce00iebhvp810" path="res://assets/animals/rabbit/rabbit_running.png" id="3_dsq4s"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dsq4s"]
+size = Vector2(84, 29)
+
 [sub_resource type="Animation" id="Animation_f5a0y"]
 length = 0.001
 tracks/0/type = "value"
@@ -184,6 +187,14 @@ collision_layer = 4
 collision_mask = 6
 script = ExtResource("1_3m8dn")
 
+[node name="player_detector" type="Area2D" parent="." unique_id=1221960479]
+collision_layer = 4
+collision_mask = 5
+
+[node name="collision" type="CollisionShape2D" parent="player_detector" unique_id=94525703]
+position = Vector2(-24, -12)
+shape = SubResource("RectangleShape2D_dsq4s")
+
 [node name="animator" type="AnimationPlayer" parent="." unique_id=1249489052]
 libraries/ = SubResource("AnimationLibrary_3m8dn")
 autoplay = &"idle"
@@ -197,13 +208,10 @@ hframes = 2
 position = Vector2(1, -5.5)
 shape = SubResource("RectangleShape2D_f5a0y")
 
-[node name="player_detector" type="RayCast2D" parent="." unique_id=590431779]
-position = Vector2(0, -9)
-target_position = Vector2(-80, 0)
-
 [node name="wall_detector" type="RayCast2D" parent="." unique_id=1699937535]
 position = Vector2(1, -6)
 target_position = Vector2(7, 0)
 collision_mask = 6
 
+[connection signal="body_entered" from="player_detector" to="." method="_on_player_detector_body_entered"]
 [connection signal="animation_finished" from="animator" to="." method="_on_animator_animation_finished"]

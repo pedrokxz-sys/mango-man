@@ -365,6 +365,7 @@ position = Vector2(358, 87)
 texture_normal = ExtResource("29_imfvm")
 texture_pressed = ExtResource("30_7k4mt")
 action = "ui_collect"
+visibility_mode = 1
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1732923701]
 

@@ -105,6 +105,7 @@ sources/1 = SubResource("TileSetAtlasSource_dp75u")
 sources/2 = SubResource("TileSetAtlasSource_l86n5")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_14a6h"]
+size = Vector2(20, 12)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gmex4"]
 size = Vector2(688, 20)
@@ -269,6 +270,7 @@ script = ExtResource("18_14a6h")
 damage = 8
 
 [node name="collision" type="CollisionShape2D" parent="prefabs/spike/damage" unique_id=544963051]
+position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_14a6h")
 
 [node name="texture" type="Sprite2D" parent="prefabs/spike" unique_id=1325157519]
@@ -285,6 +287,7 @@ script = ExtResource("18_14a6h")
 damage = 8
 
 [node name="collision" type="CollisionShape2D" parent="prefabs/spike2/damage" unique_id=1162545108]
+position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_14a6h")
 
 [node name="texture" type="Sprite2D" parent="prefabs/spike2" unique_id=618873793]
@@ -294,13 +297,13 @@ region_enabled = true
 region_rect = Rect2(0, 0, 128, 16)
 
 [node name="fallzone" type="Node2D" parent="prefabs" unique_id=85467959]
-position = Vector2(1360, 200)
+position = Vector2(1352, 212)
 
 [node name="damage" parent="prefabs/fallzone" unique_id=498708985 instance=ExtResource("19_imfvm")]
 damage = 8
+knockback = Vector2(200, -900)
 
 [node name="collision" type="CollisionShape2D" parent="prefabs/fallzone/damage" unique_id=1558668191]
-position = Vector2(-16, 0)
 shape = SubResource("RectangleShape2D_gmex4")
 
 [node name="animals" type="Node2D" parent="." unique_id=1253146135]

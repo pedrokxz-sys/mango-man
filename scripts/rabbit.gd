@@ -48,7 +48,22 @@ func _on_animator_animation_finished(anim_name: StringName) -> void:
 		running = true
 
 func _on_player_detector_body_entered(body: Node2D) -> void:
-	if body !=self and !has_been_startle:
+	if body != self and !has_been_startle:
 		has_been_startle = true
-		animator.play("startle")
+		
+		# Descobre de que lado o player está
+		var player_is_right := body.global_position.x > global_position.x
+		
+		# Se o player está à direita, o coelho corre pra esquerda
+		# Se o player está à esquerda, o coelho corre pra direita
+		if player_is_right:
+			diretion = -1
+		else:
+			diretion = 1
+		
+		# Atualiza os sprites/detectores para o lado correto
 		texture.scale.x = diretion * -1
+		wall_detector.scale.x = diretion
+		player_detector.scale.x = diretion
+		
+		animator.play("startle")

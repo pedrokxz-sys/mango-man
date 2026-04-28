@@ -45,9 +45,9 @@ func _physics_process(delta: float) -> void:
 			texture.scale.x = direction
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
-	# trava movimento durante ataque
+	# diminui o movimento durante ataque
 	else:
-		velocity.x = 0
+		velocity.x = direction * SPEED / 2
 
 #se o vetor do knockback nao for zero a velocidade e igual a do vetor do knockback
 	if knockback_vector != Vector2.ZERO:
@@ -94,11 +94,15 @@ func follow_camera(camera):
 func _on_hurtbox_area_entered(area: Area2D) -> void:
 	if area.is_in_group("damage"):
 		var dmg: int = area.damage
-
+		
+		# descobre o lado automaticamente
 		var dx: float = global_position.x - area.global_position.x
 		var dir: float = 1.0 if dx >= 0.0 else -1.0
-		var knock: Vector2 = Vector2(dir * 250.0, -450.0)
-
+		
+		# usa o knockback que veio do damage
+		var knock: Vector2 = area.knockback
+		knock.x *= dir
+		
 		take_damage(dmg, knock)
 
 func take_damage(damage: int, knockback: Vector2) -> void:

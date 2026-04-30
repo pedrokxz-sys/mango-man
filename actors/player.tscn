@@ -7,6 +7,33 @@
 [ext_resource type="Texture2D" uid="uid://im5tlsrpt1a" path="res://assets/player/player_run.png" id="4_33vod"]
 [ext_resource type="Texture2D" uid="uid://mc3obmltfsw7" path="res://assets/player/player_fall.png" id="4_tue77"]
 
+[sub_resource type="Animation" id="Animation_tue77"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture/hitbox/collision:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("texture:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="Animation" id="Animation_rkwqa"]
 resource_name = "collect"
 length = 0.4
@@ -78,10 +105,10 @@ tracks/5/path = NodePath("texture/hitbox/collision:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [true, false]
+"values": [true, false, true]
 }
 
 [sub_resource type="Animation" id="Animation_ua707"]
@@ -151,7 +178,7 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id="Animation_33vod"]
 resource_name = "idle"
-length = 1.2
+length = 2.0
 step = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -192,38 +219,38 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("texture:frame")
+tracks/3/path = NodePath("animator:speed_scale")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.63647205, 0.7364721, 0.83647203, 0.93647206, 1.0364721),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("animator:speed_scale")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
 "times": PackedFloat32Array(0.5),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.2]
 }
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("texture/hitbox/collision:disabled")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("texture/hitbox/collision:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("texture:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8000001),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 0, 0, 0, 0, 1, 2, 3, 4, 4]
 }
 
 [sub_resource type="Animation" id="Animation_e7yfm"]
@@ -382,6 +409,7 @@ tracks/5/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rkwqa"]
 _data = {
+&"RESET": SubResource("Animation_tue77"),
 &"collect": SubResource("Animation_rkwqa"),
 &"fall": SubResource("Animation_ua707"),
 &"idle": SubResource("Animation_33vod"),
@@ -406,12 +434,12 @@ script = ExtResource("1_esgq3")
 
 [node name="animator" type="AnimationPlayer" parent="." unique_id=883103886]
 libraries/ = SubResource("AnimationLibrary_rkwqa")
+speed_scale = 0.2
 
 [node name="texture" type="Sprite2D" parent="." unique_id=1409039780]
 position = Vector2(0, -11)
-texture = ExtResource("3_kjkj0")
-offset = Vector2(0, -4)
-hframes = 4
+texture = ExtResource("2_kjkj0")
+hframes = 5
 
 [node name="hitbox" type="Area2D" parent="texture" unique_id=688035733]
 position = Vector2(0, 11)

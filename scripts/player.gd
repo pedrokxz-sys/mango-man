@@ -31,7 +31,7 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 
 	# pulo
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor() and !is_attacking:
+	if Input.is_action_just_pressed("ui_accept") and is_on_floor() and !is_attacking and !DiologManager.is_message_active:
 		velocity.y = JUMP_FORCE
 
 	# esquerda/direita
@@ -59,9 +59,21 @@ func _physics_process(delta: float) -> void:
 		animator.play("collect")
 
 	handle_animation(direction)
+	
+	if DiologManager.is_message_active:
+		velocity.x = 0
+		##animator.play("idle")
 
+		var sign_pos = DiologManager.dialog_source_position
+
+		if sign_pos.x < global_position.x:
+			look_left()
+		else:
+			look_right()
 
 	move_and_slide()
+	return
+ 
 
 #animaçoes
 func handle_animation(direction):
@@ -72,7 +84,7 @@ func handle_animation(direction):
 			animator.play("jump")
 		else:
 			animator.play("fall")
-	elif direction != 0:
+	elif direction != 0 and !DiologManager.is_message_active:
 		animator.play("run")
 	else:
 		animator.play("idle")
@@ -122,3 +134,9 @@ func take_damage(damage: int, knockback: Vector2) -> void:
 
 	if health <= 0:
 		queue_free()
+
+func look_right():
+	texture.scale.x = 1
+
+func look_left():
+	texture.scale.x = -1

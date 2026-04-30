@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8hqi5dj51sor"
-path="res://.godot/imported/extra_plants_back.png-009d62ba1274e75dd9135d610ea319bb.ctex"
+uid="uid://bwh7pdrw5hb8e"
+path="res://.godot/imported/ui_button_crouch_pressed.png-9a898c3a4b714edf7e61989ccf54c032.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/forest/extra_plants_back.png"
-dest_files=["res://.godot/imported/extra_plants_back.png-009d62ba1274e75dd9135d610ea319bb.ctex"]
+source_file="res://assets/buttons/ui_button_crouch_pressed.png"
+dest_files=["res://.godot/imported/ui_button_crouch_pressed.png-9a898c3a4b714edf7e61989ccf54c032.ctex"]
 
 [params]
 

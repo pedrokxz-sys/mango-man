@@ -215,8 +215,7 @@ wait_time = 3.0
 one_shot = true
 
 [node name="damage" parent="." unique_id=428252771 instance=ExtResource("5_idqth")]
-collision_layer = 16
-collision_mask = 32
+damage = 16
 
 [node name="collision" type="CollisionShape2D" parent="damage" unique_id=1089222508]
 position = Vector2(1, 2)

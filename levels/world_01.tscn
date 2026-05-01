@@ -22,8 +22,10 @@
 [ext_resource type="PackedScene" uid="uid://5bbbbl36irdu" path="res://prefabs/warning_sign.tscn" id="18_7k4mt"]
 [ext_resource type="Script" uid="uid://qdtwnk3p30q7" path="res://scripts/spike.gd" id="18_14a6h"]
 [ext_resource type="PackedScene" uid="uid://cegw4c7dlnm4f" path="res://actors/damage.tscn" id="19_imfvm"]
+[ext_resource type="PackedScene" uid="uid://bd4toqxsejjlu" path="res://prefabs/fallzone.tscn" id="20_av01a"]
 [ext_resource type="Texture2D" uid="uid://b4q8ob2fxtkfx" path="res://assets/buttons/joystick.png" id="21_o0pi2"]
 [ext_resource type="Script" uid="uid://laudjr4o548y" path="res://scripts/controls.gd" id="21_xjnak"]
+[ext_resource type="PackedScene" uid="uid://dyo6ltwrvyn8q" path="res://prefabs/checkponit.tscn" id="21_yftww"]
 [ext_resource type="Texture2D" uid="uid://cyyojcwy2qqw4" path="res://assets/buttons/ui_button_left_normal.png" id="22_5fif6"]
 [ext_resource type="Texture2D" uid="uid://bwaxhjwopi82l" path="res://assets/buttons/ui_button_right_normal.png" id="23_ao123"]
 [ext_resource type="Texture2D" uid="uid://byaug8ywyngv7" path="res://assets/buttons/ui_button_left_pressed.png" id="23_qannr"]
@@ -121,20 +123,8 @@ sources/5 = SubResource("TileSetAtlasSource_lqgom")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_14a6h"]
 size = Vector2(20, 12)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7k4mt"]
-size = Vector2(64, 20)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0uwfl"]
-size = Vector2(32, 20)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ud1nb"]
-size = Vector2(32, 20)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lqgom"]
-size = Vector2(64, 20)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_av01a"]
-size = Vector2(224, 20)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yftww"]
+size = Vector2(768, 20)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_or7x1"]
 texture = ExtResource("6_j8rs1")
@@ -300,7 +290,6 @@ position = Vector2(2056, 168)
 script = ExtResource("18_14a6h")
 
 [node name="damage" parent="prefabs/spikes/spike" unique_id=428252771 instance=ExtResource("19_imfvm")]
-damage = 8
 
 [node name="collision" type="CollisionShape2D" parent="prefabs/spikes/spike/damage" unique_id=544963051]
 position = Vector2(0, 2)
@@ -317,7 +306,6 @@ position = Vector2(2592, 152)
 script = ExtResource("18_14a6h")
 
 [node name="damage" parent="prefabs/spikes/spike2" unique_id=199141968 instance=ExtResource("19_imfvm")]
-damage = 8
 
 [node name="collision" type="CollisionShape2D" parent="prefabs/spikes/spike2/damage" unique_id=1162545108]
 position = Vector2(0, 2)
@@ -329,49 +317,6 @@ texture = ExtResource("17_6ibfi")
 region_enabled = true
 region_rect = Rect2(0, 0, 128, 16)
 
-[node name="fallzone" type="Node2D" parent="prefabs" unique_id=85467959]
-position = Vector2(1352, 208)
-
-[node name="damage" parent="prefabs/fallzone" unique_id=498708985 instance=ExtResource("19_imfvm")]
-position = Vector2(-312, 0)
-damage = 8
-knockback = Vector2(200, -900)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="prefabs/fallzone/damage" unique_id=1660485996]
-shape = SubResource("RectangleShape2D_7k4mt")
-
-[node name="damage2" parent="prefabs/fallzone" unique_id=1834318564 instance=ExtResource("19_imfvm")]
-position = Vector2(-248, 0)
-damage = 8
-knockback = Vector2(200, -900)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="prefabs/fallzone/damage2" unique_id=244907158]
-shape = SubResource("RectangleShape2D_0uwfl")
-
-[node name="damage3" parent="prefabs/fallzone" unique_id=330916282 instance=ExtResource("19_imfvm")]
-position = Vector2(-200, 0)
-damage = 8
-knockback = Vector2(200, -900)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="prefabs/fallzone/damage3" unique_id=1994262365]
-shape = SubResource("RectangleShape2D_ud1nb")
-
-[node name="damage4" parent="prefabs/fallzone" unique_id=312088217 instance=ExtResource("19_imfvm")]
-position = Vector2(-136, 0)
-damage = 8
-knockback = Vector2(200, -900)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="prefabs/fallzone/damage4" unique_id=877751953]
-shape = SubResource("RectangleShape2D_lqgom")
-
-[node name="damage5" parent="prefabs/fallzone" unique_id=1736982790 instance=ExtResource("19_imfvm")]
-position = Vector2(216, 0)
-damage = 8
-knockback = Vector2(200, -900)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="prefabs/fallzone/damage5" unique_id=607321454]
-shape = SubResource("RectangleShape2D_av01a")
-
 [node name="signs" type="Node2D" parent="prefabs" unique_id=546395345]
 
 [node name="warning_sign" parent="prefabs/signs" unique_id=1665455289 instance=ExtResource("18_7k4mt")]
@@ -380,7 +325,7 @@ lines = Array[String](["Procure os animais espalhados pela floresta!", "Boa sort
 
 [node name="warning_sign2" parent="prefabs/signs" unique_id=1481123494 instance=ExtResource("18_7k4mt")]
 position = Vector2(216, 152)
-lines = Array[String](["Procure os coelhos,", "eles se assustam ficilmente!"])
+lines = Array[String](["Procure os coelhos,", "eles se assustam facilmente!"])
 
 [node name="warning_sign3" parent="prefabs/signs" unique_id=316400311 instance=ExtResource("18_7k4mt")]
 position = Vector2(1320, 104)
@@ -393,6 +338,15 @@ lines = Array[String](["Os ouriços rolam quando assustados,", "mas seus espinho
 [node name="warning_sign5" parent="prefabs/signs" unique_id=1332919049 instance=ExtResource("18_7k4mt")]
 position = Vector2(1992, 152)
 lines = Array[String](["Cuidado com os espinhos!!!"])
+
+[node name="fallzone" parent="prefabs" unique_id=1935059445 instance=ExtResource("20_av01a")]
+position = Vector2(1320, 264)
+
+[node name="collision" type="CollisionShape2D" parent="prefabs/fallzone" unique_id=54399436]
+shape = SubResource("RectangleShape2D_yftww")
+
+[node name="checkponit" parent="prefabs" unique_id=451530289 instance=ExtResource("21_yftww")]
+position = Vector2(992, 96)
 
 [node name="player" parent="." unique_id=292299474 instance=ExtResource("1_5t0fn")]
 position = Vector2(24, 56)
@@ -473,9 +427,11 @@ visibility_mode = 1
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1732923701]
 
-[node name="health_bar" parent="HUD" unique_id=173443920 node_paths=PackedStringArray("target") instance=ExtResource("29_gmex4")]
+[node name="health_bar" parent="HUD" unique_id=173443920 instance=ExtResource("29_gmex4")]
 offset_left = 16.0
 offset_top = 16.0
 offset_right = 64.0
 offset_bottom = 24.0
-target = NodePath("../../player")
+
+[node name="player_start_position" type="Marker2D" parent="." unique_id=1614829842]
+position = Vector2(24, 40)

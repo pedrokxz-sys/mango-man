@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 DiologManager="*uid://c0mvdyotkl743"
+Globals="*uid://b7shsw7gm78a4"
 
 [display]
 

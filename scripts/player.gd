@@ -9,16 +9,14 @@ const JUMP_FORCE = -300.0
 @onready var texture := $texture as Sprite2D
 @onready var remote := $remote as RemoteTransform2D
 
-signal health_changed()
-@export var health : int = 48:
-	set(value):
-		health = value
 var damage_areas
 
 #vetor do knockback
 var knockback_vector := Vector2.ZERO
 #estado de atacando
 var is_attacking : bool = false
+
+signal player_has_died
 
 func _ready() -> void:
 	damage_areas = get_tree().get_nodes_in_group("damage")
@@ -62,7 +60,6 @@ func _physics_process(delta: float) -> void:
 	
 	if DiologManager.is_message_active:
 		velocity.x = 0
-		##animator.play("idle")
 
 		var sign_pos = DiologManager.dialog_source_position
 
@@ -73,7 +70,6 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 	return
- 
 
 #animaçoes
 func handle_animation(direction):
@@ -118,8 +114,8 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 		take_damage(dmg, knock)
 
 func take_damage(damage: int, knockback: Vector2) -> void:
-	health -= damage
-	health_changed.emit()
+	Globals.health -= damage
+	Globals.health_changed.emit()
 
 	knockback_vector = knockback
 
@@ -132,11 +128,25 @@ func take_damage(damage: int, knockback: Vector2) -> void:
 	texture.modulate = Color(1, 0, 0, 1)
 	tween.parallel().tween_property(texture, "modulate", Color(1, 1, 1, 1), 0.25)
 
-	if health <= 0:
+	if Globals.health <= 0:
 		queue_free()
+		emit_signal("player_has_died")
 
 func look_right():
 	texture.scale.x = 1
-
 func look_left():
 	texture.scale.x = -1
+
+func handle_death_zone():
+	Globals.health -= 16
+	visible = false
+	set_physics_process(false)
+	
+	await get_tree().create_timer(1.0).timeout
+	Globals.respawn_player()
+	visible = true
+	set_physics_process(true)
+
+	if Globals.health <= 0:
+		queue_free()
+		emit_signal("player_has_died")

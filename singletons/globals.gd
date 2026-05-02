@@ -2,10 +2,11 @@ extends Node
 
 signal health_changed
 
-var health: int = 48:
-	set(value):
-		health = value
-		health_changed.emit()
+var mangos:= 0 
+
+var score:= 0
+
+var health:= 6
 
 var player = null
 

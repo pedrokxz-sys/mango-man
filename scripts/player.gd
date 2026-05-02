@@ -88,6 +88,7 @@ func handle_animation(direction):
 #se um animal entrar encotato com o hitbox ele some
 func _on_hitbox_body_entered(body: Node2D) -> void:
 	if body.is_in_group("animals"):
+		Globals.score += 1
 		body.queue_free()
 
 #quando a animaçao de ataque terminar o estado de ataque e falso
@@ -138,7 +139,8 @@ func look_left():
 	texture.scale.x = -1
 
 func handle_death_zone():
-	Globals.health -= 16
+	Globals.health -= 2
+	Globals.health_changed.emit()
 	visible = false
 	set_physics_process(false)
 	

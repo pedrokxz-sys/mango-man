@@ -1,0 +1,98 @@
+[gd_scene format=3 uid="uid://cdur8uxwmfegp"]
+
+[ext_resource type="Script" uid="uid://hts4u6fk6e6p" path="res://scripts/player_health.gd" id="1_iddtj"]
+[ext_resource type="Texture2D" uid="uid://cwg1gynbsjlex" path="res://assets/buttons/health.png" id="2_8hlj0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iddtj"]
+atlas = ExtResource("2_8hlj0")
+region = Rect2(0, 96, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8hlj0"]
+atlas = ExtResource("2_8hlj0")
+region = Rect2(0, 80, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7gbe4"]
+atlas = ExtResource("2_8hlj0")
+region = Rect2(0, 64, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3hsiu"]
+atlas = ExtResource("2_8hlj0")
+region = Rect2(0, 48, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d1mii"]
+atlas = ExtResource("2_8hlj0")
+region = Rect2(0, 32, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vgewe"]
+atlas = ExtResource("2_8hlj0")
+region = Rect2(0, 16, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lgvg4"]
+atlas = ExtResource("2_8hlj0")
+region = Rect2(0, 0, 48, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wcrdm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iddtj")
+}],
+"loop": true,
+"name": &"0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8hlj0")
+}],
+"loop": true,
+"name": &"0.5",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7gbe4")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3hsiu")
+}],
+"loop": true,
+"name": &"1.5",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d1mii")
+}],
+"loop": true,
+"name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vgewe")
+}],
+"loop": true,
+"name": &"2.5",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lgvg4")
+}],
+"loop": true,
+"name": &"3",
+"speed": 5.0
+}]
+
+[node name="player_health" type="Node2D" unique_id=873261381]
+script = ExtResource("1_iddtj")
+
+[node name="anim" type="AnimatedSprite2D" parent="." unique_id=218851888]
+sprite_frames = SubResource("SpriteFrames_wcrdm")
+animation = &"0"

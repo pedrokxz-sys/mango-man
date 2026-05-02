@@ -1,0 +1,93 @@
+[gd_scene format=3 uid="uid://3b5iwrrhpfhn"]
+
+[ext_resource type="Script" uid="uid://d0777or7frim1" path="res://scripts/mango.gd" id="1_7aa1i"]
+[ext_resource type="Texture2D" uid="uid://failjcjv74w6" path="res://assets/items/mango.png" id="2_gqx06"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_waf7k"]
+atlas = ExtResource("2_gqx06")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_613gq"]
+atlas = ExtResource("2_gqx06")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ot6eq"]
+atlas = ExtResource("2_gqx06")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_71c8g"]
+atlas = ExtResource("2_gqx06")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m5qif"]
+atlas = ExtResource("2_gqx06")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ox5ml"]
+atlas = ExtResource("2_gqx06")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p36mk"]
+atlas = ExtResource("2_gqx06")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b0mjj"]
+atlas = ExtResource("2_gqx06")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_omo2j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_waf7k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_613gq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ot6eq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_71c8g")
+}],
+"loop": false,
+"name": &"collect",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m5qif")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ox5ml")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p36mk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b0mjj")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mer0g"]
+radius = 9.0
+
+[node name="mango" type="Area2D" unique_id=196032973]
+collision_layer = 8
+script = ExtResource("1_7aa1i")
+
+[node name="anim" type="AnimatedSprite2D" parent="." unique_id=1019193871]
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_omo2j")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="collision" type="CollisionShape2D" parent="." unique_id=609351162]
+position = Vector2(0, -9)
+shape = SubResource("CircleShape2D_mer0g")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="animation_finished" from="anim" to="." method="_on_anim_animation_finished"]

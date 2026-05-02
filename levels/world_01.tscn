@@ -27,16 +27,24 @@
 [ext_resource type="Script" uid="uid://laudjr4o548y" path="res://scripts/controls.gd" id="21_xjnak"]
 [ext_resource type="PackedScene" uid="uid://dyo6ltwrvyn8q" path="res://prefabs/checkponit.tscn" id="21_yftww"]
 [ext_resource type="Texture2D" uid="uid://cyyojcwy2qqw4" path="res://assets/buttons/ui_button_left_normal.png" id="22_5fif6"]
+[ext_resource type="PackedScene" uid="uid://3b5iwrrhpfhn" path="res://prefabs/mango.tscn" id="22_q0cxt"]
 [ext_resource type="Texture2D" uid="uid://bwaxhjwopi82l" path="res://assets/buttons/ui_button_right_normal.png" id="23_ao123"]
 [ext_resource type="Texture2D" uid="uid://byaug8ywyngv7" path="res://assets/buttons/ui_button_left_pressed.png" id="23_qannr"]
 [ext_resource type="Texture2D" uid="uid://bqgq2j0ty8y5j" path="res://assets/buttons/ui_button_up_normal.png" id="24_qannr"]
 [ext_resource type="Texture2D" uid="uid://dre8fvu34ohsw" path="res://assets/buttons/ui_button_right_pressed.png" id="25_xjnak"]
 [ext_resource type="Texture2D" uid="uid://b5jd0rkilr34m" path="res://assets/buttons/ui_button_up_pressed.png" id="27_qannr"]
-[ext_resource type="PackedScene" uid="uid://ca4rqpf4caooi" path="res://actors/health_bar.tscn" id="29_gmex4"]
 [ext_resource type="Texture2D" uid="uid://cvrf4cf3bn0ok" path="res://assets/buttons/ui_button_collect_normal.png" id="29_imfvm"]
 [ext_resource type="Texture2D" uid="uid://bvfmyyd8cnrxs" path="res://assets/buttons/ui_button_collect_pressed.png" id="30_7k4mt"]
 [ext_resource type="Texture2D" uid="uid://4l42oi4cajvq" path="res://assets/buttons/ui_button_crouch_normal.png" id="33_lqgom"]
 [ext_resource type="Texture2D" uid="uid://bwh7pdrw5hb8e" path="res://assets/buttons/ui_button_crouch_pressed.png" id="34_av01a"]
+[ext_resource type="PackedScene" uid="uid://cdur8uxwmfegp" path="res://prefabs/player_health.tscn" id="37_yftww"]
+[ext_resource type="Script" uid="uid://c247esetbrstq" path="res://scripts/hud_manager.gd" id="39_qwk1a"]
+[ext_resource type="Texture2D" uid="uid://b8eaef3k8gdhm" path="res://assets/buttons/icons/01_mango_icon.png" id="40_ln80i"]
+[ext_resource type="Texture2D" uid="uid://cluudi68hvqmh" path="res://assets/buttons/icons/animals_icon.png" id="41_brbtt"]
+[ext_resource type="Texture2D" uid="uid://ckcmfjn716l57" path="res://assets/buttons/icons/02_mango_icon.png" id="41_jt6s7"]
+[ext_resource type="Texture2D" uid="uid://bfpbvs6q8ecjn" path="res://assets/buttons/icons/03_mango_icon.png" id="42_qjjnp"]
+[ext_resource type="FontFile" uid="uid://2jgdu5anlho6" path="res://assets/fonts/RevMiniPixel.ttf" id="43_4xcht"]
+[ext_resource type="Texture2D" uid="uid://c3r0dsrh840nw" path="res://assets/buttons/icons/04_mango_icon.png" id="43_5ha83"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fwd2m"]
 texture = ExtResource("6_j8rs1")
@@ -179,6 +187,16 @@ texture = ExtResource("6_j8rs1")
 physics_layer_0/collision_layer = 2
 physics_layer_0/collision_mask = 0
 sources/2 = SubResource("TileSetAtlasSource_or7x1")
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_jt6s7"]
+frames = 4
+frame_0/texture = ExtResource("40_ln80i")
+frame_1/texture = ExtResource("41_jt6s7")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("42_qjjnp")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("43_5ha83")
+frame_3/duration = 1.0
 
 [node name="world_01" type="Node2D" unique_id=161476231]
 script = ExtResource("1_4qpc8")
@@ -346,7 +364,42 @@ position = Vector2(1320, 264)
 shape = SubResource("RectangleShape2D_yftww")
 
 [node name="checkponit" parent="prefabs" unique_id=451530289 instance=ExtResource("21_yftww")]
-position = Vector2(992, 96)
+position = Vector2(1272, 112)
+
+[node name="checkponit2" parent="prefabs" unique_id=1038903353 instance=ExtResource("21_yftww")]
+position = Vector2(2696, 48)
+
+[node name="player_start_position" type="Marker2D" parent="prefabs" unique_id=1614829842]
+position = Vector2(24, 40)
+
+[node name="items" type="Node2D" parent="." unique_id=1106800586]
+
+[node name="mango" parent="items" unique_id=196032973 instance=ExtResource("22_q0cxt")]
+position = Vector2(624, 48)
+
+[node name="mango2" parent="items" unique_id=163533698 instance=ExtResource("22_q0cxt")]
+position = Vector2(912, 128)
+
+[node name="mango3" parent="items" unique_id=1978733454 instance=ExtResource("22_q0cxt")]
+position = Vector2(936, 128)
+
+[node name="mango4" parent="items" unique_id=23772680 instance=ExtResource("22_q0cxt")]
+position = Vector2(960, 128)
+
+[node name="mango5" parent="items" unique_id=490002597 instance=ExtResource("22_q0cxt")]
+position = Vector2(1128, 128)
+
+[node name="mango6" parent="items" unique_id=261114150 instance=ExtResource("22_q0cxt")]
+position = Vector2(1568, 176)
+
+[node name="mango7" parent="items" unique_id=558722233 instance=ExtResource("22_q0cxt")]
+position = Vector2(2056, 128)
+
+[node name="mango8" parent="items" unique_id=229798620 instance=ExtResource("22_q0cxt")]
+position = Vector2(2336, 160)
+
+[node name="mango9" parent="items" unique_id=717217931 instance=ExtResource("22_q0cxt")]
+position = Vector2(2616, 80)
 
 [node name="player" parent="." unique_id=292299474 instance=ExtResource("1_5t0fn")]
 position = Vector2(24, 56)
@@ -427,11 +480,68 @@ visibility_mode = 1
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1732923701]
 
-[node name="health_bar" parent="HUD" unique_id=173443920 instance=ExtResource("29_gmex4")]
-offset_left = 16.0
-offset_top = 16.0
-offset_right = 64.0
-offset_bottom = 24.0
+[node name="player_health" parent="HUD" unique_id=873261381 instance=ExtResource("37_yftww")]
+position = Vector2(32, 16)
 
-[node name="player_start_position" type="Marker2D" parent="." unique_id=1614829842]
-position = Vector2(24, 40)
+[node name="control" type="Control" parent="HUD" unique_id=1031888346]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("39_qwk1a")
+
+[node name="container" type="MarginContainer" parent="HUD/control" unique_id=319950899]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="mango_container" type="HBoxContainer" parent="HUD/control/container" unique_id=1030315721]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="mango_icon" type="TextureRect" parent="HUD/control/container/mango_container" unique_id=321452641]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = SubResource("AnimatedTexture_jt6s7")
+
+[node name="mango_counter" type="Label" parent="HUD/control/container/mango_container" unique_id=1092142403]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("43_4xcht")
+theme_override_font_sizes/font_size = 8
+text = "000"
+
+[node name="score_container" type="HBoxContainer" parent="HUD/control/container" unique_id=1486279722]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="mango_icon" type="TextureRect" parent="HUD/control/container/score_container" unique_id=1189241531]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = ExtResource("41_brbtt")
+
+[node name="score_counter" type="Label" parent="HUD/control/container/score_container" unique_id=891571331]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("43_4xcht")
+theme_override_font_sizes/font_size = 8
+text = "000"

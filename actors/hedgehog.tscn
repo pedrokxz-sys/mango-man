@@ -215,7 +215,7 @@ wait_time = 3.0
 one_shot = true
 
 [node name="damage" parent="." unique_id=428252771 instance=ExtResource("5_idqth")]
-damage = 16
+damage = 2
 
 [node name="collision" type="CollisionShape2D" parent="damage" unique_id=1089222508]
 position = Vector2(1, 2)

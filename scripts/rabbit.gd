@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 const jump_force = -200
-const speed = 100
+const speed = 150
 
 @onready var player_detector := $player_detector as Area2D
 @onready var texture := $texture as Sprite2D

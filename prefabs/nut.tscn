@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://bj215nca8v5k"]
+
+[ext_resource type="Script" uid="uid://dyfvt1lkbjsdk" path="res://scripts/nut.gd" id="1_gdsld"]
+[ext_resource type="Texture2D" uid="uid://blq7gwdd2m107" path="res://assets/animals/squirrel/nut.png" id="1_mkn6h"]
+[ext_resource type="PackedScene" uid="uid://cegw4c7dlnm4f" path="res://actors/damage.tscn" id="2_gdsld"]
+[ext_resource type="Texture2D" uid="uid://deexkrmukglfe" path="res://assets/animals/squirrel/nut_break.png" id="3_44xup"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_44xup"]
+size = Vector2(5, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_grsir"]
+atlas = ExtResource("3_44xup")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_koc2m"]
+atlas = ExtResource("1_mkn6h")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1arqa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_grsir")
+}],
+"loop": false,
+"name": &"break",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_koc2m")
+}],
+"loop": true,
+"name": &"nut",
+"speed": 5.0
+}]
+
+[node name="nut" type="CharacterBody2D" unique_id=1034703676]
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1_gdsld")
+
+[node name="damage" parent="." unique_id=428252771 groups=["projectiles"] instance=ExtResource("2_gdsld")]
+knockback = Vector2(250, 0)
+
+[node name="collision" type="CollisionShape2D" parent="damage" unique_id=550368398]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_44xup")
+
+[node name="anim" type="AnimatedSprite2D" parent="." unique_id=373524580]
+sprite_frames = SubResource("SpriteFrames_1arqa")
+animation = &"break"
+autoplay = "nut"
+
+[node name="collision" type="CollisionShape2D" parent="." unique_id=1218737066]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_44xup")
+
+[connection signal="animation_finished" from="anim" to="." method="_on_anim_animation_finished"]

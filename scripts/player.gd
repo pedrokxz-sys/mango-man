@@ -29,11 +29,11 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 
 	# pulo
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor() and !is_attacking and !DiologManager.is_message_active:
+	if Input.is_action_just_pressed("move_up") and is_on_floor() and !is_attacking and !DiologManager.is_message_active:
 		velocity.y = JUMP_FORCE
 
 	# esquerda/direita
-	var direction := Input.get_axis("ui_left", "ui_right")
+	var direction := Input.get_axis("move_left", "move_right")
 
 	# trava movimento durante ataque
 	if !is_attacking:

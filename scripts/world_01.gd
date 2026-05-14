@@ -5,8 +5,6 @@ extends Node2D
 @onready var camera := $Camera2D as Camera2D
 @onready var player_start_position: Marker2D = $prefabs/checkpoints/player_start_position
 
-
-
 func _ready() -> void:
 	Globals.player_start_position = player_start_position
 	Globals.player = player

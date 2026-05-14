@@ -578,21 +578,21 @@ centered = false
 position = Vector2(32, 141)
 texture_normal = ExtResource("22_5fif6")
 texture_pressed = ExtResource("23_qannr")
-action = "ui_left"
+action = "move_left"
 visibility_mode = 1
 
 [node name="ui_right" type="TouchScreenButton" parent="controls" unique_id=61333608]
 position = Vector2(72, 141)
 texture_normal = ExtResource("23_ao123")
 texture_pressed = ExtResource("25_xjnak")
-action = "ui_right"
+action = "move_right"
 visibility_mode = 1
 
 [node name="ui_up" type="TouchScreenButton" parent="controls" unique_id=767535806]
 position = Vector2(339, 132)
 texture_normal = ExtResource("24_qannr")
 texture_pressed = ExtResource("27_qannr")
-action = "ui_accept"
+action = "move_up"
 visibility_mode = 1
 
 [node name="ui_collect" type="TouchScreenButton" parent="controls" unique_id=549616919]

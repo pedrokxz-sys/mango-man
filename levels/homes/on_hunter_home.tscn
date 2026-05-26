@@ -1,0 +1,345 @@
+[gd_scene format=3 uid="uid://1nsywrx4qv4h"]
+
+[ext_resource type="Script" uid="uid://dntfp32mgktfd" path="res://scripts/hunter_home.gd" id="1_18t7e"]
+[ext_resource type="Texture2D" uid="uid://dqfmxlidyaqab" path="res://assets/tonw/on_hunter_home.png" id="1_rq6nb"]
+[ext_resource type="PackedScene" uid="uid://d0ew0qmq0c7fh" path="res://actors/player.tscn" id="2_qak26"]
+[ext_resource type="PackedScene" uid="uid://cq8yfh7tbb2pu" path="res://prefabs/door.tscn" id="3_cnyqr"]
+[ext_resource type="Texture2D" uid="uid://b2p6h1yc6vse" path="res://assets/fonts/warning_sign.png" id="4_ag407"]
+[ext_resource type="Script" uid="uid://laudjr4o548y" path="res://scripts/controls.gd" id="5_4gv6i"]
+[ext_resource type="Texture2D" uid="uid://b4q8ob2fxtkfx" path="res://assets/buttons/joystick.png" id="6_18t7e"]
+[ext_resource type="Texture2D" uid="uid://cyyojcwy2qqw4" path="res://assets/buttons/ui_button_left_normal.png" id="7_qjn0e"]
+[ext_resource type="Texture2D" uid="uid://byaug8ywyngv7" path="res://assets/buttons/ui_button_left_pressed.png" id="8_00v8a"]
+[ext_resource type="Texture2D" uid="uid://bwaxhjwopi82l" path="res://assets/buttons/ui_button_right_normal.png" id="9_ytjb2"]
+[ext_resource type="Texture2D" uid="uid://dre8fvu34ohsw" path="res://assets/buttons/ui_button_right_pressed.png" id="10_nobpa"]
+[ext_resource type="Texture2D" uid="uid://bqgq2j0ty8y5j" path="res://assets/buttons/ui_button_up_normal.png" id="11_ucm5f"]
+[ext_resource type="Texture2D" uid="uid://b5jd0rkilr34m" path="res://assets/buttons/ui_button_up_pressed.png" id="12_il8sh"]
+[ext_resource type="Texture2D" uid="uid://cvrf4cf3bn0ok" path="res://assets/buttons/ui_button_collect_normal.png" id="13_4t3qk"]
+[ext_resource type="Texture2D" uid="uid://bvfmyyd8cnrxs" path="res://assets/buttons/ui_button_collect_pressed.png" id="14_u5crv"]
+[ext_resource type="Texture2D" uid="uid://4l42oi4cajvq" path="res://assets/buttons/ui_button_crouch_normal.png" id="15_v10at"]
+[ext_resource type="Texture2D" uid="uid://bwh7pdrw5hb8e" path="res://assets/buttons/ui_button_crouch_pressed.png" id="16_rw3wk"]
+[ext_resource type="Texture2D" uid="uid://bwktjkv6hwqm5" path="res://assets/buttons/pause_menu_normal.png" id="17_xykhk"]
+[ext_resource type="Texture2D" uid="uid://bldy50jlybb1k" path="res://assets/buttons/pause_menu_pressed.png" id="18_hkc24"]
+[ext_resource type="PackedScene" uid="uid://cdur8uxwmfegp" path="res://prefabs/player_health.tscn" id="19_q564u"]
+[ext_resource type="Script" uid="uid://c247esetbrstq" path="res://scripts/hud_manager.gd" id="20_dc2a2"]
+[ext_resource type="Texture2D" uid="uid://b8eaef3k8gdhm" path="res://assets/buttons/icons/01_mango_icon.png" id="21_x0g7j"]
+[ext_resource type="Texture2D" uid="uid://ckcmfjn716l57" path="res://assets/buttons/icons/02_mango_icon.png" id="22_jkjjd"]
+[ext_resource type="Texture2D" uid="uid://bfpbvs6q8ecjn" path="res://assets/buttons/icons/03_mango_icon.png" id="23_5s8nw"]
+[ext_resource type="Texture2D" uid="uid://c3r0dsrh840nw" path="res://assets/buttons/icons/04_mango_icon.png" id="24_23p0n"]
+[ext_resource type="FontFile" uid="uid://2jgdu5anlho6" path="res://assets/fonts/RevMiniPixel.ttf" id="25_cmuls"]
+[ext_resource type="Texture2D" uid="uid://cluudi68hvqmh" path="res://assets/buttons/icons/animals_icon.png" id="26_6xtj8"]
+[ext_resource type="PackedScene" uid="uid://frn5k7bnk6fo" path="res://prefabs/pause_menu.tscn" id="27_yuqcu"]
+[ext_resource type="Shader" uid="uid://dpqmgeqiph1w7" path="res://shaders/iris_open.gdshader" id="28_uyktq"]
+
+[sub_resource type="Animation" id="Animation_80ww7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HUD/iris_open:material:shader_parameter/radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HUD/iris_open:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HUD/goal:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-427, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HUD/goal:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_lyepb"]
+resource_name = "goal"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HUD/goal:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-427, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HUD/goal:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_5nrxn"]
+resource_name = "start"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HUD/iris_open:material:shader_parameter/radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HUD/iris_open:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cnyqr"]
+_data = {
+&"RESET": SubResource("Animation_80ww7"),
+&"goal": SubResource("Animation_lyepb"),
+&"start": SubResource("Animation_5nrxn")
+}
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_5esyb"]
+frames = 4
+frame_0/texture = ExtResource("21_x0g7j")
+frame_1/texture = ExtResource("22_jkjjd")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("23_5s8nw")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("24_23p0n")
+frame_3/duration = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3gv2t"]
+shader = ExtResource("28_uyktq")
+shader_parameter/radius = 0.0
+shader_parameter/center = Vector2(0.5, 0.5)
+
+[node name="on_hunter_home" type="Node2D" unique_id=1945955650]
+script = ExtResource("1_18t7e")
+
+[node name="player_start_position" type="Marker2D" parent="." unique_id=462124919]
+position = Vector2(24, 40)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1503387399]
+zoom = Vector2(1.5, 1.5)
+limit_left = 0
+limit_top = 0
+limit_right = 427
+limit_bottom = 213
+limit_smoothed = true
+position_smoothing_speed = 10.0
+editor_draw_drag_margin = true
+
+[node name="texture" type="Sprite2D" parent="." unique_id=1095287430]
+position = Vector2(-72, -40)
+texture = ExtResource("1_rq6nb")
+centered = false
+
+[node name="floot" type="StaticBody2D" parent="." unique_id=1545385645]
+collision_layer = 2
+
+[node name="collsion" type="CollisionPolygon2D" parent="floot" unique_id=1394985001]
+position = Vector2(-72, -40)
+build_mode = 1
+polygon = PackedVector2Array(69, 164, 358, 165, 358, 38, 69, 37)
+
+[node name="player" parent="." unique_id=292299474 instance=ExtResource("2_qak26")]
+position = Vector2(8, 120)
+
+[node name="door" parent="." unique_id=1683926514 instance=ExtResource("3_cnyqr")]
+position = Vector2(8, 120)
+nextlevel = "res://levels/town.tscn"
+
+[node name="animator" type="AnimationPlayer" parent="door" unique_id=867960973]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_cnyqr")
+
+[node name="texture" type="Sprite2D" parent="door" unique_id=2127171732]
+position = Vector2(0, -40)
+scale = Vector2(-1, 1)
+texture = ExtResource("4_ag407")
+
+[node name="controls" type="CanvasLayer" parent="." unique_id=1157072036]
+script = ExtResource("5_4gv6i")
+
+[node name="joystick" type="Sprite2D" parent="controls" unique_id=1714435436]
+texture = ExtResource("6_18t7e")
+centered = false
+
+[node name="ui_left" type="TouchScreenButton" parent="controls" unique_id=173979051]
+position = Vector2(32, 141)
+texture_normal = ExtResource("7_qjn0e")
+texture_pressed = ExtResource("8_00v8a")
+action = "move_left"
+visibility_mode = 1
+
+[node name="ui_right" type="TouchScreenButton" parent="controls" unique_id=1483877830]
+position = Vector2(72, 141)
+texture_normal = ExtResource("9_ytjb2")
+texture_pressed = ExtResource("10_nobpa")
+action = "move_right"
+visibility_mode = 1
+
+[node name="ui_up" type="TouchScreenButton" parent="controls" unique_id=725293666]
+position = Vector2(339, 132)
+texture_normal = ExtResource("11_ucm5f")
+texture_pressed = ExtResource("12_il8sh")
+action = "move_up"
+visibility_mode = 1
+
+[node name="ui_collect" type="TouchScreenButton" parent="controls" unique_id=1423833024]
+position = Vector2(358, 87)
+texture_normal = ExtResource("13_4t3qk")
+texture_pressed = ExtResource("14_u5crv")
+action = "ui_collect"
+visibility_mode = 1
+
+[node name="ui_crouch" type="TouchScreenButton" parent="controls" unique_id=1982936950]
+position = Vector2(290, 151)
+texture_normal = ExtResource("15_v10at")
+texture_pressed = ExtResource("16_rw3wk")
+action = "ui_crouch"
+visibility_mode = 1
+
+[node name="ui_cancel" type="TouchScreenButton" parent="controls" unique_id=801356630]
+position = Vector2(207, 18)
+texture_normal = ExtResource("17_xykhk")
+texture_pressed = ExtResource("18_hkc24")
+action = "ui_cancel"
+visibility_mode = 1
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=146687499]
+
+[node name="player_health" parent="HUD" unique_id=873261381 instance=ExtResource("19_q564u")]
+visible = false
+position = Vector2(32, 16)
+
+[node name="control" type="Control" parent="HUD" unique_id=362474279]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("20_dc2a2")
+
+[node name="container" type="MarginContainer" parent="HUD/control" unique_id=1479496102]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="mango_container" type="HBoxContainer" parent="HUD/control/container" unique_id=1181346406]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="mango_icon" type="TextureRect" parent="HUD/control/container/mango_container" unique_id=1222531666]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = SubResource("AnimatedTexture_5esyb")
+
+[node name="mango_counter" type="Label" parent="HUD/control/container/mango_container" unique_id=1950140622]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("25_cmuls")
+theme_override_font_sizes/font_size = 8
+text = "000"
+
+[node name="score_container" type="HBoxContainer" parent="HUD/control/container" unique_id=1917305744]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="mango_icon" type="TextureRect" parent="HUD/control/container/score_container" unique_id=787286900]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = ExtResource("26_6xtj8")
+
+[node name="score_counter" type="Label" parent="HUD/control/container/score_container" unique_id=1939904414]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("25_cmuls")
+theme_override_font_sizes/font_size = 8
+text = "000"
+
+[node name="pause_menu" parent="HUD" unique_id=1193229482 instance=ExtResource("27_yuqcu")]
+visible = false
+
+[node name="iris_open" type="ColorRect" parent="HUD" unique_id=504483343]
+visible = false
+material = SubResource("ShaderMaterial_3gv2t")
+custom_minimum_size = Vector2(427, 213)
+offset_right = 427.0
+offset_bottom = 213.0
+color = Color(0, 0, 0, 1)
+
+[node name="goal" type="ColorRect" parent="HUD" unique_id=1989505859]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -427.0
+offset_right = -427.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[connection signal="animation_finished" from="door/animator" to="door" method="_on_animator_animation_finished"]

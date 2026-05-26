@@ -1,13 +1,12 @@
 extends Node2D
 
+@onready var sprite: Sprite2D = $texture
 @onready var collision: CollisionShape2D = $damage/collision
-@onready var texture: Sprite2D = $texture
-
 
 func _ready() -> void:
-	collision.shape.size = texture.get_rect().size
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+	await get_tree().process_frame
+	
+	var rect := RectangleShape2D.new()
+	rect.size = sprite.region_rect.size
+	
+	collision.shape = rect

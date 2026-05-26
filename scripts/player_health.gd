@@ -22,7 +22,7 @@ func _process(delta: float) -> void:
 	if Globals.health == 1:
 		anim.play("0.5")
 	
-	if Globals.health == 0:
+	if Globals.health < 0:
 		anim.play("0")
 	
 	Globals.health_changed.connect(health_changed)

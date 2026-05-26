@@ -2,18 +2,13 @@ extends Node2D
 
 @onready var player := $player as CharacterBody2D
 @onready var player_scene = preload("res://actors/player.tscn")
-@onready var camera := $Camera2D as Camera2D
-@onready var player_start_position: Marker2D = $prefabs/checkpoints/player_start_position
-@onready var animator: AnimationPlayer = $goal/animator
+@onready var player_start_position: Marker2D = $player_start_position
+@onready var animator: AnimationPlayer = $door/animator
 
 func _ready() -> void:
 	animator.play("start")
-	Globals.health = 6
-	Globals.mangos = 0
-	Globals.score = 0
 	Globals.player_start_position = player_start_position
 	Globals.player = player
-	Globals.player.follow_camera(camera)
 	Globals.player.player_has_died.connect(reload_game)
 
 func reload_game():
@@ -27,8 +22,6 @@ func reload_game():
 	move_child(player, 5)
 	
 	Globals.player = player
-	Globals.player.follow_camera(camera)
 	Globals.player.player_has_died.connect(reload_game)
-	
 	Globals.health = 6
 	Globals.respawn_player()

@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://d0ew0qmq0c7fh" path="res://actors/player.tscn" id="2_qak26"]
 [ext_resource type="PackedScene" uid="uid://cq8yfh7tbb2pu" path="res://prefabs/door.tscn" id="3_cnyqr"]
 [ext_resource type="Texture2D" uid="uid://b2p6h1yc6vse" path="res://assets/fonts/warning_sign.png" id="4_ag407"]
+[ext_resource type="Texture2D" uid="uid://bxgm7lkudytxb" path="res://assets/people/hunter/hunter.png" id="4_qjn0e"]
 [ext_resource type="Script" uid="uid://laudjr4o548y" path="res://scripts/controls.gd" id="5_4gv6i"]
 [ext_resource type="Texture2D" uid="uid://b4q8ob2fxtkfx" path="res://assets/buttons/joystick.png" id="6_18t7e"]
 [ext_resource type="Texture2D" uid="uid://cyyojcwy2qqw4" path="res://assets/buttons/ui_button_left_normal.png" id="7_qjn0e"]
@@ -29,6 +30,28 @@
 [ext_resource type="Texture2D" uid="uid://cluudi68hvqmh" path="res://assets/buttons/icons/animals_icon.png" id="26_6xtj8"]
 [ext_resource type="PackedScene" uid="uid://frn5k7bnk6fo" path="res://prefabs/pause_menu.tscn" id="27_yuqcu"]
 [ext_resource type="Shader" uid="uid://dpqmgeqiph1w7" path="res://shaders/iris_open.gdshader" id="28_uyktq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qjn0e"]
+atlas = ExtResource("4_qjn0e")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_00v8a"]
+atlas = ExtResource("4_qjn0e")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ytjb2"]
+animations = [{
+"frames": [{
+"duration": 10.0,
+"texture": SubResource("AtlasTexture_qjn0e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_00v8a")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [sub_resource type="Animation" id="Animation_80ww7"]
 length = 0.001
@@ -184,13 +207,22 @@ collision_layer = 2
 [node name="collsion" type="CollisionPolygon2D" parent="floot" unique_id=1394985001]
 position = Vector2(-72, -40)
 build_mode = 1
-polygon = PackedVector2Array(69, 164, 358, 165, 358, 38, 69, 37)
+polygon = PackedVector2Array(69, 164, 284.92386, 164.74713, 285, 85, 358, 165, 358, 38, 69, 37)
 
 [node name="player" parent="." unique_id=292299474 instance=ExtResource("2_qak26")]
 position = Vector2(8, 120)
 
+[node name="hunter" type="CharacterBody2D" parent="." unique_id=2025509104]
+position = Vector2(237, 112)
+scale = Vector2(-1, 1)
+
+[node name="anim" type="AnimatedSprite2D" parent="hunter" unique_id=1521489965]
+sprite_frames = SubResource("SpriteFrames_ytjb2")
+animation = &"idle"
+autoplay = "idle"
+
 [node name="door" parent="." unique_id=1683926514 instance=ExtResource("3_cnyqr")]
-position = Vector2(8, 120)
+position = Vector2(8, 104)
 nextlevel = "res://levels/town.tscn"
 
 [node name="animator" type="AnimationPlayer" parent="door" unique_id=867960973]

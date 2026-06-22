@@ -21,4 +21,3 @@ func respawn_player():
 		player.position = current_checkpoint.global_position
 	else:
 		player.global_position = player_start_position.global_position
-	print("respawnou")

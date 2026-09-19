@@ -561,16 +561,6 @@ disabled = true
 position = Vector2(0, -10.5)
 shape = SubResource("RectangleShape2D_j8rs1")
 
-[node name="ray_right" type="RayCast2D" parent="." unique_id=1459918875]
-position = Vector2(1, -8)
-target_position = Vector2(7, 0)
-collision_mask = 4
-
-[node name="ray_left" type="RayCast2D" parent="." unique_id=72968516]
-position = Vector2(-1, -8)
-target_position = Vector2(-7, 0)
-collision_mask = 4
-
 [node name="hurtbox" type="Area2D" parent="." unique_id=1406179756]
 position = Vector2(0, -9)
 collision_layer = 32

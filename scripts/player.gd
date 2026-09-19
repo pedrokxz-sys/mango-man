@@ -15,6 +15,7 @@ var damage_areas
 var knockback_vector := Vector2.ZERO
 #estado de atacando
 var is_attacking : bool = false
+var is_attacking_with_net = false
 
 signal player_has_died
 
@@ -38,13 +39,16 @@ func _physics_process(delta: float) -> void:
 	# trava movimento durante ataque
 	if !is_attacking:
 	# movimento e direção
+
 		if direction != 0:
 			velocity.x = direction * SPEED
 			texture.scale.x = direction
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 	# diminui o movimento durante ataque
-	else:
+	elif is_attacking_with_net:
+		velocity.x *= 0
+	else :
 		velocity.x = direction * SPEED / 2
 
 #se o vetor do knockback nao for zero a velocidade e igual a do vetor do knockback
@@ -55,7 +59,12 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_collect") and !is_attacking:
 		is_attacking = true
 		animator.play("collect")
-
+	if Input.is_action_just_pressed("ui_long_collect") and !is_attacking:
+		is_attacking = true
+		is_attacking_with_net = true
+		animator.play("long_collect")
+	
+	
 	handle_animation(direction)
 	
 	if DiologManager.is_message_active:
@@ -93,8 +102,11 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 
 #quando a animaçao de ataque terminar o estado de ataque e falso
 func _on_animator_animation_finished(anim_name: StringName) -> void:
-	if anim_name == "collect":
+	if anim_name == "collect" or "long_collect":
 		is_attacking = false
+	if anim_name == "long_collect":
+		is_attacking_with_net = false
+		velocity.y = JUMP_FORCE
 
 func follow_camera(camera):
 	var camera_path = camera.get_path()
@@ -152,3 +164,11 @@ func handle_death_zone():
 	if Globals.health <= 0:
 		queue_free()
 		emit_signal("player_has_died")
+
+func _spawn_net():
+	var new_net = preload("res://prefabs/net.tscn").instantiate()
+	add_child(new_net)
+
+	print("PAI:", new_net.get_parent())
+	print("POS LOCAL:", new_net.position)
+	print("POS GLOBAL:", new_net.global_position)

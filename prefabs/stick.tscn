@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://ddc78fu50m56u"]
+
+[ext_resource type="Script" uid="uid://but40nxb64r0i" path="res://scripts/stick.gd" id="1_yskr1"]
+[ext_resource type="PackedScene" uid="uid://cegw4c7dlnm4f" path="res://actors/damage.tscn" id="2_w1klr"]
+[ext_resource type="Texture2D" uid="uid://dgcxlo140lee0" path="res://assets/animals/monkey/stick.png" id="3_bsyru"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_44xup"]
+size = Vector2(5, 4)
+
+[node name="stick" type="CharacterBody2D" unique_id=1034703676]
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1_yskr1")
+
+[node name="damage" parent="." unique_id=428252771 groups=["projectiles"] instance=ExtResource("2_w1klr")]
+damage = 2
+knockback = Vector2(250, 0)
+
+[node name="collision" type="CollisionShape2D" parent="damage" unique_id=550368398]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_44xup")
+
+[node name="collision" type="CollisionShape2D" parent="." unique_id=1218737066]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_44xup")
+
+[node name="texture" type="Sprite2D" parent="." unique_id=1888117299]
+texture = ExtResource("3_bsyru")

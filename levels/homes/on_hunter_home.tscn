@@ -23,9 +23,6 @@
 [ext_resource type="PackedScene" uid="uid://cdur8uxwmfegp" path="res://prefabs/player_health.tscn" id="19_q564u"]
 [ext_resource type="Script" uid="uid://c247esetbrstq" path="res://scripts/hud_manager.gd" id="20_dc2a2"]
 [ext_resource type="Texture2D" uid="uid://b8eaef3k8gdhm" path="res://assets/buttons/icons/01_mango_icon.png" id="21_x0g7j"]
-[ext_resource type="Texture2D" uid="uid://ckcmfjn716l57" path="res://assets/buttons/icons/02_mango_icon.png" id="22_jkjjd"]
-[ext_resource type="Texture2D" uid="uid://bfpbvs6q8ecjn" path="res://assets/buttons/icons/03_mango_icon.png" id="23_5s8nw"]
-[ext_resource type="Texture2D" uid="uid://c3r0dsrh840nw" path="res://assets/buttons/icons/04_mango_icon.png" id="24_23p0n"]
 [ext_resource type="FontFile" uid="uid://2jgdu5anlho6" path="res://assets/fonts/RevMiniPixel.ttf" id="25_cmuls"]
 [ext_resource type="Texture2D" uid="uid://cluudi68hvqmh" path="res://assets/buttons/icons/animals_icon.png" id="26_6xtj8"]
 [ext_resource type="PackedScene" uid="uid://frn5k7bnk6fo" path="res://prefabs/pause_menu.tscn" id="27_yuqcu"]
@@ -165,16 +162,6 @@ _data = {
 &"start": SubResource("Animation_5nrxn")
 }
 
-[sub_resource type="AnimatedTexture" id="AnimatedTexture_5esyb"]
-frames = 4
-frame_0/texture = ExtResource("21_x0g7j")
-frame_1/texture = ExtResource("22_jkjjd")
-frame_1/duration = 1.0
-frame_2/texture = ExtResource("23_5s8nw")
-frame_2/duration = 1.0
-frame_3/texture = ExtResource("24_23p0n")
-frame_3/duration = 1.0
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3gv2t"]
 shader = ExtResource("28_uyktq")
 shader_parameter/radius = 0.0
@@ -205,15 +192,15 @@ centered = false
 collision_layer = 2
 
 [node name="collsion" type="CollisionPolygon2D" parent="floot" unique_id=1394985001]
-position = Vector2(-72, -40)
+position = Vector2(-83, -42)
 build_mode = 1
-polygon = PackedVector2Array(69, 164, 284.92386, 164.74713, 285, 85, 358, 165, 358, 38, 69, 37)
+polygon = PackedVector2Array(122, 164, 242, 164, 242, 38, 122, 38)
 
 [node name="player" parent="." unique_id=292299474 instance=ExtResource("2_qak26")]
-position = Vector2(8, 120)
+position = Vector2(62, 120)
 
 [node name="hunter" type="CharacterBody2D" parent="." unique_id=2025509104]
-position = Vector2(237, 112)
+position = Vector2(199, 111)
 scale = Vector2(-1, 1)
 
 [node name="anim" type="AnimatedSprite2D" parent="hunter" unique_id=1521489965]
@@ -222,7 +209,7 @@ animation = &"idle"
 autoplay = "idle"
 
 [node name="door" parent="." unique_id=1683926514 instance=ExtResource("3_cnyqr")]
-position = Vector2(8, 104)
+position = Vector2(42, 104)
 nextlevel = "res://levels/town.tscn"
 
 [node name="animator" type="AnimationPlayer" parent="door" unique_id=867960973]
@@ -319,7 +306,7 @@ size_flags_vertical = 0
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
-texture = SubResource("AnimatedTexture_5esyb")
+texture = ExtResource("21_x0g7j")
 
 [node name="mango_counter" type="Label" parent="HUD/control/container/mango_container" unique_id=1950140622]
 layout_mode = 2

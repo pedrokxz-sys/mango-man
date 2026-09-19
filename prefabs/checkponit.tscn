@@ -88,6 +88,7 @@ animations = [{
 }]
 
 [node name="checkponit" type="Area2D" unique_id=451530289]
+collision_layer = 2
 script = ExtResource("1_k7rlr")
 
 [node name="collision" type="CollisionShape2D" parent="." unique_id=98359031]

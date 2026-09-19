@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://bhy7o7jri2xh3"]
+
+[ext_resource type="Script" uid="uid://bx8fojrk1la6a" path="res://scripts/net.gd" id="1_e3fl0"]
+[ext_resource type="Texture2D" uid="uid://b8ojsrvxx1mfv" path="res://assets/player/net_collect.png" id="2_bfgcc"]
+[ext_resource type="Texture2D" uid="uid://b8i70l3b6fpm0" path="res://assets/player/net_up.png" id="2_e3fl0"]
+[ext_resource type="Texture2D" uid="uid://c7e4btv1rslfi" path="res://assets/player/net_fall.png" id="2_shkah"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bfgcc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_bfgcc")
+}],
+"loop": true,
+"name": &"collect",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_shkah")
+}],
+"loop": false,
+"name": &"fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_e3fl0")
+}],
+"loop": false,
+"name": &"up",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bfgcc"]
+
+[node name="net" type="CharacterBody2D" unique_id=17119896]
+position = Vector2(0, -20)
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1_e3fl0")
+
+[node name="anim" type="AnimatedSprite2D" parent="." unique_id=1036497552]
+sprite_frames = SubResource("SpriteFrames_bfgcc")
+animation = &"collect"
+autoplay = "up"
+
+[node name="collision" type="CollisionShape2D" parent="." unique_id=440382646]
+shape = SubResource("CircleShape2D_bfgcc")
+
+[node name="hitbox" type="Area2D" parent="." unique_id=1914481838]
+collision_layer = 16
+collision_mask = 4
+
+[node name="collision" type="CollisionShape2D" parent="hitbox" unique_id=1442478272]
+shape = SubResource("CircleShape2D_bfgcc")
+
+[connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]

@@ -33,9 +33,6 @@
 [ext_resource type="PackedScene" uid="uid://cdur8uxwmfegp" path="res://prefabs/player_health.tscn" id="31_1yivb"]
 [ext_resource type="Script" uid="uid://c247esetbrstq" path="res://scripts/hud_manager.gd" id="32_wr4uu"]
 [ext_resource type="Texture2D" uid="uid://b8eaef3k8gdhm" path="res://assets/buttons/icons/01_mango_icon.png" id="33_dt2yv"]
-[ext_resource type="Texture2D" uid="uid://ckcmfjn716l57" path="res://assets/buttons/icons/02_mango_icon.png" id="34_oqtkv"]
-[ext_resource type="Texture2D" uid="uid://bfpbvs6q8ecjn" path="res://assets/buttons/icons/03_mango_icon.png" id="35_x3uxd"]
-[ext_resource type="Texture2D" uid="uid://c3r0dsrh840nw" path="res://assets/buttons/icons/04_mango_icon.png" id="36_38lhb"]
 [ext_resource type="FontFile" uid="uid://2jgdu5anlho6" path="res://assets/fonts/RevMiniPixel.ttf" id="37_fk50t"]
 [ext_resource type="Texture2D" uid="uid://cluudi68hvqmh" path="res://assets/buttons/icons/animals_icon.png" id="38_uaorx"]
 [ext_resource type="PackedScene" uid="uid://frn5k7bnk6fo" path="res://prefabs/pause_menu.tscn" id="39_5qsmf"]
@@ -294,16 +291,6 @@ physics_layer_0/collision_layer = 2
 physics_layer_0/collision_mask = 0
 sources/2 = SubResource("TileSetAtlasSource_or7x1")
 sources/0 = SubResource("TileSetAtlasSource_5ha83")
-
-[sub_resource type="AnimatedTexture" id="AnimatedTexture_jt6s7"]
-frames = 4
-frame_0/texture = ExtResource("33_dt2yv")
-frame_1/texture = ExtResource("34_oqtkv")
-frame_1/duration = 1.0
-frame_2/texture = ExtResource("35_x3uxd")
-frame_2/duration = 1.0
-frame_3/texture = ExtResource("36_38lhb")
-frame_3/duration = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lyepb"]
 shader = ExtResource("40_bkk5c")
@@ -626,7 +613,7 @@ size_flags_vertical = 0
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
-texture = SubResource("AnimatedTexture_jt6s7")
+texture = ExtResource("33_dt2yv")
 
 [node name="mango_counter" type="Label" parent="HUD/control/container/mango_container" unique_id=1092142403]
 layout_mode = 2
@@ -680,7 +667,8 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="goal" parent="." unique_id=1683926514 instance=ExtResource("41_6xmsd")]
-position = Vector2(1175, 147)
+position = Vector2(889, 176)
+nextlevel = "res://levels/world_02.tscn"
 
 [node name="animator" type="AnimationPlayer" parent="goal" unique_id=267586333]
 root_node = NodePath("../..")

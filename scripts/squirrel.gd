@@ -38,7 +38,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
-func _on_animator_animation_finished(anim_name: StringName) -> void:
+func _on_animator_animation_finished(_anim_name: StringName) -> void:
 	animator.play("flying")
 
 func spawn_nut():

@@ -194,7 +194,7 @@ collision_layer = 2
 [node name="collsion" type="CollisionPolygon2D" parent="floot" unique_id=1394985001]
 position = Vector2(-83, -42)
 build_mode = 1
-polygon = PackedVector2Array(122, 164, 242, 164, 242, 38, 122, 38)
+polygon = PackedVector2Array(122, 164, 245, 164, 245, 38, 122, 38)
 
 [node name="player" parent="." unique_id=292299474 instance=ExtResource("2_qak26")]
 position = Vector2(62, 120)

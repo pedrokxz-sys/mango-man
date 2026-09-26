@@ -18,8 +18,10 @@
 [ext_resource type="Texture2D" uid="uid://bvfmyyd8cnrxs" path="res://assets/buttons/ui_button_collect_pressed.png" id="14_u5crv"]
 [ext_resource type="Texture2D" uid="uid://4l42oi4cajvq" path="res://assets/buttons/ui_button_crouch_normal.png" id="15_v10at"]
 [ext_resource type="Texture2D" uid="uid://bwh7pdrw5hb8e" path="res://assets/buttons/ui_button_crouch_pressed.png" id="16_rw3wk"]
+[ext_resource type="Texture2D" uid="uid://uj3u04o52h0f" path="res://assets/buttons/ui_button_long_collect_normal.png" id="17_18t7e"]
 [ext_resource type="Texture2D" uid="uid://bwktjkv6hwqm5" path="res://assets/buttons/pause_menu_normal.png" id="17_xykhk"]
 [ext_resource type="Texture2D" uid="uid://bldy50jlybb1k" path="res://assets/buttons/pause_menu_pressed.png" id="18_hkc24"]
+[ext_resource type="Texture2D" uid="uid://gho0klavrf76" path="res://assets/buttons/ui_button_long_collect_pressed.png" id="18_qjn0e"]
 [ext_resource type="PackedScene" uid="uid://cdur8uxwmfegp" path="res://prefabs/player_health.tscn" id="19_q564u"]
 [ext_resource type="Script" uid="uid://c247esetbrstq" path="res://scripts/hud_manager.gd" id="20_dc2a2"]
 [ext_resource type="Texture2D" uid="uid://b8eaef3k8gdhm" path="res://assets/buttons/icons/01_mango_icon.png" id="21_x0g7j"]
@@ -45,7 +47,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_00v8a")
 }],
-"loop": true,
+"loop": 1,
 "name": &"idle",
 "speed": 5.0
 }]
@@ -254,6 +256,13 @@ position = Vector2(358, 87)
 texture_normal = ExtResource("13_4t3qk")
 texture_pressed = ExtResource("14_u5crv")
 action = "ui_collect"
+visibility_mode = 1
+
+[node name="ui_long_collect" type="TouchScreenButton" parent="controls" unique_id=47111222]
+position = Vector2(358, 44)
+texture_normal = ExtResource("17_18t7e")
+texture_pressed = ExtResource("18_qjn0e")
+action = "ui_long_collect"
 visibility_mode = 1
 
 [node name="ui_crouch" type="TouchScreenButton" parent="controls" unique_id=1982936950]

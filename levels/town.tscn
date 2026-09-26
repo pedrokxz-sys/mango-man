@@ -27,7 +27,9 @@
 [ext_resource type="Texture2D" uid="uid://cvrf4cf3bn0ok" path="res://assets/buttons/ui_button_collect_normal.png" id="25_xlqm7"]
 [ext_resource type="Texture2D" uid="uid://bvfmyyd8cnrxs" path="res://assets/buttons/ui_button_collect_pressed.png" id="26_0ygd8"]
 [ext_resource type="Texture2D" uid="uid://4l42oi4cajvq" path="res://assets/buttons/ui_button_crouch_normal.png" id="27_12lrg"]
+[ext_resource type="Texture2D" uid="uid://uj3u04o52h0f" path="res://assets/buttons/ui_button_long_collect_normal.png" id="27_jkdkt"]
 [ext_resource type="Texture2D" uid="uid://bwh7pdrw5hb8e" path="res://assets/buttons/ui_button_crouch_pressed.png" id="28_cd203"]
+[ext_resource type="Texture2D" uid="uid://gho0klavrf76" path="res://assets/buttons/ui_button_long_collect_pressed.png" id="28_jmlb6"]
 [ext_resource type="Texture2D" uid="uid://bwktjkv6hwqm5" path="res://assets/buttons/pause_menu_normal.png" id="29_igsr4"]
 [ext_resource type="Texture2D" uid="uid://bldy50jlybb1k" path="res://assets/buttons/pause_menu_pressed.png" id="30_45fua"]
 [ext_resource type="PackedScene" uid="uid://cdur8uxwmfegp" path="res://prefabs/player_health.tscn" id="31_1yivb"]
@@ -561,6 +563,13 @@ position = Vector2(358, 87)
 texture_normal = ExtResource("25_xlqm7")
 texture_pressed = ExtResource("26_0ygd8")
 action = "ui_collect"
+visibility_mode = 1
+
+[node name="ui_long_collect" type="TouchScreenButton" parent="controls" unique_id=655764865]
+position = Vector2(358, 44)
+texture_normal = ExtResource("27_jkdkt")
+texture_pressed = ExtResource("28_jmlb6")
+action = "ui_long_collect"
 visibility_mode = 1
 
 [node name="ui_crouch" type="TouchScreenButton" parent="controls" unique_id=871852472]

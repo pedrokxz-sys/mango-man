@@ -589,7 +589,6 @@ action = "ui_cancel"
 visibility_mode = 1
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1732923701]
-visible = false
 
 [node name="player_health" parent="HUD" unique_id=873261381 instance=ExtResource("42_fw7jx")]
 position = Vector2(32, 16)

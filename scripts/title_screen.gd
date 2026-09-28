@@ -19,6 +19,6 @@ func _on_anim_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "reveal":
 		play_btn.grab_focus()
 
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_accept"):
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_accept") or (event is InputEventScreenTouch and event.pressed):
 		anim.speed_scale = 100

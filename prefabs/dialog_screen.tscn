@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://dewcydnh8qwd4"]
+
+[ext_resource type="Script" uid="uid://14mjifyk7s17" path="res://scripts/dialog_screen.gd" id="1_mhl0g"]
+[ext_resource type="FontFile" uid="uid://2jgdu5anlho6" path="res://assets/fonts/RevMiniPixel.ttf" id="1_tbeqj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_84cks"]
+line_spacing = 0.0
+font = ExtResource("1_tbeqj")
+font_size = 12
+shadow_size = 4
+shadow_color = Color(0, 0, 0, 1)
+
+[node name="dialog_screen" type="Control" unique_id=494813646 node_paths=PackedStringArray("_name", "_dialog", "_faceset")]
+custom_minimum_size = Vector2(196, 48)
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -112.5
+offset_top = 16.0
+offset_right = 83.5
+offset_bottom = 64.0
+grow_horizontal = 2
+script = ExtResource("1_mhl0g")
+_name = NodePath("background/HContainer/VContainer/name")
+_dialog = NodePath("background/HContainer/VContainer/dialog")
+_faceset = NodePath("background/HContainer/mold/faceset")
+
+[node name="background" type="ColorRect" parent="." unique_id=1313698632]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5647059)
+
+[node name="HContainer" type="HBoxContainer" parent="background" unique_id=765961771]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -95.0
+offset_top = -22.0
+offset_right = 95.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VContainer" type="VBoxContainer" parent="background/HContainer" unique_id=1048485584]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 20.0
+
+[node name="name" type="Label" parent="background/HContainer/VContainer" unique_id=536964458]
+layout_mode = 2
+text = "Caçador"
+label_settings = SubResource("LabelSettings_84cks")
+vertical_alignment = 1
+
+[node name="dialog" type="RichTextLabel" parent="background/HContainer/VContainer" unique_id=941437845]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("1_tbeqj")
+theme_override_font_sizes/normal_font_size = 8
+text = "Oi Pedro! Como está a vida?"
+
+[node name="mold" type="ColorRect" parent="background/HContainer" unique_id=777825374]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+
+[node name="faceset" type="TextureRect" parent="background/HContainer/mold" unique_id=1613013203]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.0
+offset_top = -21.0
+offset_right = 21.0
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1

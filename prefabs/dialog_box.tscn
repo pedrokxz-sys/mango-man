@@ -34,4 +34,7 @@ theme_override_font_sizes/font_size = 8
 
 [node name="letter_timer_display" type="Timer" parent="." unique_id=804646360]
 
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1577217549]
+layout_mode = 2
+
 [connection signal="timeout" from="letter_timer_display" to="." method="_on_letter_timer_display_timeout"]

@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b2p6h1yc6vse" path="res://assets/fonts/warning_sign.png" id="2_cmt0n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0uwfl"]
-size = Vector2(32, 20)
+size = Vector2(120.5, 20)
 
 [node name="warning_sign" type="Node2D" unique_id=1665455289]
 script = ExtResource("1_tx8ko")

@@ -52,6 +52,11 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_obqlh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_obqlh"]
+size = Vector2(104, 20)
+
 [sub_resource type="Animation" id="Animation_80ww7"]
 length = 0.001
 tracks/0/type = "value"
@@ -209,6 +214,18 @@ scale = Vector2(-1, 1)
 sprite_frames = SubResource("SpriteFrames_ytjb2")
 animation = &"idle"
 autoplay = "idle"
+
+[node name="collsion" type="CollisionShape2D" parent="hunter" unique_id=227751375]
+shape = SubResource("CircleShape2D_obqlh")
+
+[node name="speech_area" type="Area2D" parent="hunter" unique_id=1422060725]
+position = Vector2(1, 1)
+rotation = 3.1415927
+scale = Vector2(1, -1)
+collision_layer = 2
+
+[node name="collision" type="CollisionShape2D" parent="hunter/speech_area" unique_id=1539891019]
+shape = SubResource("RectangleShape2D_obqlh")
 
 [node name="door" parent="." unique_id=1683926514 instance=ExtResource("3_cnyqr")]
 position = Vector2(42, 104)
@@ -370,4 +387,6 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
+[connection signal="body_entered" from="hunter/speech_area" to="." method="_on_speech_area_body_entered"]
+[connection signal="body_exited" from="hunter/speech_area" to="." method="_on_speech_area_body_exited"]
 [connection signal="animation_finished" from="door/animator" to="door" method="_on_animator_animation_finished"]

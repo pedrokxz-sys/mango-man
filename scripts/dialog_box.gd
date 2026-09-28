@@ -21,7 +21,7 @@ func display_text(text_to_display: String):
 	
 	await resized
 	
-	custom_minimum_size.x = min(size.x, MAX_WIDTH)
+	custom_minimum_size.x = 225
 	
 	if size.x > MAX_WIDTH:
 		text_label.autowrap_mode = TextServer.AUTOWRAP_WORD

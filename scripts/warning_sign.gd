@@ -4,7 +4,7 @@ extends Node2D
 @onready var area_sign: Area2D = $area_sign
 
 @export var lines : Array[String] = [
-	"Procure os animais espalhados pela floresta!"
+	"text"
 ]
 
 func _unhandled_input(event: InputEvent) -> void:

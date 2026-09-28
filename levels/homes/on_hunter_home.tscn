@@ -248,14 +248,14 @@ texture = ExtResource("6_18t7e")
 centered = false
 
 [node name="ui_left" type="TouchScreenButton" parent="controls" unique_id=173979051]
-position = Vector2(32, 141)
+position = Vector2(13, 159)
 texture_normal = ExtResource("7_qjn0e")
 texture_pressed = ExtResource("8_00v8a")
 action = "move_left"
 visibility_mode = 1
 
 [node name="ui_right" type="TouchScreenButton" parent="controls" unique_id=1483877830]
-position = Vector2(72, 141)
+position = Vector2(53, 159)
 texture_normal = ExtResource("9_ytjb2")
 texture_pressed = ExtResource("10_nobpa")
 action = "move_right"
@@ -269,21 +269,21 @@ action = "move_up"
 visibility_mode = 1
 
 [node name="ui_collect" type="TouchScreenButton" parent="controls" unique_id=1423833024]
-position = Vector2(358, 87)
+position = Vector2(372, 88)
 texture_normal = ExtResource("13_4t3qk")
 texture_pressed = ExtResource("14_u5crv")
 action = "ui_collect"
 visibility_mode = 1
 
 [node name="ui_long_collect" type="TouchScreenButton" parent="controls" unique_id=47111222]
-position = Vector2(358, 44)
+position = Vector2(372, 45)
 texture_normal = ExtResource("17_18t7e")
 texture_pressed = ExtResource("18_qjn0e")
 action = "ui_long_collect"
 visibility_mode = 1
 
 [node name="ui_crouch" type="TouchScreenButton" parent="controls" unique_id=1982936950]
-position = Vector2(290, 151)
+position = Vector2(290, 162)
 texture_normal = ExtResource("15_v10at")
 texture_pressed = ExtResource("16_rw3wk")
 action = "ui_crouch"

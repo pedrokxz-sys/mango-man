@@ -59,7 +59,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_collect") and !is_attacking:
 		is_attacking = true
 		animator.play("collect")
-	if Input.is_action_just_pressed("ui_long_collect") and !is_attacking:
+	if Input.is_action_just_pressed("ui_long_collect") and !is_attacking and Globals.can_use_long_collect:
 		is_attacking = true
 		is_attacking_with_net = true
 		animator.play("long_collect")
@@ -67,15 +67,10 @@ func _physics_process(delta: float) -> void:
 	
 	handle_animation(direction)
 	
-	if DiologManager.is_message_active:
-		velocity.x = 0
-
-		var sign_pos = DiologManager.dialog_source_position
-
-		if sign_pos.x < global_position.x:
-			look_left()
-		else:
-			look_right()
+	if Globals.dialog_is_on:
+		velocity *= 0
+		texture.scale.x = 1
+		animator.play("idle")
 
 	move_and_slide()
 	return
@@ -168,7 +163,3 @@ func handle_death_zone():
 func _spawn_net():
 	var new_net = preload("res://prefabs/net.tscn").instantiate()
 	add_child(new_net)
-
-	print("PAI:", new_net.get_parent())
-	print("POS LOCAL:", new_net.position)
-	print("POS GLOBAL:", new_net.global_position)

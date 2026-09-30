@@ -227,6 +227,12 @@ collision_layer = 2
 [node name="collision" type="CollisionShape2D" parent="hunter/speech_area" unique_id=1539891019]
 shape = SubResource("RectangleShape2D_obqlh")
 
+[node name="texture" type="Sprite2D" parent="hunter/speech_area" unique_id=1778289258]
+position = Vector2(0, -32)
+rotation = -3.1415925
+scale = Vector2(-1, -1)
+texture = ExtResource("4_ag407")
+
 [node name="door" parent="." unique_id=1683926514 instance=ExtResource("3_cnyqr")]
 position = Vector2(42, 104)
 nextlevel = "res://levels/town.tscn"

@@ -16,6 +16,10 @@ var current_checkpoint = null
 
 var last_home : String = ""
 
+var can_use_long_collect = false
+
+var dialog_is_on = false
+
 func respawn_player():
 	if current_checkpoint != null:
 		player.position = current_checkpoint.global_position

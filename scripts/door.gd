@@ -6,7 +6,6 @@ extends Area2D
 @onready var texture: Sprite2D = $texture
 
 var door_can_open := false
-signal player_exit_hunter
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == "player":
@@ -22,10 +21,8 @@ func _process(_delta: float) -> void:
 	
 	if door_can_open:
 		texture.visible = true
-		
 		if Input.is_action_just_pressed("ui_crouch"):
 			animator.play("goal")
-			emit_signal("player_exit_hunter")
 	else:
 		texture.visible = false
 

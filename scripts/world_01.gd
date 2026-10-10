@@ -22,11 +22,11 @@ func reload_game():
 	if is_instance_valid(Globals.player):
 		Globals.player.queue_free()
 	
-	var player = player_scene.instantiate()
-	add_child(player)
-	move_child(player, 5)
+	var _player = player_scene.instantiate()
+	add_child(_player)
+	move_child(_player, 5)
 	
-	Globals.player = player
+	Globals.player = _player
 	Globals.player.follow_camera(camera)
 	Globals.player.player_has_died.connect(reload_game)
 	

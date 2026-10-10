@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 DiologManager="*uid://c0mvdyotkl743"
 Globals="*uid://b7shsw7gm78a4"
+Cutscenes="*uid://d0iguyg5sbn36"
 
 [display]
 

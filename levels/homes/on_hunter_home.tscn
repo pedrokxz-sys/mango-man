@@ -117,7 +117,7 @@ tracks/0/path = NodePath("HUD/goal:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0.009999998, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(-427, 0), Vector2(0, 0)]
@@ -174,6 +174,13 @@ shader = ExtResource("28_uyktq")
 shader_parameter/radius = 0.0
 shader_parameter/center = Vector2(0.5, 0.5)
 
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_18t7e"]
+_data = {
+&"RESET": SubResource("Animation_80ww7"),
+&"goal": SubResource("Animation_lyepb"),
+&"start": SubResource("Animation_5nrxn")
+}
+
 [node name="on_hunter_home" type="Node2D" unique_id=1945955650]
 script = ExtResource("1_18t7e")
 
@@ -203,12 +210,10 @@ position = Vector2(-83, -42)
 build_mode = 1
 polygon = PackedVector2Array(122, 164, 245, 164, 245, 38, 122, 38)
 
-[node name="player" parent="." unique_id=292299474 instance=ExtResource("2_qak26")]
-position = Vector2(62, 120)
-
 [node name="hunter" type="CharacterBody2D" parent="." unique_id=2025509104]
-position = Vector2(199, 111)
-scale = Vector2(-1, 1)
+position = Vector2(193, 109)
+rotation = 3.1415927
+scale = Vector2(1, -1)
 
 [node name="anim" type="AnimatedSprite2D" parent="hunter" unique_id=1521489965]
 sprite_frames = SubResource("SpriteFrames_ytjb2")
@@ -232,6 +237,9 @@ position = Vector2(0, -32)
 rotation = -3.1415925
 scale = Vector2(-1, -1)
 texture = ExtResource("4_ag407")
+
+[node name="player" parent="." unique_id=292299474 instance=ExtResource("2_qak26")]
+position = Vector2(62, 120)
 
 [node name="door" parent="." unique_id=1683926514 instance=ExtResource("3_cnyqr")]
 position = Vector2(42, 104)
@@ -393,6 +401,10 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
+[node name="scene_anim" type="AnimationPlayer" parent="." unique_id=652650782]
+libraries/ = SubResource("AnimationLibrary_18t7e")
+
 [connection signal="body_entered" from="hunter/speech_area" to="." method="_on_speech_area_body_entered"]
 [connection signal="body_exited" from="hunter/speech_area" to="." method="_on_speech_area_body_exited"]
 [connection signal="animation_finished" from="door/animator" to="door" method="_on_animator_animation_finished"]
+[connection signal="animation_finished" from="scene_anim" to="." method="_on_scene_anim_animation_finished"]

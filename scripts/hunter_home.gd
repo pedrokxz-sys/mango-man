@@ -48,33 +48,56 @@ var first_dialog: Dictionary = {
 		"_faceset": "res://assets/people/hunter/hunter_faceset.png"
 	}
 }
-
+var second_dialog: Dictionary = {
+	0: {
+		"_name": "Caçador",
+		"_dialog": "Vamos para o lado de fora.",
+		"_faceset": "res://assets/people/hunter/hunter_faceset.png"
+	}, 
+	1: {
+		"_name": "Caçador",
+		"_dialog": "Devemos encontrar onde está o prefeito.",
+		"_faceset": "res://assets/people/hunter/hunter_faceset.png"
+	}, 
+	2: {
+		"_name": "Fazendeiro",
+		"_dialog": "Certo.",
+		"_faceset": "res://assets/player/player_faceset.png"
+	}
+}
 var new_dialog = null
 var player_is_close = false
-var last_dialog:String = ""
+
+var _01_dialog_start 
 
 @onready var player := $player as CharacterBody2D
 @onready var player_scene = preload("res://actors/player.tscn")
 @onready var player_start_position: Marker2D = $player_start_position
+@onready var camera := $Camera2D as Camera2D
 @onready var animator: AnimationPlayer = $door/animator
 @onready var hud: CanvasLayer = $HUD
 @onready var texture: Sprite2D = $hunter/speech_area/texture
+@onready var scene_anim: AnimationPlayer = $scene_anim
 
 func _ready() -> void:
+	Globals.last_home = "hunter_home"
 	animator.play("start")
 	Globals.player_start_position = player_start_position
 	Globals.player = player
 	Globals.player.player_has_died.connect(reload_game)
-	Globals.can_use_long_collect = true
+	_play_dialog()
 
 	texture.visible = false
 
 func _physics_process(_delta: float) -> void:
-	if Input.is_action_just_pressed("ui_crouch"):
-		if new_dialog == null and player_is_close:
-			new_dialog =  DIALOG_SCREEN.instantiate()
-			new_dialog.data = first_dialog
-			hud.add_child(new_dialog)
+	if !_01_dialog_start:
+		if Input.is_action_just_pressed("ui_crouch"):
+			if new_dialog == null and player_is_close:
+				_play_dialog()
+	else:
+		if new_dialog == null:
+			scene_anim.play("goal")
+
 	if new_dialog != null:
 		texture.visible = false
 		Globals.dialog_is_on = true
@@ -87,15 +110,16 @@ func reload_game():
 	if is_instance_valid(Globals.player):
 		Globals.player.queue_free()
 	
-	var player = player_scene.instantiate()
-	add_child(player)
-	move_child(player, 5)
+	var _player = player_scene.instantiate()
+	add_child(_player)
+	move_child(_player, 5)
 	
-	Globals.player = player
+	Globals.player = _player
+	Globals.player.follow_camera(camera)
 	Globals.player.player_has_died.connect(reload_game)
+	
 	Globals.health = 6
 	Globals.respawn_player()
-
 
 func _on_speech_area_body_entered(body: Node2D) -> void:
 	if body.name == "player":
@@ -107,5 +131,17 @@ func _on_speech_area_body_exited(body: Node2D) -> void:
 		texture.visible = false
 		player_is_close = false
 
-func _what_is_dialog():
-	pass
+func _on_scene_anim_animation_finished(_anim_name: StringName) -> void:
+	get_tree().change_scene_to_file("res://levels/homes/animal_room.tscn")
+
+func _play_dialog():
+	if Cutscenes._01_animal_room_finished:
+		new_dialog =  DIALOG_SCREEN.instantiate()
+		new_dialog.data = second_dialog
+		hud.add_child(new_dialog)
+		$hunter.global_position = Vector2(151, 109)
+	elif !_01_dialog_start and player_is_close:
+		new_dialog =  DIALOG_SCREEN.instantiate()
+		new_dialog.data = first_dialog
+		hud.add_child(new_dialog)
+		_01_dialog_start = true

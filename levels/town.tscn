@@ -682,20 +682,20 @@ nextlevel = "res://levels/world_02.tscn"
 root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_lyepb")
 
-[node name="door" parent="." unique_id=1258275648 instance=ExtResource("42_jkdkt")]
+[node name="hunter_door" parent="." unique_id=1258275648 instance=ExtResource("42_jkdkt")]
 position = Vector2(358, 129)
 nextlevel = "res://levels/homes/on_hunter_home.tscn"
 
-[node name="animator" type="AnimationPlayer" parent="door" unique_id=410308173]
+[node name="animator" type="AnimationPlayer" parent="hunter_door" unique_id=410308173]
 root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_lyepb")
 
-[node name="texture" type="Sprite2D" parent="door" unique_id=1003818262]
+[node name="texture" type="Sprite2D" parent="hunter_door" unique_id=1003818262]
 position = Vector2(0, -40)
 texture = ExtResource("43_jmlb6")
 
-[node name="hunter_door" type="Marker2D" parent="door" unique_id=1358212093]
+[node name="hunter_door_position" type="Marker2D" parent="hunter_door" unique_id=1358212093]
 position = Vector2(-2, -11)
 
 [connection signal="animation_finished" from="goal/animator" to="goal" method="_on_animator_animation_finished"]
-[connection signal="animation_finished" from="door/animator" to="door" method="_on_animator_animation_finished"]
+[connection signal="animation_finished" from="hunter_door/animator" to="hunter_door" method="_on_animator_animation_finished"]

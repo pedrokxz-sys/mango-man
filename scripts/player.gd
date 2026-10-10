@@ -68,7 +68,8 @@ func _physics_process(delta: float) -> void:
 	handle_animation(direction)
 	
 	if Globals.dialog_is_on:
-		velocity *= 0
+		velocity.x *= 0
+		velocity.y += 2000
 		texture.scale.x = 1
 		animator.play("idle")
 

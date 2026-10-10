@@ -1,0 +1,610 @@
+[gd_scene format=3 uid="uid://bej2wl2eqnt2c"]
+
+[ext_resource type="Script" uid="uid://jxgnggn51n7a" path="res://scripts/animal_room.gd" id="1_lktff"]
+[ext_resource type="Texture2D" uid="uid://clxp76v34qobs" path="res://assets/tonw/animal_room.png" id="1_uacx5"]
+[ext_resource type="PackedScene" uid="uid://d0ew0qmq0c7fh" path="res://actors/player.tscn" id="2_lktff"]
+[ext_resource type="Texture2D" uid="uid://psfl6upm1fhb" path="res://assets/tonw/blinking_eyes_1.png" id="3_apd52"]
+[ext_resource type="PackedScene" uid="uid://cq8yfh7tbb2pu" path="res://prefabs/door.tscn" id="3_rsa3v"]
+[ext_resource type="Texture2D" uid="uid://b2p6h1yc6vse" path="res://assets/fonts/warning_sign.png" id="4_apd52"]
+[ext_resource type="Script" uid="uid://laudjr4o548y" path="res://scripts/controls.gd" id="5_do7oi"]
+[ext_resource type="Texture2D" uid="uid://b4q8ob2fxtkfx" path="res://assets/buttons/joystick.png" id="6_5sdx8"]
+[ext_resource type="Texture2D" uid="uid://cyyojcwy2qqw4" path="res://assets/buttons/ui_button_left_normal.png" id="7_gii8j"]
+[ext_resource type="Texture2D" uid="uid://byaug8ywyngv7" path="res://assets/buttons/ui_button_left_pressed.png" id="8_no1ni"]
+[ext_resource type="Texture2D" uid="uid://bwaxhjwopi82l" path="res://assets/buttons/ui_button_right_normal.png" id="9_w77ja"]
+[ext_resource type="Texture2D" uid="uid://dre8fvu34ohsw" path="res://assets/buttons/ui_button_right_pressed.png" id="10_1fsi0"]
+[ext_resource type="Texture2D" uid="uid://bqgq2j0ty8y5j" path="res://assets/buttons/ui_button_up_normal.png" id="11_bbugr"]
+[ext_resource type="Texture2D" uid="uid://b5jd0rkilr34m" path="res://assets/buttons/ui_button_up_pressed.png" id="12_bjp1t"]
+[ext_resource type="Texture2D" uid="uid://cvrf4cf3bn0ok" path="res://assets/buttons/ui_button_collect_normal.png" id="13_b4iqv"]
+[ext_resource type="Texture2D" uid="uid://bvfmyyd8cnrxs" path="res://assets/buttons/ui_button_collect_pressed.png" id="14_tjrch"]
+[ext_resource type="Texture2D" uid="uid://uj3u04o52h0f" path="res://assets/buttons/ui_button_long_collect_normal.png" id="15_0saqo"]
+[ext_resource type="Texture2D" uid="uid://gho0klavrf76" path="res://assets/buttons/ui_button_long_collect_pressed.png" id="16_cilkr"]
+[ext_resource type="Texture2D" uid="uid://4l42oi4cajvq" path="res://assets/buttons/ui_button_crouch_normal.png" id="17_b5iu2"]
+[ext_resource type="Texture2D" uid="uid://bwh7pdrw5hb8e" path="res://assets/buttons/ui_button_crouch_pressed.png" id="18_i6kuq"]
+[ext_resource type="Texture2D" uid="uid://bwktjkv6hwqm5" path="res://assets/buttons/pause_menu_normal.png" id="19_cbqul"]
+[ext_resource type="Texture2D" uid="uid://bldy50jlybb1k" path="res://assets/buttons/pause_menu_pressed.png" id="20_4yrf0"]
+[ext_resource type="PackedScene" uid="uid://cdur8uxwmfegp" path="res://prefabs/player_health.tscn" id="21_c5apd"]
+[ext_resource type="Script" uid="uid://c247esetbrstq" path="res://scripts/hud_manager.gd" id="22_5x85n"]
+[ext_resource type="Texture2D" uid="uid://b8eaef3k8gdhm" path="res://assets/buttons/icons/01_mango_icon.png" id="23_bra4k"]
+[ext_resource type="FontFile" uid="uid://2jgdu5anlho6" path="res://assets/fonts/RevMiniPixel.ttf" id="24_dxjjg"]
+[ext_resource type="Texture2D" uid="uid://cluudi68hvqmh" path="res://assets/buttons/icons/animals_icon.png" id="25_afpor"]
+[ext_resource type="PackedScene" uid="uid://frn5k7bnk6fo" path="res://prefabs/pause_menu.tscn" id="26_cy5ys"]
+[ext_resource type="Shader" uid="uid://dpqmgeqiph1w7" path="res://shaders/iris_open.gdshader" id="27_u6wxk"]
+[ext_resource type="Texture2D" uid="uid://bxgm7lkudytxb" path="res://assets/people/hunter/hunter.png" id="29_rsa3v"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_do7oi"]
+atlas = ExtResource("3_apd52")
+region = Rect2(0, 0, 427, 213)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5sdx8"]
+atlas = ExtResource("3_apd52")
+region = Rect2(0, 213, 427, 213)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_apd52"]
+atlas = ExtResource("3_apd52")
+region = Rect2(0, 213, 427, 213)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_obqlh"]
+animations = [{
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_do7oi")
+}, {
+"duration": 0.1,
+"texture": SubResource("AtlasTexture_5sdx8")
+}],
+"loop": 1,
+"name": &"blinking",
+"speed": 0.5
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_apd52")
+}],
+"loop": 0,
+"name": &"no_eyes",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qjn0e"]
+atlas = ExtResource("29_rsa3v")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_00v8a"]
+atlas = ExtResource("29_rsa3v")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_apd52"]
+animations = [{
+"frames": [{
+"duration": 10.0,
+"texture": SubResource("AtlasTexture_qjn0e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_00v8a")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_do7oi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5sdx8"]
+size = Vector2(104, 20)
+
+[sub_resource type="Animation" id="Animation_80ww7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HUD/iris_open:material:shader_parameter/radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HUD/iris_open:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HUD/goal:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-427, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HUD/goal:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_lyepb"]
+resource_name = "goal"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HUD/goal:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-427, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HUD/goal:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_5nrxn"]
+resource_name = "start"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HUD/iris_open:material:shader_parameter/radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HUD/iris_open:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0hvll"]
+_data = {
+&"RESET": SubResource("Animation_80ww7"),
+&"goal": SubResource("Animation_lyepb"),
+&"start": SubResource("Animation_5nrxn")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ldfsf"]
+shader = ExtResource("27_u6wxk")
+shader_parameter/radius = 0.0
+shader_parameter/center = Vector2(0.5, 0.5)
+
+[sub_resource type="Animation" id="Animation_rsa3v"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HUD/iris_open:material:shader_parameter/radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HUD/iris_open:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HUD/goal:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-427, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HUD/goal:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("HUD/goal:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_apd52"]
+resource_name = "goal"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HUD/goal:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.009999998, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-427, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HUD/goal:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_do7oi"]
+resource_name = "pulse"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HUD/goal:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HUD/goal:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.7, 0.999, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HUD/goal:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.99, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(-427, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_5sdx8"]
+resource_name = "start"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HUD/iris_open:material:shader_parameter/radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HUD/iris_open:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gii8j"]
+_data = {
+&"RESET": SubResource("Animation_rsa3v"),
+&"goal": SubResource("Animation_apd52"),
+&"pulse": SubResource("Animation_do7oi"),
+&"start": SubResource("Animation_5sdx8")
+}
+
+[node name="animal_room" type="Node2D" unique_id=425184887]
+script = ExtResource("1_lktff")
+
+[node name="player_start_position" type="Marker2D" parent="." unique_id=128418879]
+position = Vector2(24, 40)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1241748315]
+zoom = Vector2(1.5, 1.5)
+limit_left = 0
+limit_top = 0
+limit_right = 427
+limit_bottom = 213
+limit_smoothed = true
+position_smoothing_speed = 10.0
+editor_draw_drag_margin = true
+
+[node name="texture" type="Sprite2D" parent="." unique_id=1636015563]
+position = Vector2(-71, -39)
+texture = ExtResource("1_uacx5")
+centered = false
+
+[node name="eyes" type="AnimatedSprite2D" parent="." unique_id=152579002]
+position = Vector2(142, 67)
+sprite_frames = SubResource("SpriteFrames_obqlh")
+animation = &"blinking"
+autoplay = "no_eyes"
+
+[node name="floot" type="StaticBody2D" parent="." unique_id=1730974563]
+collision_layer = 2
+
+[node name="collsion" type="CollisionPolygon2D" parent="floot" unique_id=1627907993]
+position = Vector2(-83, -42)
+build_mode = 1
+polygon = PackedVector2Array(122, 164, 283, 164, 283, 38, 122, 38)
+
+[node name="hunter" type="CharacterBody2D" parent="." unique_id=1893482391]
+position = Vector2(160, 109)
+rotation = -3.1415925
+scale = Vector2(1, -1)
+
+[node name="anim" type="AnimatedSprite2D" parent="hunter" unique_id=1201212287]
+sprite_frames = SubResource("SpriteFrames_apd52")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="collsion" type="CollisionShape2D" parent="hunter" unique_id=33007428]
+shape = SubResource("CircleShape2D_do7oi")
+
+[node name="speech_area" type="Area2D" parent="hunter" unique_id=9722360]
+position = Vector2(1, 1)
+rotation = 3.1415927
+scale = Vector2(1, -1)
+collision_layer = 2
+
+[node name="collision" type="CollisionShape2D" parent="hunter/speech_area" unique_id=936460343]
+shape = SubResource("RectangleShape2D_5sdx8")
+
+[node name="texture" type="Sprite2D" parent="hunter/speech_area" unique_id=120981323]
+position = Vector2(0, -32)
+rotation = -3.1415925
+scale = Vector2(-1, -1)
+texture = ExtResource("4_apd52")
+
+[node name="player" parent="." unique_id=292299474 instance=ExtResource("2_lktff")]
+position = Vector2(130, 120)
+
+[node name="door" parent="." unique_id=1683926514 instance=ExtResource("3_rsa3v")]
+position = Vector2(42, 104)
+nextlevel = "res://levels/homes/on_hunter_home.tscn"
+
+[node name="animator" type="AnimationPlayer" parent="door" unique_id=485422010]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_0hvll")
+
+[node name="texture" type="Sprite2D" parent="door" unique_id=1081575658]
+position = Vector2(0, -40)
+scale = Vector2(-1, 1)
+texture = ExtResource("4_apd52")
+
+[node name="controls" type="CanvasLayer" parent="." unique_id=1257925068]
+script = ExtResource("5_do7oi")
+
+[node name="joystick" type="Sprite2D" parent="controls" unique_id=1529504884]
+texture = ExtResource("6_5sdx8")
+centered = false
+
+[node name="ui_left" type="TouchScreenButton" parent="controls" unique_id=1078607761]
+position = Vector2(13, 159)
+texture_normal = ExtResource("7_gii8j")
+texture_pressed = ExtResource("8_no1ni")
+action = "move_left"
+visibility_mode = 1
+
+[node name="ui_right" type="TouchScreenButton" parent="controls" unique_id=1173913345]
+position = Vector2(53, 159)
+texture_normal = ExtResource("9_w77ja")
+texture_pressed = ExtResource("10_1fsi0")
+action = "move_right"
+visibility_mode = 1
+
+[node name="ui_up" type="TouchScreenButton" parent="controls" unique_id=167666188]
+position = Vector2(339, 132)
+texture_normal = ExtResource("11_bbugr")
+texture_pressed = ExtResource("12_bjp1t")
+action = "move_up"
+visibility_mode = 1
+
+[node name="ui_collect" type="TouchScreenButton" parent="controls" unique_id=1521232045]
+position = Vector2(372, 88)
+texture_normal = ExtResource("13_b4iqv")
+texture_pressed = ExtResource("14_tjrch")
+action = "ui_collect"
+visibility_mode = 1
+
+[node name="ui_long_collect" type="TouchScreenButton" parent="controls" unique_id=219265855]
+position = Vector2(372, 45)
+texture_normal = ExtResource("15_0saqo")
+texture_pressed = ExtResource("16_cilkr")
+action = "ui_long_collect"
+visibility_mode = 1
+
+[node name="ui_crouch" type="TouchScreenButton" parent="controls" unique_id=1861048042]
+position = Vector2(290, 162)
+texture_normal = ExtResource("17_b5iu2")
+texture_pressed = ExtResource("18_i6kuq")
+action = "ui_crouch"
+visibility_mode = 1
+
+[node name="ui_cancel" type="TouchScreenButton" parent="controls" unique_id=1444539112]
+position = Vector2(207, 18)
+texture_normal = ExtResource("19_cbqul")
+texture_pressed = ExtResource("20_4yrf0")
+action = "ui_cancel"
+visibility_mode = 1
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=77406007]
+
+[node name="player_health" parent="HUD" unique_id=873261381 instance=ExtResource("21_c5apd")]
+visible = false
+position = Vector2(32, 16)
+
+[node name="control" type="Control" parent="HUD" unique_id=182476126]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("22_5x85n")
+
+[node name="container" type="MarginContainer" parent="HUD/control" unique_id=680509477]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="mango_container" type="HBoxContainer" parent="HUD/control/container" unique_id=1500678493]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="mango_icon" type="TextureRect" parent="HUD/control/container/mango_container" unique_id=2084477934]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("23_bra4k")
+
+[node name="mango_counter" type="Label" parent="HUD/control/container/mango_container" unique_id=326359377]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("24_dxjjg")
+theme_override_font_sizes/font_size = 8
+text = "000"
+
+[node name="score_container" type="HBoxContainer" parent="HUD/control/container" unique_id=1418287645]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="mango_icon" type="TextureRect" parent="HUD/control/container/score_container" unique_id=623706841]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = ExtResource("25_afpor")
+
+[node name="score_counter" type="Label" parent="HUD/control/container/score_container" unique_id=947558777]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("24_dxjjg")
+theme_override_font_sizes/font_size = 8
+text = "000"
+
+[node name="pause_menu" parent="HUD" unique_id=1193229482 instance=ExtResource("26_cy5ys")]
+visible = false
+
+[node name="iris_open" type="ColorRect" parent="HUD" unique_id=1980557959]
+visible = false
+material = SubResource("ShaderMaterial_ldfsf")
+custom_minimum_size = Vector2(427, 213)
+offset_right = 427.0
+offset_bottom = 213.0
+color = Color(0, 0, 0, 1)
+
+[node name="goal" type="ColorRect" parent="HUD" unique_id=1074529505]
+visible = false
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -427.0
+offset_right = -427.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="scene_anim" type="AnimationPlayer" parent="." unique_id=23012194]
+libraries/ = SubResource("AnimationLibrary_gii8j")
+
+[connection signal="body_entered" from="hunter/speech_area" to="." method="_on_speech_area_body_entered"]
+[connection signal="body_exited" from="hunter/speech_area" to="." method="_on_speech_area_body_exited"]
+[connection signal="animation_finished" from="door/animator" to="door" method="_on_animator_animation_finished"]
+[connection signal="animation_finished" from="scene_anim" to="." method="_on_scene_anim_animation_finished"]

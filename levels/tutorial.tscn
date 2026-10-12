@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://dljvd6cfq6d5s"]
 
+[ext_resource type="Script" uid="uid://2mnjo48n03di" path="res://scripts/tutorial.gd" id="1_f4uu8"]
 [ext_resource type="Texture2D" uid="uid://bu7grx2y23smy" path="res://assets/forest/bk/01-sky.png" id="1_mtsth"]
-[ext_resource type="Script" uid="uid://cn7k2bp0qh0g3" path="res://scripts/world_01.gd" id="1_xrrx4"]
 [ext_resource type="Texture2D" uid="uid://buj7y70qp2m8l" path="res://assets/forest/bk/02-back_trees1.png" id="2_s81kh"]
 [ext_resource type="Texture2D" uid="uid://b7ie78p0mccmw" path="res://assets/forest/bk/04-back_trees2.png" id="3_ak48m"]
 [ext_resource type="Texture2D" uid="uid://beov0inr4xjg3" path="res://assets/forest/bk/03-back_trees3.png" id="4_xrrx4"]
@@ -375,7 +375,7 @@ size = Vector2(2, 26)
 size = Vector2(1152, 20)
 
 [node name="tutorial" type="Node2D" unique_id=1836786161]
-script = ExtResource("1_xrrx4")
+script = ExtResource("1_f4uu8")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=787501273]
 limit_left = -16

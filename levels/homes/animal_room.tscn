@@ -29,6 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://cluudi68hvqmh" path="res://assets/buttons/icons/animals_icon.png" id="25_afpor"]
 [ext_resource type="PackedScene" uid="uid://frn5k7bnk6fo" path="res://prefabs/pause_menu.tscn" id="26_cy5ys"]
 [ext_resource type="Shader" uid="uid://dpqmgeqiph1w7" path="res://shaders/iris_open.gdshader" id="27_u6wxk"]
+[ext_resource type="Texture2D" uid="uid://80rqyhon6d4s" path="res://assets/buttons/icons/timer_icon.png" id="29_do7oi"]
 [ext_resource type="Texture2D" uid="uid://bxgm7lkudytxb" path="res://assets/people/hunter/hunter.png" id="29_rsa3v"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_do7oi"]
@@ -650,6 +651,48 @@ theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("24_dxjjg")
 theme_override_font_sizes/font_size = 8
 text = "000"
+
+[node name="timer_container" type="HBoxContainer" parent="HUD/control/container" unique_id=2101459967]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="timer_icon" type="TextureRect" parent="HUD/control/container/timer_container" unique_id=1362177454]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("29_do7oi")
+
+[node name="min_counter" type="Label" parent="HUD/control/container/timer_container" unique_id=1908038131]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("24_dxjjg")
+theme_override_font_sizes/font_size = 8
+text = "00"
+
+[node name="x" type="Label" parent="HUD/control/container/timer_container" unique_id=1944706902]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("24_dxjjg")
+theme_override_font_sizes/font_size = 8
+text = ":"
+
+[node name="seg_counter" type="Label" parent="HUD/control/container/timer_container" unique_id=982258823]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("24_dxjjg")
+theme_override_font_sizes/font_size = 8
+text = "00"
 
 [node name="pause_menu" parent="HUD" unique_id=1193229482 instance=ExtResource("26_cy5ys")]
 visible = false

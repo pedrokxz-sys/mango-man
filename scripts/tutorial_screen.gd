@@ -14,15 +14,25 @@ var dialog4_finished = false
 var dialog5_finished = false
 var dialog6_finished = false
 
-@onready var player: CharacterBody2D = $"../player"
+@onready var player: CharacterBody2D
 @onready var label: RichTextLabel = $control/HBoxContainer/VBoxContainer/label
 @onready var back: ColorRect = $control/back
 @onready var score_container: HBoxContainer = $"../HUD/control/container/score_container"
 @onready var mango_container: HBoxContainer = $"../HUD/control/container/mango_container"
 @onready var player_health: Node2D = $"../HUD/player_health"
 
+func _ready() -> void:
+	player = Globals.player
+
 func _physics_process(_delta: float) -> void:
-	if player.is_on_floor() and !tutorial_start:
+	if not is_instance_valid(Globals.player):
+		return
+
+	player = Globals.player
+
+	
+	if !tutorial_start:
+		await get_tree().create_timer(.5).timeout
 		tutorial_start = true
 		await get_tree().create_timer(0.5).timeout
 		back.visible = true
@@ -68,7 +78,7 @@ func _physics_process(_delta: float) -> void:
 				await get_tree().create_timer(0.01).timeout
 				label.visible_characters += 1
 	if label.text == dialog_04 and label.visible_ratio == 1:
-		await get_tree().create_timer(1.5).timeout
+		await get_tree().create_timer(1).timeout
 		back.visible = false 
 		label.visible_characters = 0
 
@@ -83,7 +93,7 @@ func _physics_process(_delta: float) -> void:
 				label.visible_characters += 1
 				back.visible = true
 	if label.text == dialog_05 and label.visible_ratio == 1:
-		await get_tree().create_timer(1.5).timeout
+		await get_tree().create_timer(1).timeout
 		back.visible = false 
 		label.visible_characters = 0
 
@@ -97,7 +107,7 @@ func _physics_process(_delta: float) -> void:
 				await get_tree().create_timer(0.01).timeout
 				label.visible_characters += 1
 	if label.text == dialog_06 and label.visible_ratio == 1:
-		await get_tree().create_timer(1.5).timeout
+		await get_tree().create_timer(1).timeout
 		back.visible = false 
 		label.visible_characters = 0
 
@@ -108,8 +118,8 @@ func _physics_process(_delta: float) -> void:
 			while label.visible_ratio < 1:
 				await get_tree().create_timer(0.01).timeout
 				label.visible_characters += 1
-	if label.text == dialog_06 and label.visible_ratio == 1:
-		await get_tree().create_timer(1.5).timeout
+	if label.text == dialog_07 and label.visible_ratio == 1:
+		await get_tree().create_timer(1).timeout
 		back.visible = false 
 		label.visible_characters = 0
 
@@ -123,6 +133,6 @@ func _physics_process(_delta: float) -> void:
 	else:
 		$"../barrier/collision".disabled = true
 	if label.text == dialog_08 and label.visible_ratio == 1:
-		await get_tree().create_timer(1.5).timeout
+		await get_tree().create_timer(1).timeout
 		back.visible = false 
 		label.visible_characters = 0

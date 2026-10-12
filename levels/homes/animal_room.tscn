@@ -65,31 +65,97 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qjn0e"]
-atlas = ExtResource("29_rsa3v")
-region = Rect2(0, 0, 24, 24)
+[sub_resource type="Animation" id="Animation_vtgop"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("29_rsa3v")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("texture:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_00v8a"]
-atlas = ExtResource("29_rsa3v")
-region = Rect2(24, 0, 24, 24)
+[sub_resource type="Animation" id="Animation_ygwgk"]
+resource_name = "idle"
+length = 5.0
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("29_rsa3v")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("texture:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 4.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_apd52"]
-animations = [{
-"frames": [{
-"duration": 10.0,
-"texture": SubResource("AtlasTexture_qjn0e")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_00v8a")
-}],
-"loop": 1,
-"name": &"idle",
-"speed": 5.0
-}]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_apd52"]
+_data = {
+&"RESET": SubResource("Animation_vtgop"),
+&"idle": SubResource("Animation_ygwgk")
+}
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_do7oi"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4i1b8"]
+size = Vector2(11, 21)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5sdx8"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_obqlh"]
 size = Vector2(104, 20)
 
 [sub_resource type="Animation" id="Animation_80ww7"]
@@ -409,29 +475,36 @@ position = Vector2(-83, -42)
 build_mode = 1
 polygon = PackedVector2Array(122, 164, 283, 164, 283, 38, 122, 38)
 
-[node name="hunter" type="CharacterBody2D" parent="." unique_id=1893482391]
-position = Vector2(160, 109)
+[node name="hunter" type="CharacterBody2D" parent="." unique_id=464258435]
+position = Vector2(189, 123)
 rotation = -3.1415925
 scale = Vector2(1, -1)
+collision_layer = 128
+collision_mask = 2
 
-[node name="anim" type="AnimatedSprite2D" parent="hunter" unique_id=1201212287]
-sprite_frames = SubResource("SpriteFrames_apd52")
-animation = &"idle"
-autoplay = "idle"
+[node name="texture" type="Sprite2D" parent="hunter" unique_id=612721516]
+position = Vector2(1.0490733e-06, -12)
+texture = ExtResource("29_rsa3v")
+hframes = 2
 
-[node name="collsion" type="CollisionShape2D" parent="hunter" unique_id=33007428]
-shape = SubResource("CircleShape2D_do7oi")
+[node name="anim" type="AnimationPlayer" parent="hunter" unique_id=911121292]
+libraries/ = SubResource("AnimationLibrary_apd52")
+autoplay = &"idle"
 
-[node name="speech_area" type="Area2D" parent="hunter" unique_id=9722360]
-position = Vector2(1, 1)
+[node name="collsion" type="CollisionShape2D" parent="hunter" unique_id=2087399255]
+position = Vector2(0.50000185, -11.5)
+shape = SubResource("RectangleShape2D_4i1b8")
+
+[node name="speech_area" type="Area2D" parent="hunter" unique_id=922129572]
+position = Vector2(8.34465e-07, -10)
 rotation = 3.1415927
 scale = Vector2(1, -1)
 collision_layer = 2
 
-[node name="collision" type="CollisionShape2D" parent="hunter/speech_area" unique_id=936460343]
-shape = SubResource("RectangleShape2D_5sdx8")
+[node name="collision" type="CollisionShape2D" parent="hunter/speech_area" unique_id=225926805]
+shape = SubResource("RectangleShape2D_obqlh")
 
-[node name="texture" type="Sprite2D" parent="hunter/speech_area" unique_id=120981323]
+[node name="texture" type="Sprite2D" parent="hunter/speech_area" unique_id=239800922]
 position = Vector2(0, -32)
 rotation = -3.1415925
 scale = Vector2(-1, -1)
@@ -475,7 +548,7 @@ action = "move_right"
 visibility_mode = 1
 
 [node name="ui_up" type="TouchScreenButton" parent="controls" unique_id=167666188]
-position = Vector2(339, 132)
+position = Vector2(359, 147)
 texture_normal = ExtResource("11_bbugr")
 texture_pressed = ExtResource("12_bjp1t")
 action = "move_up"
@@ -496,7 +569,7 @@ action = "ui_long_collect"
 visibility_mode = 1
 
 [node name="ui_crouch" type="TouchScreenButton" parent="controls" unique_id=1861048042]
-position = Vector2(290, 162)
+position = Vector2(308, 158)
 texture_normal = ExtResource("17_b5iu2")
 texture_pressed = ExtResource("18_i6kuq")
 action = "ui_crouch"

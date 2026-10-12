@@ -2,6 +2,9 @@ extends Node
 
 signal health_changed
 
+var min:= 3
+var seg:= 0
+
 var mangos:= 0 
 
 var score:= 0

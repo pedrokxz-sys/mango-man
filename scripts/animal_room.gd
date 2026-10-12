@@ -62,6 +62,9 @@ func _physics_process(_delta: float) -> void:
 		if new_dialog == null:
 			scene_anim.play("pulse")
 
+	if !Cutscenes._01_animal_room_finished:
+		Globals.dialog_is_on = true
+
 	if Input.is_action_just_pressed("ui_crouch"):
 		if new_dialog == null and player_is_close:
 			_play_dialog()
@@ -98,13 +101,14 @@ func _on_scene_anim_animation_finished(anim_name: StringName) -> void:
 			_play_dialog()
 			_02_dialog_start = true 
 			$eyes.play("blinking")
-			Cutscenes._01_animal_room_finished = true
 
 func _play_dialog():
 	if _01_dialog_start:
 		new_dialog =  DIALOG_SCREEN.instantiate()
 		new_dialog.data = second_dialog
 		hud.add_child(new_dialog)
+		await get_tree().create_timer(3).timeout
+		Cutscenes._01_animal_room_finished = true
 	else:
 		new_dialog =  DIALOG_SCREEN.instantiate()
 		new_dialog.data = first_dialog

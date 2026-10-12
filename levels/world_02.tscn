@@ -554,7 +554,7 @@ action = "move_right"
 visibility_mode = 1
 
 [node name="ui_up" type="TouchScreenButton" parent="controls" unique_id=1589823530]
-position = Vector2(339, 132)
+position = Vector2(359, 147)
 texture_normal = ExtResource("34_xfb75")
 texture_pressed = ExtResource("35_3vnbe")
 action = "move_up"
@@ -575,7 +575,7 @@ action = "ui_long_collect"
 visibility_mode = 1
 
 [node name="ui_crouch" type="TouchScreenButton" parent="controls" unique_id=993573809]
-position = Vector2(290, 162)
+position = Vector2(308, 158)
 texture_normal = ExtResource("38_kgog4")
 texture_pressed = ExtResource("39_xhvma")
 action = "ui_crouch"

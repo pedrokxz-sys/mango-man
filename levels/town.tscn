@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://bjydj8ye0mssf" path="res://assets/fonts/sign.png" id="13_7yl3x"]
 [ext_resource type="Texture2D" uid="uid://dvpjki2owcqt0" path="res://assets/forest/big_wood.png" id="14_hxfcg"]
 [ext_resource type="Texture2D" uid="uid://be30qg4t8e6k5" path="res://assets/forest/extra_plants.png" id="15_gwgti"]
+[ext_resource type="Texture2D" uid="uid://bxgm7lkudytxb" path="res://assets/people/hunter/hunter.png" id="16_jmlb6"]
 [ext_resource type="PackedScene" uid="uid://d0ew0qmq0c7fh" path="res://actors/player.tscn" id="16_ns76i"]
 [ext_resource type="Script" uid="uid://laudjr4o548y" path="res://scripts/controls.gd" id="17_02pxo"]
 [ext_resource type="Texture2D" uid="uid://b4q8ob2fxtkfx" path="res://assets/buttons/joystick.png" id="18_hh6go"]
@@ -201,6 +202,99 @@ sources/2 = SubResource("TileSetAtlasSource_l86n5")
 sources/3 = SubResource("TileSetAtlasSource_7k4mt")
 sources/5 = SubResource("TileSetAtlasSource_lqgom")
 sources/4 = SubResource("TileSetAtlasSource_qjjnp")
+
+[sub_resource type="Animation" id="Animation_vtgop"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("16_jmlb6")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("texture:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_ygwgk"]
+resource_name = "idle"
+length = 5.0
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("16_jmlb6")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("texture:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 4.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ek141"]
+_data = {
+&"RESET": SubResource("Animation_vtgop"),
+&"idle": SubResource("Animation_ygwgk")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ll22q"]
+size = Vector2(11, 21)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ce6jw"]
+size = Vector2(104, 20)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5ha83"]
 texture = ExtResource("14_hxfcg")
@@ -515,6 +609,41 @@ layer_1/name = "plants"
 layer_1/tile_data = PackedInt32Array(655375, 65537, 2, 524286, 655365, 0, 589832, 393221, 1, 589879, 655365, 0, 655395, 196613, 1, 655373, 196613, 1, 589850, 131073, 1, 655390, 131073, 1, 524306, 393221, 1, 524318, 655365, 0, 458780, 65537, 2)
 layer_2/name = "water"
 
+[node name="hunter" type="CharacterBody2D" parent="." unique_id=2040296554]
+position = Vector2(-77, 253)
+rotation = -3.1415925
+scale = Vector2(1, -1)
+collision_layer = 128
+collision_mask = 2
+
+[node name="texture" type="Sprite2D" parent="hunter" unique_id=1341036268]
+position = Vector2(1.0490733e-06, -12)
+texture = ExtResource("16_jmlb6")
+hframes = 2
+
+[node name="anim" type="AnimationPlayer" parent="hunter" unique_id=1797353669]
+libraries/ = SubResource("AnimationLibrary_ek141")
+autoplay = &"idle"
+
+[node name="collsion" type="CollisionShape2D" parent="hunter" unique_id=1652383254]
+position = Vector2(0.50000185, -11.5)
+shape = SubResource("RectangleShape2D_ll22q")
+
+[node name="speech_area" type="Area2D" parent="hunter" unique_id=1838013343]
+position = Vector2(8.34465e-07, -10)
+rotation = 3.1415927
+scale = Vector2(1, -1)
+collision_layer = 2
+
+[node name="collision" type="CollisionShape2D" parent="hunter/speech_area" unique_id=1694198705]
+shape = SubResource("RectangleShape2D_ce6jw")
+
+[node name="texture" type="Sprite2D" parent="hunter/speech_area" unique_id=2105820903]
+position = Vector2(0, -32)
+rotation = -3.1415925
+scale = Vector2(-1, -1)
+texture = ExtResource("43_jmlb6")
+
 [node name="player" parent="." unique_id=292299474 instance=ExtResource("16_ns76i")]
 z_as_relative = false
 position = Vector2(0, 176)
@@ -551,7 +680,7 @@ action = "move_right"
 visibility_mode = 1
 
 [node name="ui_up" type="TouchScreenButton" parent="controls" unique_id=1281267500]
-position = Vector2(339, 132)
+position = Vector2(359, 147)
 texture_normal = ExtResource("23_057dc")
 texture_pressed = ExtResource("24_ynhsb")
 action = "move_up"
@@ -572,7 +701,7 @@ action = "ui_long_collect"
 visibility_mode = 1
 
 [node name="ui_crouch" type="TouchScreenButton" parent="controls" unique_id=2058315149]
-position = Vector2(290, 162)
+position = Vector2(308, 158)
 texture_normal = ExtResource("27_12lrg")
 texture_pressed = ExtResource("28_cd203")
 action = "ui_crouch"

@@ -7,7 +7,7 @@ extends Control
 
 
 func _on_play_btn_pressed() -> void:
-	get_tree().change_scene_to_file("res://levels/world_01.tscn")
+	get_tree().change_scene_to_file("res://levels/tutorial.tscn")
 
 func _on_options_btn_pressed() -> void:
 	pass # Replace with function body.

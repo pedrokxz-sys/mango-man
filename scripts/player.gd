@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 #constantes de velocidade e força do pulo
-const SPEED = 150.0
+const SPEED = 185.0
 const JUMP_FORCE = -300.0
 
 #variaveis referentes aos nodes q eu vou usar no script
@@ -49,7 +49,7 @@ func _physics_process(delta: float) -> void:
 	elif is_attacking_with_net:
 		velocity.x *= 0
 	else :
-		velocity.x = direction * SPEED / 2
+		velocity.x = direction * SPEED * 1.5
 
 #se o vetor do knockback nao for zero a velocidade e igual a do vetor do knockback
 	if knockback_vector != Vector2.ZERO:
@@ -58,7 +58,10 @@ func _physics_process(delta: float) -> void:
 	# iniciar ataque
 	if Input.is_action_just_pressed("ui_collect") and !is_attacking:
 		is_attacking = true
-		animator.play("collect")
+		if velocity.x != 0 and velocity.y == 0:
+			animator.play("collect_run")
+		else:
+			animator.play("collect")
 	if Input.is_action_just_pressed("ui_long_collect") and !is_attacking and Globals.can_use_long_collect:
 		is_attacking = true
 		is_attacking_with_net = true

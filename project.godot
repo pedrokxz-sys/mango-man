@@ -82,6 +82,7 @@ ui_long_collect={
 2d_physics/layer_6="hurtbox"
 3d_physics/layer_6="hurtbox"
 2d_physics/layer_7="bounce"
+2d_physics/layer_8="peoples"
 
 [physics]
 

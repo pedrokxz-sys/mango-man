@@ -47,7 +47,6 @@
 [ext_resource type="Texture2D" uid="uid://bldy50jlybb1k" path="res://assets/buttons/pause_menu_pressed.png" id="41_5nrxn"]
 [ext_resource type="Texture2D" uid="uid://cluudi68hvqmh" path="res://assets/buttons/icons/animals_icon.png" id="41_brbtt"]
 [ext_resource type="FontFile" uid="uid://2jgdu5anlho6" path="res://assets/fonts/RevMiniPixel.ttf" id="43_4xcht"]
-[ext_resource type="Script" uid="uid://4hwtvxc7y2nj" path="res://scripts/tutorial_screen.gd" id="43_lyepb"]
 [ext_resource type="PackedScene" uid="uid://frn5k7bnk6fo" path="res://prefabs/pause_menu.tscn" id="48_5ha83"]
 [ext_resource type="Texture2D" uid="uid://80rqyhon6d4s" path="res://assets/buttons/icons/timer_icon.png" id="48_5nrxn"]
 [ext_resource type="Shader" uid="uid://dpqmgeqiph1w7" path="res://shaders/iris_open.gdshader" id="51_5nrxn"]
@@ -674,7 +673,7 @@ position = Vector2(5136, 168)
 
 [node name="player" parent="." unique_id=292299474 instance=ExtResource("1_5t0fn")]
 z_as_relative = false
-position = Vector2(5096, 24)
+position = Vector2(24, 56)
 collision_mask = 2
 floor_constant_speed = true
 
@@ -796,11 +795,9 @@ texture_pressed = ExtResource("41_5nrxn")
 action = "ui_cancel"
 visibility_mode = 1
 
-[node name="tutorial_screen" type="CanvasLayer" parent="." unique_id=1476252085]
-script = ExtResource("43_lyepb")
+[node name="msg_screen" type="CanvasLayer" parent="." unique_id=1476252085]
 
-[node name="control" type="Control" parent="tutorial_screen" unique_id=9221985]
-visible = false
+[node name="control" type="Control" parent="msg_screen" unique_id=9221985]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -810,7 +807,8 @@ grow_vertical = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
 
-[node name="back" type="ColorRect" parent="tutorial_screen/control" unique_id=1396681685]
+[node name="back" type="ColorRect" parent="msg_screen/control" unique_id=1396681685]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -821,7 +819,7 @@ size_flags_horizontal = 6
 size_flags_vertical = 4
 color = Color(0, 0, 0.19215687, 0.39215687)
 
-[node name="HBoxContainer" type="HBoxContainer" parent="tutorial_screen/control" unique_id=1464092803]
+[node name="HBoxContainer" type="HBoxContainer" parent="msg_screen/control" unique_id=1464092803]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -835,12 +833,11 @@ offset_bottom = -16.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="tutorial_screen/control/HBoxContainer" unique_id=1111084554]
+[node name="VBoxContainer" type="VBoxContainer" parent="msg_screen/control/HBoxContainer" unique_id=1111084554]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="label" type="RichTextLabel" parent="tutorial_screen/control/HBoxContainer/VBoxContainer" unique_id=1993715893]
-visible = false
+[node name="label" type="RichTextLabel" parent="msg_screen/control/HBoxContainer/VBoxContainer" unique_id=1993715893]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3

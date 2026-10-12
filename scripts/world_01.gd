@@ -7,8 +7,8 @@ const  LEVEL_ID:= "res://levels/world_01.tscn"
 @onready var camera := $Camera2D as Camera2D
 @onready var player_start_position: Marker2D = $prefabs/checkpoints/player_start_position
 @onready var animator: AnimationPlayer = $goal/animator
-@onready var label: RichTextLabel = $tutorial_screen/control/HBoxContainer/VBoxContainer/label
-@onready var back: ColorRect = $tutorial_screen/control/back
+@onready var label: RichTextLabel = $msg_screen/control/HBoxContainer/VBoxContainer/label
+@onready var back: ColorRect = $msg_screen/control/back
 
 var pass_one_seg = true
 
@@ -32,6 +32,7 @@ func _physics_process(_delta: float) -> void:
 		Globals.seg -= 1
 		pass_one_seg = true
 	if Globals.min < 0:
+		Globals.player = null
 		get_tree().change_scene_to_file(LEVEL_ID)
 
 	_player_forget_something()
@@ -55,14 +56,16 @@ func reload_game():
 
 func _player_forget_something():
 	if Globals.mangos < 32 or Globals.score < 18:
-			if player.global_position.x >= 5190:
-				back.visible = true
-				label.visible_characters = 0 
-				label.text = "Você está esquecendo algo!"
-				while label.visible_ratio < 1:
-					await get_tree().create_timer(0.01).timeout
-					label.visible_characters += 1
-	if label.visible_ratio == 1:
+		if player.global_position.x >= 5190:
+			back.visible = true
+			label.text = "Você está esquecendo algo!"
+			while label.visible_ratio < 1:
+				await get_tree().create_timer(0.01).timeout
+				label.visible_characters += 1
+	else:
+		$barrier/collision.disabled = true
+	if label.visible_ratio == 1 and label.text == "Você está esquecendo algo!":
 		await get_tree().create_timer(1).timeout
 		back.visible = false
 		label.visible_characters = 0 
+	

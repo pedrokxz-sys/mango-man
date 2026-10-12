@@ -22,7 +22,8 @@ var dialog6_finished = false
 @onready var player_health: Node2D = $"../HUD/player_health"
 
 func _ready() -> void:
-	player = Globals.player
+	if is_instance_valid(Globals.player):
+		player = Globals.player
 
 func _physics_process(_delta: float) -> void:
 	if not is_instance_valid(Globals.player):

@@ -164,211 +164,54 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("HUD/iris_open:material:shader_parameter/radius")
+tracks/0/path = NodePath("HUD/goal:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0]
+"values": [false]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("HUD/iris_open:visible")
+tracks/1/path = NodePath("HUD/goal:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Vector2(-427, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("HUD/goal:position")
+tracks/2/path = NodePath("HUD/iris_open:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-427, 0)]
+"values": [false]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("HUD/goal:visible")
+tracks/3/path = NodePath("HUD/iris_open:material:shader_parameter/radius")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_lyepb"]
 resource_name = "goal"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("HUD/goal:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-427, 0), Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("HUD/goal:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="Animation" id="Animation_5nrxn"]
-resource_name = "start"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("HUD/iris_open:material:shader_parameter/radius")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.5]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("HUD/iris_open:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_0hvll"]
-_data = {
-&"RESET": SubResource("Animation_80ww7"),
-&"goal": SubResource("Animation_lyepb"),
-&"start": SubResource("Animation_5nrxn")
-}
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ldfsf"]
-shader = ExtResource("27_u6wxk")
-shader_parameter/radius = 0.0
-shader_parameter/center = Vector2(0.5, 0.5)
-
-[sub_resource type="Animation" id="Animation_rsa3v"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("HUD/iris_open:material:shader_parameter/radius")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("HUD/iris_open:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("HUD/goal:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-427, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("HUD/goal:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("HUD/goal:modulate")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_apd52"]
-resource_name = "goal"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("HUD/goal:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.009999998, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-427, 0), Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("HUD/goal:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="Animation" id="Animation_do7oi"]
-resource_name = "pulse"
-step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -378,8 +221,160 @@ tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
+"update": 0,
 "values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HUD/goal:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-427, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_5nrxn"]
+resource_name = "start"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HUD/iris_open:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HUD/iris_open:material:shader_parameter/radius")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0hvll"]
+_data = {
+&"RESET": SubResource("Animation_80ww7"),
+&"goal": SubResource("Animation_lyepb"),
+&"start": SubResource("Animation_5nrxn")
+}
+
+[sub_resource type="Animation" id="Animation_rsa3v"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HUD/goal:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HUD/goal:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HUD/goal:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-427, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HUD/iris_open:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("HUD/iris_open:material:shader_parameter/radius")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_apd52"]
+resource_name = "goal"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HUD/goal:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HUD/goal:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.009999998, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-427, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_do7oi"]
+resource_name = "pulse"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HUD/goal:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.99, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(-427, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -396,14 +391,14 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("HUD/goal:position")
+tracks/2/path = NodePath("HUD/goal:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.99, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, 0), Vector2(-427, 0)]
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_5sdx8"]
@@ -411,26 +406,26 @@ resource_name = "start"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("HUD/iris_open:material:shader_parameter/radius")
+tracks/0/path = NodePath("HUD/iris_open:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.0, 1.5]
+"values": [true, false]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("HUD/iris_open:visible")
+tracks/1/path = NodePath("HUD/iris_open:material:shader_parameter/radius")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
+"update": 0,
+"values": [0.0, 1.5]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gii8j"]
@@ -440,6 +435,11 @@ _data = {
 &"pulse": SubResource("Animation_do7oi"),
 &"start": SubResource("Animation_5sdx8")
 }
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ldfsf"]
+shader = ExtResource("27_u6wxk")
+shader_parameter/radius = 0.0
+shader_parameter/center = Vector2(0.5, 0.5)
 
 [node name="animal_room" type="Node2D" unique_id=425184887]
 script = ExtResource("1_lktff")
@@ -531,6 +531,7 @@ texture = ExtResource("4_apd52")
 script = ExtResource("5_do7oi")
 
 [node name="joystick" type="Sprite2D" parent="controls" unique_id=1529504884]
+visible = false
 texture = ExtResource("6_5sdx8")
 centered = false
 
@@ -563,6 +564,7 @@ action = "ui_collect"
 visibility_mode = 1
 
 [node name="ui_long_collect" type="TouchScreenButton" parent="controls" unique_id=219265855]
+visible = false
 position = Vector2(372, 45)
 texture_normal = ExtResource("15_0saqo")
 texture_pressed = ExtResource("16_cilkr")
@@ -577,17 +579,20 @@ action = "ui_crouch"
 visibility_mode = 1
 
 [node name="ui_cancel" type="TouchScreenButton" parent="controls" unique_id=1444539112]
-position = Vector2(207, 18)
+position = Vector2(8, 8)
 texture_normal = ExtResource("19_cbqul")
 texture_pressed = ExtResource("20_4yrf0")
 action = "ui_cancel"
 visibility_mode = 1
 
+[node name="scene_anim" type="AnimationPlayer" parent="." unique_id=23012194]
+libraries/ = SubResource("AnimationLibrary_gii8j")
+
 [node name="HUD" type="CanvasLayer" parent="." unique_id=77406007]
 
 [node name="player_health" parent="HUD" unique_id=873261381 instance=ExtResource("21_c5apd")]
 visible = false
-position = Vector2(32, 16)
+position = Vector2(56, 16)
 
 [node name="control" type="Control" parent="HUD" unique_id=182476126]
 layout_mode = 3
@@ -633,7 +638,7 @@ text = "000"
 
 [node name="score_container" type="HBoxContainer" parent="HUD/control/container" unique_id=1418287645]
 layout_mode = 2
-size_flags_horizontal = 0
+size_flags_horizontal = 4
 size_flags_vertical = 0
 
 [node name="mango_icon" type="TextureRect" parent="HUD/control/container/score_container" unique_id=623706841]
@@ -716,9 +721,6 @@ offset_right = -427.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
-
-[node name="scene_anim" type="AnimationPlayer" parent="." unique_id=23012194]
-libraries/ = SubResource("AnimationLibrary_gii8j")
 
 [connection signal="body_entered" from="hunter/speech_area" to="." method="_on_speech_area_body_entered"]
 [connection signal="body_exited" from="hunter/speech_area" to="." method="_on_speech_area_body_exited"]

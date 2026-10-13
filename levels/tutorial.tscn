@@ -261,50 +261,50 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("HUD/goal:visible")
+tracks/0/path = NodePath("HUD/iris_open:material:shader_parameter/radius")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [true]
+"values": [0.0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("HUD/goal:position")
+tracks/1/path = NodePath("HUD/iris_open:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-427, 0)]
+"values": [true]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("HUD/iris_open:visible")
+tracks/2/path = NodePath("HUD/goal:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [true]
+"values": [Vector2(-427, 0)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("HUD/iris_open:material:shader_parameter/radius")
+tracks/3/path = NodePath("HUD/goal:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0]
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_lyepb"]
@@ -312,26 +312,26 @@ resource_name = "goal"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("HUD/goal:visible")
+tracks/0/path = NodePath("HUD/goal:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("HUD/goal:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(-427, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HUD/goal:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_5nrxn"]
@@ -339,26 +339,26 @@ resource_name = "start"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("HUD/iris_open:visible")
+tracks/0/path = NodePath("HUD/iris_open:material:shader_parameter/radius")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [true, false]
+"values": [0.0, 1.5]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("HUD/iris_open:material:shader_parameter/radius")
+tracks/1/path = NodePath("HUD/iris_open:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.0, 1.5]
+"values": [true, false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_f3e03"]
@@ -511,6 +511,7 @@ tile_set = SubResource("TileSet_0kytj")
 script = ExtResource("26_6vq4a")
 
 [node name="joystick" type="Sprite2D" parent="controls" unique_id=1564176451]
+visible = false
 texture = ExtResource("27_6q4i6")
 centered = false
 
@@ -543,6 +544,7 @@ action = "ui_collect"
 visibility_mode = 1
 
 [node name="ui_long_collect" type="TouchScreenButton" parent="controls" unique_id=222877103]
+visible = false
 position = Vector2(372, 45)
 texture_normal = ExtResource("36_byx8m")
 texture_pressed = ExtResource("37_fxqau")
@@ -557,7 +559,7 @@ action = "ui_crouch"
 visibility_mode = 1
 
 [node name="ui_cancel" type="TouchScreenButton" parent="controls" unique_id=1288393320]
-position = Vector2(207, 18)
+position = Vector2(8, 8)
 texture_normal = ExtResource("40_1ffjg")
 texture_pressed = ExtResource("41_83ps1")
 action = "ui_cancel"
@@ -618,8 +620,7 @@ visible_ratio = 0.0
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1460941086]
 
 [node name="player_health" parent="HUD" unique_id=873261381 instance=ExtResource("42_pot3b")]
-visible = false
-position = Vector2(32, 16)
+position = Vector2(56, 16)
 
 [node name="control" type="Control" parent="HUD" unique_id=866573206]
 layout_mode = 3

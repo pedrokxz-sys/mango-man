@@ -9,4 +9,4 @@ func _ready():
 
 	var is_mobile: bool = OS.has_feature("mobile")
 
-	joystick.visible = touch_to_mouse or is_mobile
+	#joystick.visible = touch_to_mouse or is_mobile

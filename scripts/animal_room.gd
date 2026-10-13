@@ -61,6 +61,7 @@ func _physics_process(_delta: float) -> void:
 	if _01_dialog_start and !_02_dialog_start:
 		if new_dialog == null:
 			scene_anim.play("pulse")
+			Globals.score = 0
 
 	if !Cutscenes._01_animal_room_finished:
 		Globals.dialog_is_on = true

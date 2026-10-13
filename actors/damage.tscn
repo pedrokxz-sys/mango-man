@@ -10,6 +10,7 @@ script = ExtResource("1_g6i0e")
 
 [node name="audio_damage" type="AudioStreamPlayer" parent="." unique_id=359303453]
 stream = ExtResource("2_4qhjr")
+volume_db = -10.0
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -32,6 +32,8 @@ func _physics_process(delta: float) -> void:
 		if shooting_timer.is_stopped():
 			animator.play("shooting")
 			shooting_timer.start()
+			if !$audio_alert.playing:
+				$audio_alert.play()
 	else:
 		velocity.x = SPEED * direction
 

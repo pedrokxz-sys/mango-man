@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bpkro4d2q3eo3" path="res://assets/animals/hedgehog/hedgehog_ball.png" id="2_68u8f"]
 [ext_resource type="Texture2D" uid="uid://boko6d6bggk8j" path="res://assets/animals/hedgehog/hedgehog_rolling.png" id="3_idqth"]
 [ext_resource type="PackedScene" uid="uid://cegw4c7dlnm4f" path="res://actors/damage.tscn" id="5_idqth"]
+[ext_resource type="AudioStream" uid="uid://brv5yfiuqoofs" path="res://sounds/alert.mp3" id="6_ijuys"]
 
 [sub_resource type="Animation" id="Animation_ijuys"]
 length = 0.001
@@ -184,7 +185,7 @@ size = Vector2(10, 9)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ijuys"]
 size = Vector2(12, 11)
 
-[node name="hedgehog" type="CharacterBody2D" unique_id=1282746952 groups=["animals"]]
+[node name="hedgehog" type="CharacterBody2D" unique_id=1282746952 groups=["animals", "hedgehog"]]
 position = Vector2(0, -7)
 collision_layer = 4
 collision_mask = 38
@@ -220,6 +221,9 @@ damage = 2
 [node name="collision" type="CollisionShape2D" parent="damage" unique_id=1089222508]
 position = Vector2(1, 2)
 shape = SubResource("RectangleShape2D_ijuys")
+
+[node name="audio_alert" type="AudioStreamPlayer" parent="." unique_id=912480151]
+stream = ExtResource("6_ijuys")
 
 [connection signal="animation_finished" from="animator" to="." method="_on_animator_animation_finished"]
 [connection signal="timeout" from="rolling_timer" to="." method="_on_rolling_timer_timeout"]

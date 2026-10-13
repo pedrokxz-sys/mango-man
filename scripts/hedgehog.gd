@@ -35,6 +35,8 @@ func _physics_process(delta: float) -> void:
 		walking = false
 		is_a_ball = true
 		animator.play("ball")
+		if !$audio_alert.playing:
+			$audio_alert.play()
 		if is_on_floor():
 			velocity.y = jump
 

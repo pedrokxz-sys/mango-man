@@ -5,4 +5,5 @@ extends Area2D
 
 
 func _on_area_entered(_area: Area2D) -> void:
-	$audio_damage.play()
+	if _area.name == "hurtbox":
+		$audio_damage.play()

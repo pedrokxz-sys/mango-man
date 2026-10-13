@@ -14,6 +14,7 @@ var damage_areas
 #vetor do knockback
 var knockback_vector := Vector2.ZERO
 #estado de atacando
+var can_attack:bool = true
 var is_attacking : bool = false
 var is_attacking_with_net = false
 
@@ -58,8 +59,10 @@ func _physics_process(delta: float) -> void:
 		velocity = knockback_vector
 
 	# iniciar ataque
-	if Input.is_action_just_pressed("ui_collect") and !is_attacking:
+	if Input.is_action_just_pressed("ui_collect") and !is_attacking and can_attack:
 		is_attacking = true
+		print("atacou")
+		can_attack = false
 		if velocity.x != 0 and velocity.y == 0:
 			animator.play("collect_run")
 			if !Globals.dialog_is_on:
@@ -69,8 +72,9 @@ func _physics_process(delta: float) -> void:
 			if !Globals.dialog_is_on:
 				$sounds/audio_collect.play()
 
-	if Input.is_action_just_pressed("ui_long_collect") and !is_attacking and Globals.can_use_long_collect:
+	if Input.is_action_just_pressed("ui_long_collect") and !is_attacking and Globals.can_use_long_collect and can_attack:
 		is_attacking = true
+		can_attack = false
 		is_attacking_with_net = true
 		animator.play("long_collect")
 	
@@ -108,11 +112,22 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 	if body.is_in_group("animals"):
 		Globals.score += 1
 		body.queue_free()
+		if body.is_in_group("rabbit"):
+			$sounds/audio_rabbit.play()
+		if body.is_in_group("hedgehog"):
+			$sounds/audio_hedgehog.play()
+		if body.is_in_group("squirrel"):
+			$sounds/audio_squirrel.play()
+		if body.is_in_group("monkey"):
+			$sounds/audio_monkey.play()
 
 #quando a animaçao de ataque terminar o estado de ataque e falso
 func _on_animator_animation_finished(anim_name: StringName) -> void:
-	if anim_name == "collect" or "long_collect":
+	if anim_name == "collect" or "long_collect" or "collect_run":
 		is_attacking = false
+		await get_tree().create_timer(5).timeout
+		print("pode atacar")
+		can_attack = true
 	if anim_name == "long_collect":
 		is_attacking_with_net = false
 		velocity.y = JUMP_FORCE

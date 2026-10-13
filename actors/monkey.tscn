@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dhqfp6crat15w" path="res://assets/animals/monkey/monkey_attack.png" id="3_b1tmg"]
 [ext_resource type="Texture2D" uid="uid://8rbrmrudimj6" path="res://assets/animals/monkey/monkey_up.png" id="3_o2iis"]
 [ext_resource type="Texture2D" uid="uid://cvuyvobpen13x" path="res://assets/animals/monkey/monkey_run.png" id="3_rsb1i"]
+[ext_resource type="AudioStream" uid="uid://brv5yfiuqoofs" path="res://sounds/alert.mp3" id="7_lajh3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cdijy"]
 size = Vector2(10, 10)
@@ -284,7 +285,7 @@ size = Vector2(256, 44.75)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o2iis"]
 size = Vector2(256, 44.75)
 
-[node name="monkey" type="CharacterBody2D" unique_id=1823630902 groups=["animals"]]
+[node name="monkey" type="CharacterBody2D" unique_id=1823630902 groups=["animals", "monkey"]]
 collision_layer = 4
 collision_mask = 18
 script = ExtResource("1_cdijy")
@@ -316,6 +317,9 @@ collision_layer = 32
 [node name="collision" type="CollisionShape2D" parent="player_detector" unique_id=236282979]
 position = Vector2(0, -16)
 shape = SubResource("RectangleShape2D_o2iis")
+
+[node name="audio_alert" type="AudioStreamPlayer" parent="." unique_id=190617861]
+stream = ExtResource("7_lajh3")
 
 [connection signal="animation_finished" from="animator" to="." method="_on_animator_animation_finished"]
 [connection signal="body_entered" from="tree_detector" to="." method="_on_tree_detector_body_entered"]

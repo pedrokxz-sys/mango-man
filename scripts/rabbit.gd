@@ -67,3 +67,5 @@ func _on_player_detector_body_entered(body: Node2D) -> void:
 		player_detector.scale.x = diretion
 		
 		animator.play("startle")
+		if !$audio_rabbit.playing:
+			$audio_rabbit.play()

@@ -87,6 +87,6 @@ shape = SubResource("RectangleShape2D_07ppt")
 
 [node name="audiojump" type="AudioStreamPlayer" parent="." unique_id=1863864855]
 stream = ExtResource("4_v6ofg")
-volume_db = -10.0
+volume_db = -25.0
 
 [connection signal="body_entered" from="bounce" to="bounce" method="_on_body_entered"]

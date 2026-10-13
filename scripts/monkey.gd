@@ -20,6 +20,8 @@ func _on_player_detector_body_entered(_body: Node2D) -> void:
 	if player_has_been_detected == false:
 		animator.play("up")
 		velocity.y = -300
+		if !$audio_alert.playing:
+			$audio_alert.play()
 	player_has_been_detected = true
 
 func _on_tree_detector_body_entered(_body: Node2D) -> void:

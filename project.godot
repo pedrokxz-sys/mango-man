@@ -33,6 +33,9 @@ damage=""
 projectiles=""
 big_tree=""
 animals=""
+rabbit=""
+monkey=""
+squirrel=""
 
 [input]
 

@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://h7nevrsnwgam" path="res://assets/animals/rabbit/rabbit_idle.png" id="1_f5a0y"]
 [ext_resource type="Texture2D" uid="uid://dd1a88pavcx2a" path="res://assets/animals/rabbit/rabbit_startle.png" id="2_1cftp"]
 [ext_resource type="Texture2D" uid="uid://ce00iebhvp810" path="res://assets/animals/rabbit/rabbit_running.png" id="3_dsq4s"]
+[ext_resource type="AudioStream" uid="uid://brv5yfiuqoofs" path="res://sounds/alert.mp3" id="5_08fhb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dsq4s"]
 size = Vector2(84, 29)
@@ -182,7 +183,7 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f5a0y"]
 size = Vector2(12, 9)
 
-[node name="rabbit" type="CharacterBody2D" unique_id=1341753194 groups=["animals"]]
+[node name="rabbit" type="CharacterBody2D" unique_id=1341753194 groups=["animals", "rabbit"]]
 collision_layer = 4
 collision_mask = 6
 script = ExtResource("1_3m8dn")
@@ -212,6 +213,9 @@ shape = SubResource("RectangleShape2D_f5a0y")
 position = Vector2(1, -6)
 target_position = Vector2(7, 0)
 collision_mask = 6
+
+[node name="audio_rabbit" type="AudioStreamPlayer" parent="." unique_id=1531555094]
+stream = ExtResource("5_08fhb")
 
 [connection signal="body_entered" from="player_detector" to="." method="_on_player_detector_body_entered"]
 [connection signal="animation_finished" from="animator" to="." method="_on_animator_animation_finished"]

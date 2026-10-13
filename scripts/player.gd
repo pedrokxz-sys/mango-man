@@ -32,6 +32,7 @@ func _physics_process(delta: float) -> void:
 	# pulo
 	if Input.is_action_just_pressed("move_up") and is_on_floor() and !is_attacking and !DiologManager.is_message_active:
 		velocity.y = JUMP_FORCE
+		$sounds/audio_jump.play()
 
 	# esquerda/direita
 	var direction := Input.get_axis("move_left", "move_right")
@@ -59,8 +60,10 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_collect") and !is_attacking:
 		is_attacking = true
 		if velocity.x != 0 and velocity.y == 0:
+			$sounds/audio_collect.play()
 			animator.play("collect_run")
 		else:
+			$sounds/audio_collect.play()
 			animator.play("collect")
 	if Input.is_action_just_pressed("ui_long_collect") and !is_attacking and Globals.can_use_long_collect:
 		is_attacking = true
@@ -75,6 +78,9 @@ func _physics_process(delta: float) -> void:
 		velocity.y += 2000
 		texture.scale.x = 1
 		animator.play("idle")
+
+	if global_position.y >= 192:
+		$sounds/audio_splash.play()
 
 	move_and_slide()
 	return

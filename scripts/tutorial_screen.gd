@@ -28,7 +28,6 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	if not is_instance_valid(Globals.player):
 		return
-
 	player = Globals.player
 
 	
@@ -90,6 +89,7 @@ func _physics_process(_delta: float) -> void:
 			back.visible = true
 			mango_container.visible = true
 			while label.visible_ratio < 1:
+				back.visible = true
 				await get_tree().create_timer(0.01).timeout
 				label.visible_characters += 1
 				back.visible = true
@@ -125,7 +125,7 @@ func _physics_process(_delta: float) -> void:
 		label.visible_characters = 0
 
 	if Globals.mangos < 2 or Globals.score < 3:
-		if player.global_position.x >= 1330:
+		if player.global_position.x >= 1344:
 			label.text = dialog_08
 			back.visible = true
 			while label.visible_ratio < 1:

@@ -14,15 +14,23 @@ var pass_one_seg = true
 
 func _ready() -> void:
 	animator.play("start")
+
 	Globals.min = 5
 	Globals.seg = 0
 	Globals.health = 6
+
 	Globals.player_start_position = player_start_position
 	Globals.player = player
-	Globals.player.follow_camera(camera)
-	Globals.player.player_has_died.connect(reload_game)
+
+	player.follow_camera(camera)
+	player.player_has_died.connect(reload_game)
 
 func _physics_process(_delta: float) -> void:
+	if is_instance_valid(Globals.player):
+		player = Globals.player
+
+	# restante do código...
+
 	if Globals.seg <= -1:
 		Globals.min -= 1
 		Globals.seg = 59
@@ -55,6 +63,27 @@ func reload_game():
 	Globals.respawn_player()
 
 func _player_forget_something():
+	if not is_instance_valid(Globals.player):
+		return
+
+	player = Globals.player
+
+	if Globals.mangos < 32 or Globals.score < 18:
+		if player.global_position.x >= 5190:
+			back.visible = true
+			label.text = "Você está esquecendo algo!"
+			while label.visible_ratio < 1:
+				if not is_instance_valid(player):
+					return
+				await get_tree().create_timer(0.01).timeout
+				label.visible_characters += 1
+	else:
+		$barrier/collision.disabled = true
+
+	if label.visible_ratio == 1 and label.text == "Você está esquecendo algo!":
+		await get_tree().create_timer(1).timeout
+		back.visible = false
+		label.visible_characters = 0
 	if Globals.mangos < 32 or Globals.score < 18:
 		if player.global_position.x >= 5190:
 			back.visible = true

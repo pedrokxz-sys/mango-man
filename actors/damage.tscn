@@ -1,8 +1,15 @@
 [gd_scene format=3 uid="uid://cegw4c7dlnm4f"]
 
 [ext_resource type="Script" uid="uid://8ukcgvbcphux" path="res://scripts/damage.gd" id="1_g6i0e"]
+[ext_resource type="AudioStream" uid="uid://c3njaafdefowx" path="res://sounds/damage.mp3" id="2_4qhjr"]
 
 [node name="damage" type="Area2D" unique_id=428252771 groups=["damage"]]
 collision_layer = 16
 collision_mask = 32
 script = ExtResource("1_g6i0e")
+
+[node name="audio_damage" type="AudioStreamPlayer" parent="." unique_id=359303453]
+stream = ExtResource("2_4qhjr")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -31,10 +31,9 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 
 	# pulo
-	if Input.is_action_just_pressed("move_up") and is_on_floor() and !is_attacking and !DiologManager.is_message_active:
+	if Input.is_action_just_pressed("move_up") and is_on_floor() and !is_attacking and !Globals.dialog_is_on:
 		velocity.y = JUMP_FORCE
-		if !Globals.dialog_is_on:
-			$sounds/audio_jump.play()
+		$sounds/audio_jump.play()
 
 	# esquerda/direita
 	var direction := Input.get_axis("move_left", "move_right")
@@ -52,27 +51,24 @@ func _physics_process(delta: float) -> void:
 	elif is_attacking_with_net:
 		velocity.x *= 0
 	else :
-		velocity.x = direction * SPEED * 1.5
+		velocity.x = direction * SPEED * 1.4
 
 #se o vetor do knockback nao for zero a velocidade e igual a do vetor do knockback
 	if knockback_vector != Vector2.ZERO:
 		velocity = knockback_vector
 
 	# iniciar ataque
-	if Input.is_action_just_pressed("ui_collect") and !is_attacking and can_attack:
+	if Input.is_action_just_pressed("ui_collect") and !is_attacking and can_attack and !Globals.dialog_is_on:
 		is_attacking = true
-		print("atacou")
 		can_attack = false
 		if velocity.x != 0 and velocity.y == 0:
 			animator.play("collect_run")
-			if !Globals.dialog_is_on:
-				$sounds/audio_collect.play()
+			$sounds/audio_collect.play()
 		else:
 			animator.play("collect")
-			if !Globals.dialog_is_on:
-				$sounds/audio_collect.play()
+			$sounds/audio_collect.play()
 
-	if Input.is_action_just_pressed("ui_long_collect") and !is_attacking and Globals.can_use_long_collect and can_attack:
+	if Input.is_action_just_pressed("ui_long_collect") and !is_attacking and Globals.can_use_long_collect and can_attack and !Globals.dialog_is_on:
 		is_attacking = true
 		can_attack = false
 		is_attacking_with_net = true
@@ -83,9 +79,9 @@ func _physics_process(delta: float) -> void:
 	
 	if Globals.dialog_is_on:
 		velocity.x *= 0
-		velocity.y += 2000
 		texture.scale.x = 1
 		animator.play("idle")
+		
 
 	if global_position.y >= 192:
 		$sounds/audio_splash.play()
@@ -123,10 +119,9 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 
 #quando a animaçao de ataque terminar o estado de ataque e falso
 func _on_animator_animation_finished(anim_name: StringName) -> void:
-	if anim_name == "collect" or "long_collect" or "collect_run":
+	if anim_name == "collect" or anim_name == "long_collect" or anim_name == "collect_run":
 		is_attacking = false
-		await get_tree().create_timer(5).timeout
-		print("pode atacar")
+		await  get_tree().create_timer(0.15).timeout
 		can_attack = true
 	if anim_name == "long_collect":
 		is_attacking_with_net = false

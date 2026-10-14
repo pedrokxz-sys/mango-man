@@ -20,6 +20,7 @@ var last_home_position
 @onready var player_start_position: Marker2D = $player_start_position
 @onready var hud: CanvasLayer = $HUD
 @onready var texture: Sprite2D = $hunter/speech_area/texture
+@onready var hunter: CharacterBody2D = $hunter
 
 func _ready() -> void:
 	animator.play("start")
@@ -38,6 +39,10 @@ func _physics_process(_delta: float) -> void:
 		Globals.dialog_is_on = true
 	else:
 		Globals.dialog_is_on = false
+
+	if !Cutscenes._01_town_finished:
+		_hunter_with_player()
+
 
 func reload_game():
 	await get_tree().create_timer(1.0).timeout
@@ -61,10 +66,19 @@ func _what_is_the_last_home():
 		last_home_position = hunter_door_position.global_position
 
 func _play_dialog():
+	hunter.global_position = Vector2(600, 100)
 	if Cutscenes._01_animal_room_finished:
 		$hunter.global_position = Vector2(381, 129)
+		$barrier/anim.play("pass")
+		$barrier/collsion.disabled = true
 		new_dialog =  DIALOG_SCREEN.instantiate()
 		new_dialog.data = first_dialog
 		hud.add_child(new_dialog)
 		if !Cutscenes._01_town_finished:
 			$hunter_door.global_position = Vector2(0, -100)
+
+func _hunter_with_player():
+	if player.velocity.x > 0 and !$hunter/wall_detector.is_colliding():
+		hunter.global_position.x = player.global_position.x - 16
+	if player.velocity.x < 0 and !$hunter/wall_detector.is_colliding():
+		hunter.global_position.x = player.global_position.x - -16

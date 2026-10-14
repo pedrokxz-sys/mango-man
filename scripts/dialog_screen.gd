@@ -35,3 +35,4 @@ func _initialize_dialog():
 	while _dialog.visible_ratio < 1:
 		await get_tree().create_timer(text_spped).timeout
 		_dialog.visible_characters += 1
+		$audio_blip.play()

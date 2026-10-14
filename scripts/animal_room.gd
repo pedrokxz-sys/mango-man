@@ -47,7 +47,6 @@ func _ready() -> void:
 	Globals.player_start_position = player_start_position
 	Globals.player = player
 	Globals.player.player_has_died.connect(reload_game)
-	Globals.can_use_long_collect = true
 
 	texture.visible = false
 

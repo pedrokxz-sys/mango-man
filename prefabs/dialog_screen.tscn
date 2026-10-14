@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://14mjifyk7s17" path="res://scripts/dialog_screen.gd" id="1_mhl0g"]
 [ext_resource type="FontFile" uid="uid://2jgdu5anlho6" path="res://assets/fonts/RevMiniPixel.ttf" id="1_tbeqj"]
+[ext_resource type="AudioStream" uid="uid://b4rgxbhbfivc2" path="res://sounds/blip_characters.mp3" id="3_mhl0g"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_84cks"]
 line_spacing = 0.0
@@ -88,3 +89,7 @@ offset_bottom = 21.0
 grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 1
+
+[node name="audio_blip" type="AudioStreamPlayer" parent="." unique_id=1321804966]
+stream = ExtResource("3_mhl0g")
+volume_db = -20.0

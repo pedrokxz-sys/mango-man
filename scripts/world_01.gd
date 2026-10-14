@@ -73,22 +73,6 @@ func _player_forget_something():
 			back.visible = true
 			label.text = "Você está esquecendo algo!"
 			while label.visible_ratio < 1:
-				if not is_instance_valid(player):
-					return
-				await get_tree().create_timer(0.01).timeout
-				label.visible_characters += 1
-	else:
-		$barrier/collision.disabled = true
-
-	if label.visible_ratio == 1 and label.text == "Você está esquecendo algo!":
-		await get_tree().create_timer(1).timeout
-		back.visible = false
-		label.visible_characters = 0
-	if Globals.mangos < 32 or Globals.score < 18:
-		if player.global_position.x >= 5190:
-			back.visible = true
-			label.text = "Você está esquecendo algo!"
-			while label.visible_ratio < 1:
 				await get_tree().create_timer(0.01).timeout
 				label.visible_characters += 1
 	else:

@@ -563,7 +563,6 @@ position = Vector2(8, 8)
 texture_normal = ExtResource("40_1ffjg")
 texture_pressed = ExtResource("41_83ps1")
 action = "ui_cancel"
-visibility_mode = 1
 
 [node name="tutorial_screen" type="CanvasLayer" parent="." unique_id=1661697226]
 script = ExtResource("50_xrrx4")
@@ -620,6 +619,7 @@ visible_ratio = 0.0
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1460941086]
 
 [node name="player_health" parent="HUD" unique_id=873261381 instance=ExtResource("42_pot3b")]
+visible = false
 position = Vector2(56, 16)
 
 [node name="control" type="Control" parent="HUD" unique_id=866573206]

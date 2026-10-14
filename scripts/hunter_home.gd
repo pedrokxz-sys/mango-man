@@ -139,7 +139,7 @@ func _play_dialog():
 		new_dialog =  DIALOG_SCREEN.instantiate()
 		new_dialog.data = second_dialog
 		hud.add_child(new_dialog)
-		$hunter.global_position = Vector2(151, 125)
+		$hunter.global_position = Vector2(151, 120)
 	elif !_01_dialog_start and player_is_close:
 		new_dialog =  DIALOG_SCREEN.instantiate()
 		new_dialog.data = first_dialog

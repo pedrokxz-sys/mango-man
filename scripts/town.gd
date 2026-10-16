@@ -23,8 +23,9 @@ var last_home_position
 @onready var hunter: CharacterBody2D = $hunter
 
 func _ready() -> void:
-	#Cutscenes._01_animal_room_finished = true
+	Cutscenes._01_animal_room_finished = true
 	Globals.is_run = false
+	Globals.can_attack = false
 	animator.play("start")
 	Globals.player_start_position = player_start_position
 	Globals.player = player

@@ -14,7 +14,6 @@ var damage_areas
 #vetor do knockback
 var knockback_vector := Vector2.ZERO
 #estado de atacando
-var can_attack:bool = true
 var is_attacking : bool = false
 var is_attacking_with_net = false
 
@@ -61,9 +60,9 @@ func _physics_process(delta: float) -> void:
 		velocity = knockback_vector
 
 	# iniciar ataque
-	if Input.is_action_just_pressed("ui_collect") and !is_attacking and can_attack and !Globals.dialog_is_on:
+	if Input.is_action_just_pressed("ui_collect") and !is_attacking and Globals.can_attack and !Globals.dialog_is_on:
 		is_attacking = true
-		can_attack = false
+		Globals.can_attack = false
 		if velocity.x != 0 and velocity.y == 0:
 			animator.play("collect_run")
 			$sounds/audio_collect.play()
@@ -71,9 +70,9 @@ func _physics_process(delta: float) -> void:
 			animator.play("collect")
 			$sounds/audio_collect.play()
 
-	if Input.is_action_just_pressed("ui_long_collect") and !is_attacking and Globals.can_use_long_collect and can_attack and !Globals.dialog_is_on:
+	if Input.is_action_just_pressed("ui_long_collect") and !is_attacking and Globals.can_use_long_collect and Globals.can_attack and !Globals.dialog_is_on:
 		is_attacking = true
-		can_attack = false
+		Globals.can_attack = false
 		is_attacking_with_net = true
 		animator.play("long_collect")
 	
@@ -127,7 +126,7 @@ func _on_animator_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "collect" or anim_name == "long_collect" or anim_name == "collect_run":
 		is_attacking = false
 		await  get_tree().create_timer(0.15).timeout
-		can_attack = true
+		Globals.can_attack = true
 	if anim_name == "long_collect":
 		is_attacking_with_net = false
 		velocity.y = JUMP_FORCE

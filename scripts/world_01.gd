@@ -19,6 +19,8 @@ func _ready() -> void:
 	Globals.min = 5
 	Globals.seg = 0
 	Globals.health = 6
+	Globals.score = 0
+	Globals.mangos = 0
 
 	Globals.player_start_position = player_start_position
 	Globals.player = player
@@ -69,7 +71,7 @@ func _player_forget_something():
 
 	player = Globals.player
 
-	if Globals.mangos < 32 or Globals.score < 18:
+	if Globals.mangos < 30 or Globals.score < 15:
 		if player.global_position.x >= 5190:
 			back.visible = true
 			label.text = "Você está esquecendo algo!"

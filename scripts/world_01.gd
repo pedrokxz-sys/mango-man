@@ -13,6 +13,7 @@ const  LEVEL_ID:= "res://levels/world_01.tscn"
 var pass_one_seg = true
 
 func _ready() -> void:
+	Globals.is_run = true
 	animator.play("start")
 
 	Globals.min = 5

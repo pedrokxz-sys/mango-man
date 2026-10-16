@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://1p51nb3fu53p"
-path="res://.godot/imported/hunter_run.png-59c0b50e583630ab2ca70f36c5f518bc.ctex"
+uid="uid://cb0g8pxg2ewgr"
+path="res://.godot/imported/hunter_walk.png-69e0639d9bf5f343d71fa303948bf4e1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/people/hunter/hunter_run.png"
-dest_files=["res://.godot/imported/hunter_run.png-59c0b50e583630ab2ca70f36c5f518bc.ctex"]
+source_file="res://assets/people/hunter/hunter_walk.png"
+dest_files=["res://.godot/imported/hunter_walk.png-69e0639d9bf5f343d71fa303948bf4e1.ctex"]
 
 [params]
 

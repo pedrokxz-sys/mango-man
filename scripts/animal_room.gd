@@ -42,6 +42,7 @@ var _02_dialog_start
 @onready var scene_anim: AnimationPlayer = $scene_anim
 
 func _ready() -> void:
+	Globals.is_run = false
 	_play_dialog()
 	animator.play("start")
 	Globals.player_start_position = player_start_position

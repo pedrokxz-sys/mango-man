@@ -21,6 +21,8 @@ var last_home : String = ""
 
 var can_use_long_collect = false
 
+var is_run:bool = true
+
 var dialog_is_on = false
 
 func respawn_player():

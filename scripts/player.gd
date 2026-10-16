@@ -31,7 +31,7 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 
 	# pulo
-	if Input.is_action_just_pressed("move_up") and is_on_floor() and !is_attacking and !Globals.dialog_is_on:
+	if Input.is_action_just_pressed("move_up") and is_on_floor() and !is_attacking and !Globals.dialog_is_on and Globals.is_run:
 		velocity.y = JUMP_FORCE
 		$sounds/audio_jump.play()
 
@@ -42,8 +42,11 @@ func _physics_process(delta: float) -> void:
 	if !is_attacking:
 	# movimento e direção
 
-		if direction != 0:
+		if direction != 0 and Globals.is_run:
 			velocity.x = direction * SPEED
+			texture.scale.x = direction
+		elif direction != 0 and !Globals.is_run:
+			velocity.x = direction * SPEED * .75
 			texture.scale.x = direction
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
@@ -98,8 +101,10 @@ func handle_animation(direction):
 			animator.play("jump")
 		else:
 			animator.play("fall")
-	elif direction != 0 and !DiologManager.is_message_active:
+	elif direction != 0 and Globals.is_run:
 		animator.play("run")
+	elif direction != 0 and !Globals.is_run:
+		animator.play("walk")
 	else:
 		animator.play("idle")
 

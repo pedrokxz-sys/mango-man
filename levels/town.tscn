@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dlelebvmk3b31" path="res://assets/forest/bk/06-trees.png" id="8_lqioa"]
 [ext_resource type="Texture2D" uid="uid://vb58rwk1iqou" path="res://assets/tonw/hunter_home.png" id="9_m3hgq"]
 [ext_resource type="Texture2D" uid="uid://bnn6ojmvf0r1i" path="res://assets/forest/tileset_forest.png" id="10_1urje"]
+[ext_resource type="Texture2D" uid="uid://0tbsolelqjv6" path="res://assets/tonw/mayor_home.png" id="10_le2fg"]
 [ext_resource type="Texture2D" uid="uid://dnmrljvfaqxe4" path="res://assets/forest/mushrooms.png" id="11_p8a63"]
 [ext_resource type="Texture2D" uid="uid://dh7yn0yb1mejf" path="res://assets/forest/water.png" id="12_abke0"]
 [ext_resource type="Texture2D" uid="uid://bjydj8ye0mssf" path="res://assets/fonts/sign.png" id="13_7yl3x"]
@@ -20,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://d0ew0qmq0c7fh" path="res://actors/player.tscn" id="16_ns76i"]
 [ext_resource type="Texture2D" uid="uid://rnssbw3eb26v" path="res://assets/tonw/barrier_02.png" id="17_ce6jw"]
 [ext_resource type="Script" uid="uid://c7ha2wymacxxh" path="res://scripts/hunter.gd" id="18_ee5t8"]
+[ext_resource type="Texture2D" uid="uid://cb0g8pxg2ewgr" path="res://assets/people/hunter/hunter_walk.png" id="20_csb6c"]
 [ext_resource type="PackedScene" uid="uid://d2bxrecoy4s67" path="res://prefabs/controls.tscn" id="22_chb4e"]
 [ext_resource type="PackedScene" uid="uid://cdur8uxwmfegp" path="res://prefabs/player_health.tscn" id="31_1yivb"]
 [ext_resource type="Script" uid="uid://c247esetbrstq" path="res://scripts/hud_manager.gd" id="32_wr4uu"]
@@ -76,8 +78,76 @@ texture = ExtResource("9_m3hgq")
 6:4/0 = 0
 7:4/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cs24j"]
+texture = ExtResource("10_le2fg")
+0:0/0 = 0
+0:1/0 = 0
+0:2/0 = 0
+0:3/0 = 0
+0:4/0 = 0
+0:5/0 = 0
+0:6/0 = 0
+0:7/0 = 0
+1:0/0 = 0
+1:1/0 = 0
+1:2/0 = 0
+1:3/0 = 0
+1:4/0 = 0
+1:5/0 = 0
+1:6/0 = 0
+1:7/0 = 0
+2:0/0 = 0
+2:1/0 = 0
+2:2/0 = 0
+2:3/0 = 0
+2:4/0 = 0
+2:5/0 = 0
+2:6/0 = 0
+2:7/0 = 0
+3:0/0 = 0
+3:1/0 = 0
+3:2/0 = 0
+3:3/0 = 0
+3:4/0 = 0
+3:5/0 = 0
+3:6/0 = 0
+3:7/0 = 0
+4:0/0 = 0
+4:1/0 = 0
+4:2/0 = 0
+4:3/0 = 0
+4:4/0 = 0
+4:5/0 = 0
+4:6/0 = 0
+4:7/0 = 0
+5:0/0 = 0
+5:1/0 = 0
+5:2/0 = 0
+5:3/0 = 0
+5:4/0 = 0
+5:5/0 = 0
+5:6/0 = 0
+5:7/0 = 0
+6:0/0 = 0
+6:1/0 = 0
+6:2/0 = 0
+6:3/0 = 0
+6:4/0 = 0
+6:5/0 = 0
+6:6/0 = 0
+6:7/0 = 0
+7:0/0 = 0
+7:1/0 = 0
+7:2/0 = 0
+7:3/0 = 0
+7:4/0 = 0
+7:5/0 = 0
+7:6/0 = 0
+7:7/0 = 0
+
 [sub_resource type="TileSet" id="TileSet_rcod1"]
 sources/0 = SubResource("TileSetAtlasSource_67q0w")
+sources/1 = SubResource("TileSetAtlasSource_cs24j")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fwd2m"]
 texture = ExtResource("10_1urje")
@@ -295,14 +365,56 @@ tracks/2/keys = {
 "values": [0, 1]
 }
 
+[sub_resource type="Animation" id="Animation_le2fg"]
+resource_name = "walk"
+length = 0.4
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("20_csb6c")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("texture:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ek141"]
 _data = {
 &"RESET": SubResource("Animation_vtgop"),
-&"idle": SubResource("Animation_ygwgk")
+&"idle": SubResource("Animation_ygwgk"),
+&"walk": SubResource("Animation_le2fg")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ll22q"]
-size = Vector2(11, 21)
+size = Vector2(12, 21)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ce6jw"]
 size = Vector2(104, 20)
@@ -608,7 +720,7 @@ texture = ExtResource("8_lqioa")
 centered = false
 
 [node name="homes" type="TileMapLayer" parent="." unique_id=672839753]
-tile_map_data = PackedByteArray("AAAVAAQAAAAAAAEAAAAWAAQAAAABAAEAAAAXAAQAAAACAAEAAAAYAAQAAAADAAEAAAAVAAMAAAAAAAAAAAAVAAUAAAAAAAIAAAAVAAYAAAAAAAMAAAAVAAcAAAAAAAQAAAAWAAMAAAABAAAAAAAWAAUAAAABAAIAAAAWAAYAAAABAAMAAAAWAAcAAAABAAQAAAAXAAMAAAACAAAAAAAXAAUAAAACAAIAAAAXAAYAAAACAAMAAAAXAAcAAAACAAQAAAAYAAMAAAADAAAAAAAYAAUAAAADAAIAAAAYAAYAAAADAAMAAAAYAAcAAAADAAQAAAAZAAMAAAAEAAAAAAAZAAQAAAAEAAEAAAAZAAUAAAAEAAIAAAAZAAYAAAAEAAMAAAAZAAcAAAAEAAQAAAAaAAMAAAAFAAAAAAAaAAQAAAAFAAEAAAAaAAUAAAAFAAIAAAAaAAYAAAAFAAMAAAAaAAcAAAAFAAQAAAAbAAMAAAAGAAAAAAAbAAQAAAAGAAEAAAAbAAUAAAAGAAIAAAAbAAYAAAAGAAMAAAAbAAcAAAAGAAQAAAAcAAMAAAAHAAAAAAAcAAQAAAAHAAEAAAAcAAUAAAAHAAIAAAAcAAYAAAAHAAMAAAAcAAcAAAAHAAQAAAA=")
+tile_map_data = PackedByteArray("AAAVAAQAAAAAAAEAAAAWAAQAAAABAAEAAAAXAAQAAAACAAEAAAAYAAQAAAADAAEAAAAVAAMAAAAAAAAAAAAVAAUAAAAAAAIAAAAVAAYAAAAAAAMAAAAVAAcAAAAAAAQAAAAWAAMAAAABAAAAAAAWAAUAAAABAAIAAAAWAAYAAAABAAMAAAAWAAcAAAABAAQAAAAXAAMAAAACAAAAAAAXAAUAAAACAAIAAAAXAAYAAAACAAMAAAAXAAcAAAACAAQAAAAYAAMAAAADAAAAAAAYAAUAAAADAAIAAAAYAAYAAAADAAMAAAAYAAcAAAADAAQAAAAZAAMAAAAEAAAAAAAZAAQAAAAEAAEAAAAZAAUAAAAEAAIAAAAZAAYAAAAEAAMAAAAZAAcAAAAEAAQAAAAaAAMAAAAFAAAAAAAaAAQAAAAFAAEAAAAaAAUAAAAFAAIAAAAaAAYAAAAFAAMAAAAaAAcAAAAFAAQAAAAbAAMAAAAGAAAAAAAbAAQAAAAGAAEAAAAbAAUAAAAGAAIAAAAbAAYAAAAGAAMAAAAbAAcAAAAGAAQAAAAcAAMAAAAHAAAAAAAcAAQAAAAHAAEAAAAcAAUAAAAHAAIAAAAcAAYAAAAHAAMAAAAcAAcAAAAHAAQAAABDAAMAAQAAAAAAAABDAAQAAQAAAAEAAABDAAUAAQAAAAIAAABDAAYAAQAAAAMAAABDAAcAAQAAAAQAAABDAAgAAQAAAAUAAABDAAkAAQAAAAYAAABDAAoAAQAAAAcAAABEAAMAAQABAAAAAABEAAQAAQABAAEAAABEAAUAAQABAAIAAABEAAYAAQABAAMAAABEAAcAAQABAAQAAABEAAgAAQABAAUAAABEAAkAAQABAAYAAABEAAoAAQABAAcAAABFAAMAAQACAAAAAABFAAQAAQACAAEAAABFAAUAAQACAAIAAABFAAYAAQACAAMAAABFAAcAAQACAAQAAABFAAgAAQACAAUAAABFAAkAAQACAAYAAABFAAoAAQACAAcAAABGAAMAAQADAAAAAABGAAQAAQADAAEAAABGAAUAAQADAAIAAABGAAYAAQADAAMAAABGAAcAAQADAAQAAABGAAgAAQADAAUAAABGAAkAAQADAAYAAABGAAoAAQADAAcAAABHAAMAAQAEAAAAAABHAAQAAQAEAAEAAABHAAUAAQAEAAIAAABHAAYAAQAEAAMAAABHAAcAAQAEAAQAAABHAAgAAQAEAAUAAABHAAkAAQAEAAYAAABHAAoAAQAEAAcAAABIAAMAAQAFAAAAAABIAAQAAQAFAAEAAABIAAUAAQAFAAIAAABIAAYAAQAFAAMAAABIAAcAAQAFAAQAAABIAAgAAQAFAAUAAABIAAkAAQAFAAYAAABIAAoAAQAFAAcAAABJAAMAAQAGAAAAAABJAAQAAQAGAAEAAABJAAUAAQAGAAIAAABJAAYAAQAGAAMAAABJAAcAAQAGAAQAAABJAAgAAQAGAAUAAABJAAkAAQAGAAYAAABJAAoAAQAGAAcAAABKAAMAAQAHAAAAAABKAAQAAQAHAAEAAABKAAUAAQAHAAIAAABKAAYAAQAHAAMAAABKAAcAAQAHAAQAAABKAAgAAQAHAAUAAABKAAkAAQAHAAYAAABKAAoAAQAHAAcAAAA=")
 tile_set = SubResource("TileSet_rcod1")
 
 [node name="tilemap_back" type="TileMap" parent="." unique_id=705177100]
@@ -617,7 +729,7 @@ format = 2
 layer_0/name = "ground"
 layer_0/tile_data = PackedInt32Array(655375, 524288, 0, 655376, 524288, 1, 655377, 131072, 1, 589842, 524288, 0, 655378, 458752, 2, 524307, 524288, 0, 589843, 458752, 1, 655379, 524288, 2, 524308, 524288, 1, 589844, 524288, 2, 655380, 131072, 2, 524309, 131072, 1, 589845, 131072, 2, 655381, 131072, 2, 524310, 131072, 1, 589846, 131072, 2, 655382, 131072, 2, 524311, 131072, 1, 589847, 131072, 2, 655383, 131072, 2, 524312, 131072, 1, 589848, 131072, 2, 655384, 131072, 2, 524313, 131072, 1, 589849, 131072, 2, 655385, 131072, 2, 524314, 131072, 1, 589850, 131072, 2, 655386, 131072, 2, 524315, 131072, 1, 589851, 131072, 2, 655387, 131072, 2, 524316, 131072, 1, 589852, 131072, 2, 655388, 131072, 2, 524317, 589824, 1, 589853, 589824, 2, 655389, 131072, 2, 524318, 589824, 0, 589854, 655360, 1, 655390, 589824, 2, 589855, 589824, 0, 655391, 655360, 1, 655392, 589824, 0)
 layer_1/name = "plants"
-layer_1/tile_data = PackedInt32Array(655375, 65537, 2, 524286, 655365, 0, 589832, 393221, 1, 589879, 655365, 0, 655395, 196613, 1, 655373, 196613, 1, 589850, 131073, 1, 655390, 131073, 1, 524306, 393221, 1, 524318, 655365, 0, 458780, 65537, 2)
+layer_1/tile_data = PackedInt32Array(655375, 65537, 2, 524286, 655365, 0, 589832, 393221, 1, 589879, 655365, 0, 655395, 196613, 1, 655373, 196613, 1, 589850, 131073, 1, 655390, 131073, 1, 524306, 393221, 1, 524318, 655365, 0, 458780, 65537, 2, 589890, 655365, 0, 589899, 655365, 0, 589906, 393221, 1, 589874, 393221, 1, 655423, 196613, 3, 655413, 196613, 3, 655418, 65541, 3, 655441, 65541, 3, 655438, 196613, 1, 655401, 196613, 1, 655392, 65537, 1, 655405, 131073, 1, 655402, 131073, 1, 655429, 131073, 1, 655425, 131073, 1, 655440, 131073, 2, 655436, 65537, 2, 655416, 65537, 1)
 layer_2/name = "water"
 
 [node name="barrier" type="StaticBody2D" parent="." unique_id=1815954285]
@@ -635,7 +747,7 @@ animation = &"pass"
 autoplay = "barrier"
 
 [node name="hunter" type="CharacterBody2D" parent="." unique_id=2040296554]
-position = Vector2(178, 124)
+position = Vector2(-93, 338)
 rotation = -3.1415925
 scale = Vector2(1, -1)
 collision_layer = 128
@@ -654,7 +766,7 @@ libraries/ = SubResource("AnimationLibrary_ek141")
 autoplay = &"idle"
 
 [node name="collsion" type="CollisionShape2D" parent="hunter" unique_id=1652383254]
-position = Vector2(0.50000185, -11.5)
+position = Vector2(0, -11.5)
 shape = SubResource("RectangleShape2D_ll22q")
 
 [node name="speech_area" type="Area2D" parent="hunter" unique_id=1838013343]
@@ -672,11 +784,6 @@ rotation = -3.1415925
 scale = Vector2(-1, -1)
 texture = ExtResource("43_jmlb6")
 
-[node name="wall_detector" type="RayCast2D" parent="hunter" unique_id=1014364757]
-position = Vector2(-6.9999967, -22)
-target_position = Vector2(24, 0)
-collision_mask = 2
-
 [node name="player" parent="." unique_id=292299474 instance=ExtResource("16_ns76i")]
 z_as_relative = false
 position = Vector2(0, 176)
@@ -692,7 +799,7 @@ layer_0/tile_data = PackedInt32Array(720899, 131074, 1, 720898, 131074, 1, 72089
 layer_1/name = "plants"
 
 [node name="goal" parent="." unique_id=1683926514 instance=ExtResource("41_6xmsd")]
-position = Vector2(889, 176)
+position = Vector2(1611, 147)
 nextlevel = "res://levels/world_02.tscn"
 
 [node name="animator" type="AnimationPlayer" parent="goal" unique_id=267586333]
@@ -702,7 +809,6 @@ libraries/ = SubResource("AnimationLibrary_lyepb")
 [node name="controls" parent="." unique_id=6382842 instance=ExtResource("22_chb4e")]
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1732923701]
-visible = false
 
 [node name="player_health" parent="HUD" unique_id=873261381 instance=ExtResource("31_1yivb")]
 visible = false

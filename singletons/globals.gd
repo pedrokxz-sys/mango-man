@@ -26,6 +26,7 @@ var can_attack:bool = true
 var is_run:bool = true
 
 var dialog_is_on = false
+var dialog_direction:int = 1
 
 func respawn_player():
 	if current_checkpoint != null:

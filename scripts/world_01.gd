@@ -64,6 +64,7 @@ func reload_game():
 	
 	Globals.health = 6
 	Globals.respawn_player()
+	Globals.can_attack = true
 
 func _player_forget_something():
 	if not is_instance_valid(Globals.player):

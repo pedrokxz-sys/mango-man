@@ -237,7 +237,7 @@ shader_parameter/center = Vector2(0.5, 0.5)
 script = ExtResource("1_18t7e")
 
 [node name="player_start_position" type="Marker2D" parent="." unique_id=462124919]
-position = Vector2(24, 40)
+position = Vector2(24, 25)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1503387399]
 zoom = Vector2(1.5, 1.5)
@@ -255,6 +255,7 @@ texture = ExtResource("1_rq6nb")
 centered = false
 
 [node name="floot" type="StaticBody2D" parent="." unique_id=1545385645]
+position = Vector2(0, -15)
 collision_layer = 2
 
 [node name="collsion" type="CollisionPolygon2D" parent="floot" unique_id=1394985001]
@@ -263,7 +264,7 @@ build_mode = 1
 polygon = PackedVector2Array(122, 164, 245, 164, 245, 38, 122, 38)
 
 [node name="hunter" type="CharacterBody2D" parent="." unique_id=464258435]
-position = Vector2(199, 122)
+position = Vector2(199, 107)
 rotation = -3.1415925
 scale = Vector2(1, -1)
 collision_layer = 128
@@ -298,10 +299,10 @@ scale = Vector2(-1, -1)
 texture = ExtResource("4_ag407")
 
 [node name="player" parent="." unique_id=292299474 instance=ExtResource("2_qak26")]
-position = Vector2(62, 120)
+position = Vector2(62, 105)
 
 [node name="door" parent="." unique_id=1683926514 instance=ExtResource("3_cnyqr")]
-position = Vector2(42, 104)
+position = Vector2(42, 89)
 nextlevel = "res://levels/town.tscn"
 
 [node name="animator" type="AnimationPlayer" parent="door" unique_id=867960973]

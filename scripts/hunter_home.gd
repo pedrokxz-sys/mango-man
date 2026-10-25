@@ -80,6 +80,7 @@ var _01_dialog_start
 @onready var scene_anim: AnimationPlayer = $scene_anim
 
 func _ready() -> void:
+	Globals.can_attack = false
 	Globals.is_run = false
 	Globals.last_home = "hunter_home"
 	animator.play("start")
@@ -140,8 +141,13 @@ func _play_dialog():
 		new_dialog =  DIALOG_SCREEN.instantiate()
 		new_dialog.data = second_dialog
 		hud.add_child(new_dialog)
-		$hunter.global_position = Vector2(151, 120)
+		$hunter.global_position = Vector2(151, 107)
+		if Globals.player.global_position.x - $hunter.global_position.x < 0:
+			Globals.dialog_direction = 1
+		if Globals.player.global_position.x - $hunter.global_position.x > 0:
+			Globals.dialog_direction = -1
 	elif !_01_dialog_start and player_is_close:
+		Globals.dialog_direction = 1
 		new_dialog =  DIALOG_SCREEN.instantiate()
 		new_dialog.data = first_dialog
 		hud.add_child(new_dialog)

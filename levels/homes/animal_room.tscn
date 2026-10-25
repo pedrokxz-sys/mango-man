@@ -135,7 +135,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_ruohr"]
 resource_name = "walk"
-length = 0.39999999999999997
+length = 0.4
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -473,7 +473,7 @@ shader_parameter/center = Vector2(0.5, 0.5)
 script = ExtResource("1_lktff")
 
 [node name="player_start_position" type="Marker2D" parent="." unique_id=128418879]
-position = Vector2(24, 40)
+position = Vector2(24, 25.5)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1241748315]
 zoom = Vector2(1.5, 1.5)
@@ -491,12 +491,13 @@ texture = ExtResource("1_uacx5")
 centered = false
 
 [node name="eyes" type="AnimatedSprite2D" parent="." unique_id=152579002]
-position = Vector2(142, 67)
+position = Vector2(142, 52.5)
 sprite_frames = SubResource("SpriteFrames_obqlh")
 animation = &"blinking"
 autoplay = "no_eyes"
 
 [node name="floot" type="StaticBody2D" parent="." unique_id=1730974563]
+position = Vector2(0, -14.5)
 collision_layer = 2
 
 [node name="collsion" type="CollisionPolygon2D" parent="floot" unique_id=1627907993]
@@ -505,7 +506,7 @@ build_mode = 1
 polygon = PackedVector2Array(122, 164, 283, 164, 283, 38, 122, 38)
 
 [node name="hunter" type="CharacterBody2D" parent="." unique_id=464258435]
-position = Vector2(189, 123)
+position = Vector2(189, 108.5)
 rotation = -3.1415925
 scale = Vector2(1, -1)
 collision_layer = 128
@@ -540,10 +541,10 @@ scale = Vector2(-1, -1)
 texture = ExtResource("4_apd52")
 
 [node name="player" parent="." unique_id=292299474 instance=ExtResource("2_lktff")]
-position = Vector2(130, 120)
+position = Vector2(130, 105.5)
 
 [node name="door" parent="." unique_id=1683926514 instance=ExtResource("3_rsa3v")]
-position = Vector2(42, 104)
+position = Vector2(42, 89.5)
 nextlevel = "res://levels/homes/on_hunter_home.tscn"
 
 [node name="animator" type="AnimationPlayer" parent="door" unique_id=485422010]

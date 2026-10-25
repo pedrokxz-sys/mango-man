@@ -81,11 +81,11 @@ func _physics_process(delta: float) -> void:
 	
 	if Globals.dialog_is_on:
 		velocity.x *= 0
-		texture.scale.x = 1
+		texture.scale.x = Globals.dialog_direction
 		animator.play("idle")
 		
 
-	if global_position.y >= 192:
+	if global_position.y >= 192 and !$sounds/audio_splash.playing:
 		$sounds/audio_splash.play()
 
 	move_and_slide()

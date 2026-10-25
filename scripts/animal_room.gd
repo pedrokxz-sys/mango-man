@@ -42,6 +42,7 @@ var _02_dialog_start
 @onready var scene_anim: AnimationPlayer = $scene_anim
 
 func _ready() -> void:
+	Globals.can_attack = false
 	Globals.is_run = false
 	_play_dialog()
 	animator.play("start")
@@ -110,6 +111,10 @@ func _play_dialog():
 		hud.add_child(new_dialog)
 		await get_tree().create_timer(3).timeout
 		Cutscenes._01_animal_room_finished = true
+		if Globals.player.global_position.x - $hunter.global_position.x < 0:
+			Globals.dialog_direction = 1
+		if Globals.player.global_position.x - $hunter.global_position.x > 0:
+			Globals.dialog_direction = -1
 	else:
 		new_dialog =  DIALOG_SCREEN.instantiate()
 		new_dialog.data = first_dialog

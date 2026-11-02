@@ -780,7 +780,7 @@ visible_ratio = 0.0
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1732923701]
 
 [node name="player_health" parent="HUD" unique_id=873261381 instance=ExtResource("37_yftww")]
-position = Vector2(32, 16)
+position = Vector2(56, 16)
 
 [node name="control" type="Control" parent="HUD" unique_id=1031888346]
 layout_mode = 3

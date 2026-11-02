@@ -41,7 +41,7 @@ var second_dialog:Dictionary = {
 	},
 	6:{
 		"_name": "Fazendeiro",
-		"_dialog": "Temos um assunto sobre um massa de animais invasores para tratar com o senhor.",
+		"_dialog": "Temos um assunto sério para falar com o senhor.",
 		"_faceset": "res://assets/player/player_faceset.png"
 	},
 	7:{
@@ -59,13 +59,16 @@ var last_home_position
 @onready var player_scene = preload("res://actors/player.tscn")
 @onready var camera := $Camera2D as Camera2D
 @onready var hunter_door_position: Marker2D = $hunter_door/hunter_door_position
+@onready var mayor_door_position: Marker2D = $mayor_door/mayor_door_position
 @onready var player_start_position: Marker2D = $player_start_position
 @onready var hud: CanvasLayer = $HUD
 @onready var texture: Sprite2D = $hunter/speech_area/texture
 @onready var hunter: CharacterBody2D = $hunter
 
 func _ready() -> void:
-	Cutscenes._01_animal_room_finished = true
+	#Globals.last_home = "mayor_home"
+
+	print(Cutscenes._01_animal_room_finished, Cutscenes._01_mayor_finised, Cutscenes._01_town_finished)
 	Globals.is_run = false
 	Globals.can_attack = false
 	$goal/animator.play("start")
@@ -85,9 +88,10 @@ func _physics_process(_delta: float) -> void:
 	else:
 		Globals.dialog_is_on = false
 
-	if player.global_position.x >= 1050 and !Globals.dialog_is_on:
-		_play_dialog()
-	if Cutscenes._01_town_finished and new_dialog == null:
+	if Cutscenes._01_mayor_finised:
+		if player.global_position.x >= 1050 and !Globals.dialog_is_on:
+			_play_dialog()
+	if !Cutscenes._01_mayor_finised and Cutscenes._01_town_finished and new_dialog == null:
 		Globals.dialog_is_on = true
 		if !$mayor_door/animator.is_animation_active():
 			$mayor_door/animator.play("goal")
@@ -113,6 +117,8 @@ func reload_game():
 func _what_is_the_last_home():
 	if Globals.last_home == "hunter_home":
 		last_home_position = hunter_door_position.global_position
+	if Globals.last_home == "mayor_home":
+		last_home_position = mayor_door_position.global_position
 
 func _play_dialog():
 	if Cutscenes._01_animal_room_finished and !Cutscenes._01_town_finished:

@@ -12,11 +12,15 @@
 [ext_resource type="PackedScene" uid="uid://cdur8uxwmfegp" path="res://prefabs/player_health.tscn" id="7_v7lfm"]
 [ext_resource type="Script" uid="uid://c247esetbrstq" path="res://scripts/hud_manager.gd" id="8_lpnto"]
 [ext_resource type="Texture2D" uid="uid://b8eaef3k8gdhm" path="res://assets/buttons/icons/01_mango_icon.png" id="9_iq15h"]
+[ext_resource type="Texture2D" uid="uid://df0iaid0lujq0" path="res://assets/tonw/circle.png" id="10_6o837"]
 [ext_resource type="FontFile" uid="uid://2jgdu5anlho6" path="res://assets/fonts/RevMiniPixel.ttf" id="10_m632h"]
+[ext_resource type="AudioStream" uid="uid://g804y555m3n1" path="res://sounds/map.wav" id="10_v7lfm"]
 [ext_resource type="Texture2D" uid="uid://cluudi68hvqmh" path="res://assets/buttons/icons/animals_icon.png" id="11_5sheu"]
 [ext_resource type="Texture2D" uid="uid://80rqyhon6d4s" path="res://assets/buttons/icons/timer_icon.png" id="12_4ju4j"]
 [ext_resource type="PackedScene" uid="uid://frn5k7bnk6fo" path="res://prefabs/pause_menu.tscn" id="13_rgooh"]
 [ext_resource type="Shader" uid="uid://dpqmgeqiph1w7" path="res://shaders/iris_open.gdshader" id="14_8vvge"]
+[ext_resource type="Texture2D" uid="uid://be8aatbc0isf" path="res://assets/tonw/map.png" id="18_aexuu"]
+[ext_resource type="AudioStream" uid="uid://4txnfi7qpgfg" path="res://sounds/unknown.mp3" id="21_lpnto"]
 
 [sub_resource type="Animation" id="Animation_vtgop"]
 length = 0.001
@@ -488,10 +492,24 @@ libraries/ = SubResource("AnimationLibrary_wx5jg")
 position = Vector2(0, -40)
 texture = ExtResource("3_tkaf7")
 
-[node name="controls" parent="." unique_id=6382842 instance=ExtResource("6_6o837")]
-
 [node name="scene_anim" type="AnimationPlayer" parent="." unique_id=636484321]
 libraries/ = SubResource("AnimationLibrary_70ltt")
+
+[node name="map" type="Sprite2D" parent="." unique_id=1058352540]
+visible = false
+position = Vector2(-72, -40)
+texture = ExtResource("18_aexuu")
+centered = false
+
+[node name="audio" type="AudioStreamPlayer" parent="map" unique_id=1884249284]
+stream = ExtResource("10_v7lfm")
+
+[node name="circle" type="Sprite2D" parent="." unique_id=1085691331]
+visible = false
+position = Vector2(194, 52)
+texture = ExtResource("10_6o837")
+
+[node name="controls" parent="." unique_id=6382842 instance=ExtResource("6_6o837")]
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=89568068]
 
@@ -625,5 +643,9 @@ offset_right = -427.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
+
+[node name="audio_unknown" type="AudioStreamPlayer" parent="." unique_id=2081403084]
+stream = ExtResource("21_lpnto")
+volume_db = -20.0
 
 [connection signal="animation_finished" from="door/animator" to="door" method="_on_animator_animation_finished"]

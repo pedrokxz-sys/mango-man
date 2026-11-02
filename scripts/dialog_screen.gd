@@ -1,6 +1,6 @@
 extends Control
 
-var text_spped = 0.05
+var text_spped = 0.03
 
 var id: int = 0
 var data: Dictionary = {}
@@ -18,7 +18,7 @@ func _process(_delta: float) -> void:
 		text_spped = 0.01
 		return
 	else:
-		text_spped = 0.05
+		text_spped = 0.03
 	if Input.is_action_just_pressed("ui_crouch"):
 		id += 1
 		if id == data.size():

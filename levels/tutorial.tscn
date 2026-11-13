@@ -30,7 +30,10 @@
 [ext_resource type="Texture2D" uid="uid://cvrf4cf3bn0ok" path="res://assets/buttons/ui_button_collect_normal.png" id="34_82twk"]
 [ext_resource type="Texture2D" uid="uid://bvfmyyd8cnrxs" path="res://assets/buttons/ui_button_collect_pressed.png" id="35_eyn6u"]
 [ext_resource type="Texture2D" uid="uid://uj3u04o52h0f" path="res://assets/buttons/ui_button_long_collect_normal.png" id="36_byx8m"]
+[ext_resource type="Texture2D" uid="uid://g27x5jp0u1ui" path="res://assets/forest/tutorial/collect_tutorial.png" id="36_mtsth"]
 [ext_resource type="Texture2D" uid="uid://gho0klavrf76" path="res://assets/buttons/ui_button_long_collect_pressed.png" id="37_fxqau"]
+[ext_resource type="Texture2D" uid="uid://dnlt6a04hhxd5" path="res://assets/forest/tutorial/move_tutorial.png" id="37_s81kh"]
+[ext_resource type="Texture2D" uid="uid://cxfkmstp8y176" path="res://assets/forest/tutorial/up_tutorial.png" id="38_ak48m"]
 [ext_resource type="Texture2D" uid="uid://4l42oi4cajvq" path="res://assets/buttons/ui_button_crouch_normal.png" id="38_vqkt0"]
 [ext_resource type="Texture2D" uid="uid://bwh7pdrw5hb8e" path="res://assets/buttons/ui_button_crouch_pressed.png" id="39_ny43e"]
 [ext_resource type="Texture2D" uid="uid://bwktjkv6hwqm5" path="res://assets/buttons/pause_menu_normal.png" id="40_1ffjg"]
@@ -250,6 +253,81 @@ physics_layer_0/collision_layer = 2
 physics_layer_0/collision_mask = 0
 sources/2 = SubResource("TileSetAtlasSource_81qbo")
 sources/0 = SubResource("TileSetAtlasSource_iss5p")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xrrx4"]
+atlas = ExtResource("36_mtsth")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1wvmy"]
+atlas = ExtResource("37_s81kh")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o56m5"]
+atlas = ExtResource("38_ak48m")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ls1ww"]
+atlas = ExtResource("36_mtsth")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nsckn"]
+atlas = ExtResource("37_s81kh")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pyuma"]
+atlas = ExtResource("38_ak48m")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_obqlh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xrrx4")
+}],
+"loop": 0,
+"name": &"mobile_collect",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1wvmy")
+}],
+"loop": 0,
+"name": &"mobile_move",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o56m5")
+}],
+"loop": 0,
+"name": &"mobile_up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ls1ww")
+}],
+"loop": 0,
+"name": &"pc_collect",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nsckn")
+}],
+"loop": 0,
+"name": &"pc_move",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pyuma")
+}],
+"loop": 0,
+"name": &"pc_up",
+"speed": 5.0
+}]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4bjfo"]
 shader = ExtResource("48_8atnj")
@@ -615,7 +693,12 @@ size_flags_vertical = 3
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("45_4uq14")
 visible_characters = 0
-visible_ratio = 0.0
+
+[node name="icons_sprites" type="AnimatedSprite2D" parent="tutorial_screen" unique_id=681524544]
+visible = false
+position = Vector2(200, 172)
+sprite_frames = SubResource("SpriteFrames_obqlh")
+animation = &"pc_move"
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1460941086]
 

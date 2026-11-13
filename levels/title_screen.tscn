@@ -409,7 +409,7 @@ text = "JOGAR"
 layout_mode = 2
 theme = ExtResource("3_1xnr2")
 theme_override_font_sizes/font_size = 16
-text = "OPIÇÕES"
+text = "OPÇÕES"
 
 [node name="quit_btn" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=1212860537]
 layout_mode = 2

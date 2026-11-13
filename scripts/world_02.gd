@@ -15,6 +15,7 @@ var pass_one_seg = true
 func _ready() -> void:
 	Globals.can_use_long_collect = true
 	Globals.is_run = true
+	Globals.can_attack = true
 	animator.play("start")
 
 	Globals.min = 5

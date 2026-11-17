@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://chot2juehxs38"
-path="res://.godot/imported/home_03.png-982b24bfd05e05d29b2d426810b583f6.ctex"
+uid="uid://lde1f5d0m7wg"
+path="res://.godot/imported/broken_box.png-f71024b291ce88ac76b2db08e6638ec4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tonw/home_03.png"
-dest_files=["res://.godot/imported/home_03.png-982b24bfd05e05d29b2d426810b583f6.ctex"]
+source_file="res://assets/tonw/broken_box.png"
+dest_files=["res://.godot/imported/broken_box.png-f71024b291ce88ac76b2db08e6638ec4.ctex"]
 
 [params]
 

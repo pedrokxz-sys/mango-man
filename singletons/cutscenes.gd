@@ -4,17 +4,28 @@ var _01_animal_room_finished:bool
 
 var _01_town_finished:bool
 
-var _01_mayor_finised:bool
+var _01_mayor_finished:bool
+
+var _02_town_finished:bool
+
+var _03_town_finished:bool
 
 func _ready() -> void:
-	if _01_mayor_finised == true:
+	if _03_town_finished:
+		_02_town_finished = true
+	if _02_town_finished:
+		_01_mayor_finished = true
+	if _01_mayor_finished:
 		_01_town_finished = true
-	if _01_town_finished == true:
+	if _01_town_finished:
 		_01_animal_room_finished = true
-	print(Cutscenes._01_animal_room_finished, Cutscenes._01_mayor_finised, Cutscenes._01_town_finished)
 
 func _physics_process(_delta: float) -> void:
-	if _01_mayor_finised == true:
+	if _03_town_finished:
+		_02_town_finished = true
+	if _02_town_finished:
+		_01_mayor_finished = true
+	if _01_mayor_finished:
 		_01_town_finished = true
-	if _01_town_finished == true:
+	if _01_town_finished:
 		_01_animal_room_finished = true

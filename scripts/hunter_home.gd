@@ -3,64 +3,64 @@ extends Node2D
 const DIALOG_SCREEN = preload("res://prefabs/dialog_screen.tscn")
 var first_dialog: Dictionary = {
 	0: {
-		"_name": "Caçador",
+		"_name": "Bóris",
 		"_dialog": "Ora se não é você, Murillo, o nosso fazendeiro de mangas.",
 		"_faceset": "res://assets/people/hunter/hunter_faceset.png"
 	}, 
 	1: {
-		"_name": "Fazendeiro",
+		"_name": "Murillo",
 		"_dialog": "E aí Bóris, tenho algo pra te mostrar.",
 		"_faceset": "res://assets/player/player_faceset.png"
 	}, 
 	2: {
-		"_name": "Caçador",
+		"_name": "Bóris",
 		"_dialog": "O que te traz aqui?",
 		"_faceset": "res://assets/people/hunter/hunter_faceset.png"
 	}, 
 	3: {
-		"_name": "Caçador",
+		"_name": "Bóris",
 		"_dialog": "EITA!",
 		"_faceset": "res://assets/people/hunter/hunter_faceset.png"
 	}, 
 	4: {
-		"_name": "Caçador",
+		"_name": "Bóris",
 		"_dialog": "Onde vc encontrou tantos animais!?",
 		"_faceset": "res://assets/people/hunter/hunter_faceset.png"
 	},
 	5: {
-		"_name": "Fazendeiro",
+		"_name": "Murillo",
 		"_dialog": "Esses animais estavam na florestra perto da minha fazenda.",
 		"_faceset": "res://assets/player/player_faceset.png"
 	}, 
 	6: {
-		"_name": "Caçador",
+		"_name": "Bóris",
 		"_dialog": "Como esses animais foram parar as bordas das sua fazenda?",
 		"_faceset": "res://assets/people/hunter/hunter_faceset.png"
 	}, 
 	7: {
-		"_name": "Fazendeiro",
+		"_name": "Murillo",
 		"_dialog": "Eu realmente não sei.",
 		"_faceset": "res://assets/player/player_faceset.png"
 	}, 
 	8: {
-		"_name": "Caçador",
+		"_name": "Bóris",
 		"_dialog": "Vamos achar um lugar para eles.",
 		"_faceset": "res://assets/people/hunter/hunter_faceset.png"
 	}
 }
 var second_dialog: Dictionary = {
 	0: {
-		"_name": "Caçador",
+		"_name": "Bóris",
 		"_dialog": "Vamos para o lado de fora.",
 		"_faceset": "res://assets/people/hunter/hunter_faceset.png"
 	}, 
 	1: {
-		"_name": "Caçador",
+		"_name": "Bóris",
 		"_dialog": "Devemos encontrar onde está o prefeito.",
 		"_faceset": "res://assets/people/hunter/hunter_faceset.png"
 	}, 
 	2: {
-		"_name": "Fazendeiro",
+		"_name": "Murillo",
 		"_dialog": "Certo.",
 		"_faceset": "res://assets/player/player_faceset.png"
 	}

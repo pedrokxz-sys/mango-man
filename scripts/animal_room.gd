@@ -3,24 +3,24 @@ extends Node2D
 const DIALOG_SCREEN = preload("res://prefabs/dialog_screen.tscn")
 var first_dialog: Dictionary = {
 	0: {
-		"_name": "Caçador",
+		"_name": "Bóris",
 		"_dialog": "Aqui é meu quarto dos fundos!",
 		"_faceset": "res://assets/people/hunter/hunter_faceset.png"
 	}, 
 	1: {
-		"_name": "Caçador",
+		"_name": "Bóris",
 		"_dialog": "Nesse lugar eu tenho gaiolas pra guardar esses animais.",
 		"_faceset": "res://assets/people/hunter/hunter_faceset.png"
 	}
 }
 var second_dialog: Dictionary =  {
 	0: {
-		"_name": "Caçador",
+		"_name": "Bóris",
 		"_dialog": "Pronto, agr as gaiolas estão todas cheias com animais!",
 		"_faceset": "res://assets/people/hunter/hunter_faceset.png"
 	},
 	1: {
-		"_name": "Caçador",
+		"_name": "Bóris",
 		"_dialog": "Vamos sair e procurar falar com o prefeito.",
 		"_faceset": "res://assets/people/hunter/hunter_faceset.png"
 	}

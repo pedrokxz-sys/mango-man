@@ -11,13 +11,16 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
-	if Globals.player.velocity.x > 0:
-		$texture.scale.x = -1
-	if Globals.player.velocity.x < 0:
-		$texture.scale.x = 1
+	if !Cutscenes._01_town_finished:
+		if Globals.player.velocity.x > 0:
+			$texture.scale.x = -1
+		if Globals.player.velocity.x < 0:
+			$texture.scale.x = 1
 
 	if !Cutscenes._01_town_finished and Cutscenes._01_animal_room_finished:
 		_hunter_with_player()
+	else: 
+		velocity.x = 0
 
 	_what_anim()
 

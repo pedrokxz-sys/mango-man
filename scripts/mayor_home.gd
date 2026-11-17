@@ -3,191 +3,191 @@ extends Node2D
 const DIALOG_SCREEN = preload("res://prefabs/dialog_screen.tscn")
 var first_dialog: Dictionary = {
 	0: {
-		"_name": "Prefeito",
+		"_name": "Chico",
 		"_dialog": "Então, de que assunto vamos tratar?",
 		"_faceset": "res://assets/people/mayor/mayor_faceset.png"
 	}, 
 	1: {
-		"_name": "Caçador",
+		"_name": "Bóris",
 		"_dialog": "Tasta-se de um assuto com animais de espécies invasoras nas proximidades.",
 		"_faceset": "res://assets/people/hunter/hunter_faceset.png"
 	},
 	2: {
-		"_name": "Prefeito",
+		"_name": "Chico",
 		"_dialog": "Como assim animais invasores!?",
 		"_faceset": "res://assets/people/mayor/mayor_faceset.png"
 	},
 	3: {
-		"_name": "Caçador",
+		"_name": "Bóris",
 		"_dialog": "Coelhos, ouriços e esquilos.",
 		"_faceset": "res://assets/people/hunter/hunter_faceset.png"
 	},
 	4: {
-		"_name": "Prefeito",
+		"_name": "Chico",
 		"_dialog": "Não tem como.",
 		"_faceset": "res://assets/people/mayor/mayor_faceset.png"
 	},
 	5: {
-		"_name": "Caçador",
+		"_name": "Bóris",
 		"_dialog": "Sendo assim, como Murillo achou esses animais?",
 		"_faceset": "res://assets/people/hunter/hunter_faceset.png"
 	},
 	6: {
-		"_name": "Fazendeiro",
+		"_name": "Murillo",
 		"_dialog": "É verdade, pode confiar em mim e se quiser pode ir vê-los.",
 		"_faceset": "res://assets/player/player_faceset.png"
 	}, 
 	7: {
-		"_name": "Prefeito",
+		"_name": "Chico",
 		"_dialog": "E onde eles estão agora?",
 		"_faceset": "res://assets/people/mayor/mayor_faceset.png"
 	},
 	8: {
-		"_name": "Fazendeiro",
+		"_name": "Murillo",
 		"_dialog": "Eles esstão seguros na casa de Bóris.",
 		"_faceset": "res://assets/player/player_faceset.png"
 	}, 
 	9: {
-		"_name": "Prefeito",
+		"_name": "Chico",
 		"_dialog": "Está certo eu acredito em vocês.",
 		"_faceset": "res://assets/people/mayor/mayor_faceset.png"
 	},
 	10: {
-		"_name": "Prefeito",
+		"_name": "Chico",
 		"_dialog": "Agora, eu acho que não podemos deixa-los lá por muito tempo.",
 		"_faceset": "res://assets/people/mayor/mayor_faceset.png"
 	},
 	11: {
-		"_name": "Caçador",
+		"_name": "Bóris",
 		"_dialog": "Está certo, por isso viemos falar com o senhor.",
 		"_faceset": "res://assets/people/hunter/hunter_faceset.png"
 	},
 	12: {
-		"_name": "Prefeito",
+		"_name": "Chico",
 		"_dialog": "Bem, o correto a se fazer é devolver esses animais para seus habitats naturais.",
 		"_faceset": "res://assets/people/mayor/mayor_faceset.png"
 	},
 	13: {
-		"_name": "Prefeito",
+		"_name": "Chico",
 		"_dialog": "Agora, não podemos deixa-los em qualquer lugar.",
 		"_faceset": "res://assets/people/mayor/mayor_faceset.png"
 	},
 	14: {
-		"_name": "Prefeito",
+		"_name": "Chico",
 		"_dialog": "Então vamos olhar o mapa da região local.",
 		"_faceset": "res://assets/people/mayor/mayor_faceset.png"
 	},
 	15: {
-		"_name": "Prefeito",
+		"_name": "Chico",
 		"_dialog": "O mapa está aqui.",
 		"_faceset": "res://assets/people/mayor/mayor_faceset.png"
 	},
 }
 var second_dialog: Dictionary =  {
 	0: {
-		"_name": "Prefeito",
+		"_name": "Chico",
 		"_dialog": "Esse é o mapa da Ilha da Manga.",
 		"_faceset": "res://assets/people/mayor/mayor_faceset.png"
 	},
 	1: {
-		"_name": "Fazendeiro",
+		"_name": "Murillo",
 		"_dialog": "Bem aqui está a minha fazenda.",
 		"_faceset": "res://assets/player/player_faceset.png"
 	},
 	2:{
-		"_name": "Prefeito",
+		"_name": "Chico",
 		"_dialog": "Exato, e nós estamos aqui na cidade Pinheiro.",
 		"_faceset": "res://assets/people/mayor/mayor_faceset.png"
 	},
 	3: {
-		"_name": "Caçador",
+		"_name": "Bóris",
 		"_dialog": "Bom, então onde deixaremos os animais?",
 		"_faceset": "res://assets/people/hunter/hunter_faceset.png"
 	},
 	4:{
-		"_name": "Prefeito",
+		"_name": "Chico",
 		"_dialog": "Esses animais são de espécies invasoras da região.",
 		"_faceset": "res://assets/people/mayor/mayor_faceset.png"
 	},
 	5:{
-		"_name": "Prefeito",
+		"_name": "Chico",
 		"_dialog": "Logo não podemos só deixar eles nas florestas ao redor.",
 		"_faceset": "res://assets/people/mayor/mayor_faceset.png"
 	},
 	6: {
-		"_name": "Caçador",
+		"_name": "Bóris",
 		"_dialog": "Verdade, isso ira gerar um risco para as espécies invasoras e também para as espécies locais.",
 		"_faceset": "res://assets/people/hunter/hunter_faceset.png"
 	},
 	7: {
-		"_name": "Fazendeiro",
+		"_name": "Murillo",
 		"_dialog": "E no que isso nos afeta?",
 		"_faceset": "res://assets/player/player_faceset.png"
 	},
 	8: {
-		"_name": "Caçador",
+		"_name": "Bóris",
 		"_dialog": "Ocorre um desequilibrio na cadeia alimentar e posteriormente nos sofremos de forma indireta.",
 		"_faceset": "res://assets/people/hunter/hunter_faceset.png"
 	},
 	9: {
-		"_name": "Caçador",
+		"_name": "Bóris",
 		"_dialog": "Como o ocorrido na sua fazenda, onde animais roubavam mais para sobreviver.",
 		"_faceset": "res://assets/people/hunter/hunter_faceset.png"
 	},
 	10: {
-		"_name": "Fazendeiro",
+		"_name": "Murillo",
 		"_dialog": "Entendi, mas então onde vamos deixa-los?",
 		"_faceset": "res://assets/player/player_faceset.png"
 	},
 	11:{
-		"_name": "Prefeito",
+		"_name": "Chico",
 		"_dialog": "Eu estava me lembrando enquanto vocês falavam.",
 		"_faceset": "res://assets/people/mayor/mayor_faceset.png"
 	},
 	12:{
-		"_name": "Prefeito",
+		"_name": "Chico",
 		"_dialog": "Existe um recente projeto de unidade de conservação na Península da Folha.",
 		"_faceset": "res://assets/people/mayor/mayor_faceset.png"
 	},
 	13: {
-		"_name": "Fazendeiro",
+		"_name": "Murillo",
 		"_dialog": "Onde fica essa Penísula da Folha?",
 		"_faceset": "res://assets/player/player_faceset.png"
 	},
 	14:{
-		"_name": "Prefeito",
+		"_name": "Chico",
 		"_dialog": "É nessa parte da ilha que parece a folha da manga, parece não ter nada, porque o mapa é antigo.",
 		"_faceset": "res://assets/people/mayor/mayor_faceset.png"
 	},
 	15: {
-		"_name": "Caçador",
+		"_name": "Bóris",
 		"_dialog": "É exatamente o que estavamos procurando.",
 		"_faceset": "res://assets/people/hunter/hunter_faceset.png"
 	},
 	16: {
-		"_name": "Fazendeiro",
+		"_name": "Murillo",
 		"_dialog": "Então vamos deixar eles lá?",
 		"_faceset": "res://assets/player/player_faceset.png"
 	},
 	17:{
-		"_name": "Prefeito",
+		"_name": "Chico",
 		"_dialog": "Ainda não. Precisamos entrar em contato e verificar se eles podem receber essas espécies.",
 		"_faceset": "res://assets/people/mayor/mayor_faceset.png"
 	},
 	18:{
-		"_name": "Prefeito",
+		"_name": "Chico",
 		"_dialog": "Vou ver se encontro o número de algum responsável na minha agenda.",
 		"_faceset": "res://assets/people/mayor/mayor_faceset.png"
 	},
 }
 var third_dialog: Dictionary =  {
 	0: {
-		"_name": "Caçador",
+		"_name": "Bóris",
 		"_dialog": "Que barulho é esse!?",
 		"_faceset": "res://assets/people/hunter/hunter_faceset.png"
 	},
 	1: {
-		"_name": "Prefeito",
+		"_name": "Chico",
 		"_dialog": "Veio lá de fora!",
 		"_faceset": "res://assets/people/mayor/mayor_faceset.png"
 	},
@@ -202,12 +202,12 @@ var third_dialog: Dictionary =  {
 		"_faceset": "res://assets/tonw/unknown_faceset.png"
 	}, 
 	4: {
-		"_name": "Fazendeiro",
+		"_name": "Murillo",
 		"_dialog": "Tem alguém em perigo!",
 		"_faceset": "res://assets/player/player_faceset.png"
 	},
 	5: {
-		"_name": "Fazendeiro",
+		"_name": "Murillo",
 		"_dialog": "Vamos lá ajudar!",
 		"_faceset": "res://assets/player/player_faceset.png"
 	},
@@ -301,7 +301,7 @@ func _on_speech_area_body_exited(body: Node2D) -> void:
 		player_is_close = false
 
 func _play_dialog():
-	if Cutscenes._01_mayor_finised == false:
+	if Cutscenes._01_mayor_finished == false:
 		if !_01_dialog_start:
 			_01_dialog_start = true
 			Globals.dialog_direction = -1
@@ -326,4 +326,4 @@ func _play_dialog():
 			new_dialog.data = third_dialog
 			await  get_tree().create_timer(1).timeout
 			hud.add_child(new_dialog)
-			Cutscenes._01_mayor_finised = true
+			Cutscenes._01_mayor_finished = true

@@ -15,6 +15,7 @@
 [ext_resource type="AudioStream" uid="uid://deix48snlwq41" path="res://sounds/rabbit.ogg" id="12_41w2c"]
 [ext_resource type="AudioStream" uid="uid://0kv8m1l8p3ov" path="res://sounds/hedgehog.wav" id="13_31m4k"]
 [ext_resource type="AudioStream" uid="uid://bsyo3nul6uexv" path="res://sounds/squirrel.wav" id="14_opp7g"]
+[ext_resource type="AudioStream" uid="uid://cervp5ua76w6p" path="res://sounds/monkey.wav" id="16_jglmw"]
 
 [sub_resource type="Animation" id="Animation_tue77"]
 length = 0.001
@@ -768,7 +769,8 @@ stream = ExtResource("14_opp7g")
 volume_db = 10.0
 
 [node name="audio_monkey" type="AudioStreamPlayer" parent="sounds" unique_id=1224936307]
-stream = ExtResource("14_opp7g")
+stream = ExtResource("16_jglmw")
+volume_db = -10.0
 
 [connection signal="animation_finished" from="animator" to="." method="_on_animator_animation_finished"]
 [connection signal="body_entered" from="texture/hitbox" to="." method="_on_hitbox_body_entered"]

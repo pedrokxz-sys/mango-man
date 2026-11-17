@@ -27,6 +27,14 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 		body.queue_free()
 		net_collect = true
 		Globals.score += 1
+		if body.is_in_group("rabbit"):
+			$sounds/audio_rabbit.play()
+		if body.is_in_group("hedgehog"):
+			$sounds/audio_hedgehog.play()
+		if body.is_in_group("squirrel"):
+			$sounds/audio_squirrel.play()
+		if body.is_in_group("monkey"):
+			$sounds/audio_monkey.play()
 
 func _animations():
 	if net_collect:

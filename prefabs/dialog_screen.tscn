@@ -92,4 +92,4 @@ expand_mode = 1
 
 [node name="audio_blip" type="AudioStreamPlayer" parent="." unique_id=1321804966]
 stream = ExtResource("3_mhl0g")
-volume_db = -20.0
+volume_db = -15.0

@@ -13,6 +13,7 @@ const  LEVEL_ID:= "res://levels/world_01.tscn"
 var pass_one_seg = true
 
 func _ready() -> void:
+	$tutorial_screen.first_tutorial = true
 	animator.play("start")
 	Globals.health = 6
 	Globals.player_start_position = player_start_position

@@ -19,6 +19,8 @@
 [ext_resource type="PackedScene" uid="uid://3b5iwrrhpfhn" path="res://prefabs/mango.tscn" id="21_svfen"]
 [ext_resource type="PackedScene" uid="uid://d0ew0qmq0c7fh" path="res://actors/player.tscn" id="22_f7gyi"]
 [ext_resource type="PackedScene" uid="uid://beyl3jjwx6hbv" path="res://actors/rabbit.tscn" id="23_gjg0y"]
+[ext_resource type="Texture2D" uid="uid://bn3mqciilesf" path="res://assets/forest/tutorial/net_launcher.png" id="23_s81kh"]
+[ext_resource type="AudioStream" uid="uid://wmaos861bg7h" path="res://sounds/achievements.wav" id="24_ak48m"]
 [ext_resource type="Script" uid="uid://laudjr4o548y" path="res://scripts/controls.gd" id="26_6vq4a"]
 [ext_resource type="Texture2D" uid="uid://b4q8ob2fxtkfx" path="res://assets/buttons/joystick.png" id="27_6q4i6"]
 [ext_resource type="Texture2D" uid="uid://cyyojcwy2qqw4" path="res://assets/buttons/ui_button_left_normal.png" id="28_ng1nq"]
@@ -328,6 +330,43 @@ animations = [{
 "name": &"pc_up",
 "speed": 5.0
 }]
+
+[sub_resource type="Animation" id="Animation_p8a63"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("net_icon:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.2617994]
+}
+
+[sub_resource type="Animation" id="Animation_abke0"]
+resource_name = "icon_rotation"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("net_icon:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.2617994, 0.0, -0.2617994, 0.0, 0.2617994]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ak48m"]
+_data = {
+&"RESET": SubResource("Animation_p8a63"),
+&"icon_rotation": SubResource("Animation_abke0")
+}
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4bjfo"]
 shader = ExtResource("48_8atnj")
@@ -641,6 +680,21 @@ visible = false
 position = Vector2(200, 172)
 sprite_frames = SubResource("SpriteFrames_obqlh")
 animation = &"pc_move"
+
+[node name="net_icon" type="Sprite2D" parent="tutorial_screen" unique_id=736700921]
+visible = false
+position = Vector2(217, 89)
+rotation = 0.2617994
+scale = Vector2(2, 2)
+texture = ExtResource("23_s81kh")
+
+[node name="anim" type="AnimationPlayer" parent="tutorial_screen" unique_id=1705267542]
+libraries/ = SubResource("AnimationLibrary_ak48m")
+autoplay = &"icon_rotation"
+
+[node name="achievements" type="AudioStreamPlayer" parent="tutorial_screen" unique_id=1273899769]
+stream = ExtResource("24_ak48m")
+volume_db = -5.0
 
 [node name="controls" type="CanvasLayer" parent="." unique_id=426015943]
 script = ExtResource("26_6vq4a")

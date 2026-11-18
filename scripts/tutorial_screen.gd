@@ -40,10 +40,6 @@ func _physics_process(_delta: float) -> void:
 		return
 	player = Globals.player
 
-	if $net_icon.rotation <= 30:
-		await get_tree().create_timer(0.5).timeout
-		$net_icon.rotation += 1
-
 	if first_tutorial:
 		if !tutorial_start:
 			await get_tree().create_timer(.5).timeout
@@ -196,11 +192,12 @@ func _physics_process(_delta: float) -> void:
 				icons_sprites.play("pc_net")
 			icons_sprites.global_position = Vector2(322, 141)
 			icons_sprites.visible = true
+			$achievements.play()
 			$net_icon.visible = true
 			dialog9_finished = true
 		if label.text == dialog_09 and !Globals.dialog_is_on and back.visible:
 			Globals.dialog_is_on = true
-			await get_tree().create_timer(3).timeout
+			await get_tree().create_timer(5).timeout
 			icons_sprites.visible = false
 			Globals.dialog_is_on = false
 			back.visible = false

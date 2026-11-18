@@ -130,7 +130,7 @@ var sixth_dialog:Dictionary = {
 }
 var new_dialog
 var _01_dialog_finished
-var _02_dialog_finished
+var _play_achievements
 var last_home_position
 
 @onready var player := $player as CharacterBody2D
@@ -173,19 +173,15 @@ func _physics_process(_delta: float) -> void:
 		Globals.dialog_is_on = true
 		if !$mayor_door/animator.is_animation_active():
 			$mayor_door/animator.play("goal")
-	if !Cutscenes._03_town_finished and player.velocity.y != 0 and Input.is_action_just_pressed("ui_collect"):
-		await get_tree().create_timer(0.5).timeout
+	if !Cutscenes._03_town_finished and player.velocity.y != 0 and Input.is_action_just_pressed("ui_collect") and player.global_position.x >=1300 and new_dialog == null:
 		_play_dialog()
-		await get_tree().create_timer(.5).timeout
-		Cutscenes._03_town_finished = true
-	if Cutscenes._03_town_finished and player.global_position.x < 1265 and !_02_dialog_finished:
+	if Cutscenes._03_town_finished and new_dialog == null and player.global_position.x < 1250 and !_play_achievements:
 		_play_dialog()
 		await get_tree().create_timer(0.5).timeout
-		_02_dialog_finished = true
-	if _02_dialog_finished and new_dialog == null:
+		_play_achievements = true
+	if _play_achievements and new_dialog == null:
 		Globals.can_use_long_collect = true
-
-	if Cutscenes._02_town_finished and !Cutscenes._03_town_finished and new_dialog == null and player.global_position.x <= 1250:
+	if !Cutscenes._03_town_finished and new_dialog == null and player.global_position.x <= 1250:
 		_play_dialog()
 
 
@@ -213,7 +209,7 @@ func _what_is_the_last_home():
 		last_home_position = mayor_door_position.global_position
 
 func _play_dialog():
-	if Cutscenes._01_animal_room_finished and !Cutscenes._01_town_finished and !Cutscenes._01_mayor_finised:
+	if Cutscenes._01_animal_room_finished and !Cutscenes._01_town_finished and !Cutscenes._01_mayor_finished:
 		if !_01_dialog_finished:
 			hunter.global_position = Vector2(381, 129)
 			$barrier/anim.play("pass")
@@ -224,6 +220,7 @@ func _play_dialog():
 			new_dialog =  DIALOG_SCREEN.instantiate()
 			new_dialog.data = first_dialog
 			hud.add_child(new_dialog)
+
 	if !Cutscenes._01_town_finished and !Cutscenes._01_mayor_finished:
 		if player.global_position.x >= 1050:
 			Cutscenes._01_town_finished = true
@@ -234,6 +231,7 @@ func _play_dialog():
 			if new_dialog.id != 2:
 				await get_tree().create_timer(1).timeout
 				$mayor/texture.scale.x = 1
+
 	if Cutscenes._01_mayor_finished and !Cutscenes._02_town_finished:
 		$box.play("broken")
 		Cutscenes._02_town_finished = true
@@ -249,23 +247,26 @@ func _play_dialog():
 		hud.add_child(new_dialog)
 		Globals.can_attack = true
 		Globals.is_run = true
-	if Cutscenes._02_town_finished and !Cutscenes._03_town_finished and new_dialog == null and player.global_position.x <= 1250:
-		Globals.dialog_direction = -1
-		new_dialog =  DIALOG_SCREEN.instantiate()
-		new_dialog.data = sixth_dialog
-		hud.add_child(new_dialog)
-		player.global_position.x += 8
-		Cutscenes._03_town_finished = false
-	if Cutscenes._02_town_finished and !Cutscenes._03_town_finished and new_dialog == null:
+
+	if Cutscenes._02_town_finished and !Cutscenes._03_town_finished and new_dialog == null and player.global_position.x >=1300 and player.velocity.y != 0 and Input.is_action_just_pressed("ui_collect"):
+		await get_tree().create_timer(0.5).timeout
 		Globals.dialog_direction = -1
 		new_dialog =  DIALOG_SCREEN.instantiate()
 		new_dialog.data = fourth_dialog
 		hud.add_child(new_dialog)
 		Cutscenes._03_town_finished = true
-	if Cutscenes._03_town_finished == true and !_02_dialog_finished and new_dialog == null:
-		Globals.dialog_direction = -1
-		new_dialog =  DIALOG_SCREEN.instantiate()
-		new_dialog.data = fifth_dialog
-		hud.add_child(new_dialog)
-		Globals.can_attack = true
-		Globals.is_run = true
+
+	if Cutscenes._02_town_finished and new_dialog == null and player.global_position.x <= 1250:
+		if !Cutscenes._03_town_finished and new_dialog == null:
+			Globals.dialog_direction = -1
+			new_dialog =  DIALOG_SCREEN.instantiate()
+			new_dialog.data = sixth_dialog
+			hud.add_child(new_dialog)
+			player.global_position.x += 8
+		if Cutscenes._03_town_finished and new_dialog == null:
+			Globals.dialog_direction = -1
+			new_dialog =  DIALOG_SCREEN.instantiate()
+			new_dialog.data = fifth_dialog
+			hud.add_child(new_dialog)
+			Globals.can_attack = true
+			Globals.is_run = true

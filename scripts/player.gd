@@ -75,6 +75,8 @@ func _physics_process(delta: float) -> void:
 		Globals.can_attack = false
 		is_attacking_with_net = true
 		animator.play("long_collect")
+		await get_tree().create_timer(2.1).timeout
+		velocity.y = JUMP_FORCE / 1.2
 	
 	
 	handle_animation(direction)
@@ -129,7 +131,6 @@ func _on_animator_animation_finished(anim_name: StringName) -> void:
 		Globals.can_attack = true
 	if anim_name == "long_collect":
 		is_attacking_with_net = false
-		velocity.y = JUMP_FORCE
 
 func follow_camera(camera):
 	var camera_path = camera.get_path()

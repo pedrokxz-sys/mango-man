@@ -677,7 +677,7 @@ visible_characters = 0
 
 [node name="icons_sprites" type="AnimatedSprite2D" parent="tutorial_screen" unique_id=681524544]
 visible = false
-position = Vector2(200, 172)
+position = Vector2(200, 200)
 sprite_frames = SubResource("SpriteFrames_obqlh")
 animation = &"pc_move"
 
@@ -873,8 +873,11 @@ visible = false
 [node name="iris_open" type="ColorRect" parent="HUD" unique_id=1934425493]
 material = SubResource("ShaderMaterial_4bjfo")
 custom_minimum_size = Vector2(427, 213)
-offset_right = 427.0
-offset_bottom = 213.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="goal" type="ColorRect" parent="HUD" unique_id=2037521054]

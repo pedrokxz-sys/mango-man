@@ -128,9 +128,77 @@ var sixth_dialog:Dictionary = {
 		"_faceset": "res://assets/player/player_faceset.png"
 	},
 }
+var seventh_dialog:Dictionary = {
+	0:{
+		"_name": "Murillo",
+		"_dialog": "Deu certo! Peguei ele!",
+		"_faceset": "res://assets/player/player_faceset.png"
+	},
+	1:{
+		"_name": "Bóris",
+		"_dialog": "Boa! Problema resolvido!",
+		"_faceset": "res://assets/people/hunter/hunter_faceset.png"
+	},
+	2:{
+		"_name": "Hanna",
+		"_dialog": "Muito obrigada! Mas...",
+		"_faceset": "res://assets/people/confectioner/confectioner_faceset.png"
+	},
+	3:{
+		"_name": "Hanna",
+		"_dialog": "Esse não era o único macaco.",
+		"_faceset": "res://assets/people/confectioner/confectioner_faceset.png"
+	},
+	4:{
+		"_name": "Chico",
+		"_dialog": "Então tinham mais macacos!?",
+		"_faceset": "res://assets/people/mayor/mayor_faceset.png"
+	},
+	5:{
+		"_name": "Hanna",
+		"_dialog": "Sim, um grupo de vários macacos passou aqui e roubou 5 caixas dos doces, que eu vendo.",
+		"_faceset": "res://assets/people/confectioner/confectioner_faceset.png"
+	},
+	6:{
+		"_name": "Bóris",
+		"_dialog": "Para onde eles foram?",
+		"_faceset": "res://assets/people/hunter/hunter_faceset.png"
+	},
+	7:{
+		"_name": "Hanna",
+		"_dialog": "Foram para a floresta ao leste.",
+		"_faceset": "res://assets/people/confectioner/confectioner_faceset.png"
+	},
+	8:{
+		"_name": "Murillo",
+		"_dialog": "Eu vou atrás deles!",
+		"_faceset": "res://assets/player/player_faceset.png"
+	},
+	9:{
+		"_name": "Bóris",
+		"_dialog": "Espera, deixa esse macaco de agora comigo.",
+		"_faceset": "res://assets/people/hunter/hunter_faceset.png"
+	},
+	10:{
+		"_name": "Murillo",
+		"_dialog": "Certo, aqui está.",
+		"_faceset": "res://assets/player/player_faceset.png"
+	},
+	11:{
+		"_name": "Murillo",
+		"_dialog": "Estou indo para a floresta ao leste!",
+		"_faceset": "res://assets/player/player_faceset.png"
+	},
+	12:{
+		"_name": "Bóris",
+		"_dialog": "Boa sorte! Lembre-se de trazer todos animais e caixas de doce.",
+		"_faceset": "res://assets/people/hunter/hunter_faceset.png"
+	},
+}
 var new_dialog
 var _01_dialog_finished
 var _play_achievements
+var purse_finished
 var last_home_position
 
 @onready var player := $player as CharacterBody2D
@@ -183,7 +251,14 @@ func _physics_process(_delta: float) -> void:
 		Globals.can_use_long_collect = true
 	if !Cutscenes._03_town_finished and new_dialog == null and player.global_position.x <= 1250:
 		_play_dialog()
-
+	if Globals.score == 1 and new_dialog == null:
+		_play_dialog()
+	if new_dialog != null and new_dialog.data == seventh_dialog:
+		if new_dialog.id == 11 and !purse_finished:
+			purse_finished = true
+			Globals.score = 0
+			$HUD/scene_anim.play("pulse")
+			$finished_barrier/collision.disabled = true
 
 func reload_game():
 	await get_tree().create_timer(1.0).timeout
@@ -263,10 +338,18 @@ func _play_dialog():
 			new_dialog.data = sixth_dialog
 			hud.add_child(new_dialog)
 			player.global_position.x += 8
-		if Cutscenes._03_town_finished and new_dialog == null:
+		if Cutscenes._03_town_finished and !Cutscenes._04_town_finished and new_dialog == null:
 			Globals.dialog_direction = -1
 			new_dialog =  DIALOG_SCREEN.instantiate()
 			new_dialog.data = fifth_dialog
 			hud.add_child(new_dialog)
 			Globals.can_attack = true
 			Globals.is_run = true
+
+	if !Cutscenes._04_town_finished and Globals.score == 1 and new_dialog == null:
+		Cutscenes._04_town_finished = true
+		Globals.dialog_direction = -1
+		new_dialog =  DIALOG_SCREEN.instantiate()
+		new_dialog.data = seventh_dialog
+		hud.add_child(new_dialog)
+		Globals.player.is_attacking = false

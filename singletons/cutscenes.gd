@@ -4,13 +4,17 @@ var _01_animal_room_finished:bool
 
 var _01_town_finished:bool 
 
-var _01_mayor_finished:bool 
+var _01_mayor_finished:bool = true
 
 var _02_town_finished:bool
 
-var _03_town_finished:bool
+var _03_town_finished:bool 
+
+var _04_town_finished:bool
 
 func _ready() -> void:
+	if _04_town_finished:
+		_03_town_finished = true
 	if _03_town_finished:
 		_02_town_finished = true
 	if _02_town_finished:
@@ -21,6 +25,8 @@ func _ready() -> void:
 		_01_animal_room_finished = true
 
 func _physics_process(_delta: float) -> void:
+	if _04_town_finished:
+		_03_town_finished = true
 	if _03_town_finished:
 		_02_town_finished = true
 	if _02_town_finished:

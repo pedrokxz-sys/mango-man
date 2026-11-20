@@ -33,3 +33,7 @@ func respawn_player():
 		player.position = current_checkpoint.global_position
 	else:
 		player.global_position = player_start_position.global_position
+
+func _physics_process(_delta: float) -> void:
+	if Cutscenes._04_town_finished:
+		can_use_long_collect = true

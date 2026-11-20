@@ -190,7 +190,7 @@ func _physics_process(_delta: float) -> void:
 				icons_sprites.play("mobile_net")
 			else:
 				icons_sprites.play("pc_net")
-			icons_sprites.global_position = Vector2(322, 141)
+			icons_sprites.global_position = Vector2(322, 166)
 			icons_sprites.visible = true
 			$achievements.play()
 			$net_icon.visible = true

@@ -84,8 +84,9 @@ func _physics_process(delta: float) -> void:
 	if Globals.dialog_is_on:
 		velocity.x *= 0
 		texture.scale.x = Globals.dialog_direction
-		animator.play("idle")
-		
+		Globals.can_anim = false
+	else:
+		Globals.can_anim = true
 
 	if global_position.y >= 192 and !$sounds/audio_splash.playing:
 		$sounds/audio_splash.play()
@@ -97,15 +98,18 @@ func _physics_process(delta: float) -> void:
 func handle_animation(direction):
 	if is_attacking:
 		return
-	if not is_on_floor():
-		if velocity.y < 0:
-			animator.play("jump")
+	if Globals.can_anim:
+		if not is_on_floor():
+			if velocity.y < 0:
+				animator.play("jump")
+			else:
+				animator.play("fall")
+		elif direction != 0 and Globals.is_run:
+			animator.play("run")
+		elif direction != 0 and !Globals.is_run:
+			animator.play("walk")
 		else:
-			animator.play("fall")
-	elif direction != 0 and Globals.is_run:
-		animator.play("run")
-	elif direction != 0 and !Globals.is_run:
-		animator.play("walk")
+			animator.play("idle")
 	else:
 		animator.play("idle")
 

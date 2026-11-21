@@ -139,7 +139,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MarginContainer:position")
+tracks/0/path = NodePath("title_menu/HBoxContainer:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -163,31 +163,31 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("menu_back:position")
+tracks/2/path = NodePath("title_menu/HBoxContainer:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(8, 142)]
+"values": [Color(1, 1, 1, 0)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("MarginContainer:modulate")
+tracks/3/path = NodePath("title_menu/menu_back:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 0)]
+"values": [Vector2(8, 142)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("bg/Logo:modulate")
+tracks/4/path = NodePath("title_menu/Logo:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -203,14 +203,14 @@ length = 3.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MarginContainer:position")
+tracks/0/path = NodePath("title_menu/HBoxContainer:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0.020000001, 2.99),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 142), Vector2(0, -12)]
+"values": [Vector2(33, 217), Vector2(33, 71)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -227,31 +227,31 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("menu_back:position")
+tracks/2/path = NodePath("title_menu/HBoxContainer:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(8, 200), Vector2(8, 56)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("MarginContainer:modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(0, 2, 3),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("title_menu/menu_back:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(8, 200), Vector2(8, 56)]
+}
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("bg/Logo:modulate")
+tracks/4/path = NodePath("title_menu/Logo:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -349,7 +349,7 @@ script = ExtResource("1_gynrd")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=702396394]
 limit_left = -16
-limit_top = -80
+limit_top = 0
 limit_right = 1344
 limit_bottom = 272
 limit_smoothed = true
@@ -433,73 +433,58 @@ centered = false
 
 [node name="grounds" type="TileMapLayer" parent="bg" unique_id=924971875]
 use_parent_material = true
-tile_map_data = PackedByteArray("AAARABUAAgACAAEAAAAQABUAAgACAAEAAAAPABUAAgACAAEAAAAOABUAAgACAAEAAAANABUAAgACAAEAAAAMABUAAgACAAEAAAALABUAAgACAAEAAAAKABUAAgACAAEAAAAJABUAAgACAAEAAAAIABUAAgACAAEAAAAHABUAAgACAAEAAAAGABUAAgACAAEAAAAFABUAAgAJAAMAAAAEABUAAgACAAIAAAADABUAAgACAAIAAAACABUAAgAHAAMAAAABABUAAgACAAEAAAAAABUAAgACAAEAAAASABUAAgACAAEAAAATABUAAgACAAEAAAAUABUAAgACAAEAAAAVABUAAgACAAEAAAAWABUAAgACAAEAAAAXABUAAgAHAAMAAAAYABUAAgACAAIAAAAZABUAAgACAAIAAAAaABUAAgACAAIAAAAXABEAAgABAAIAAAAXABIAAgABAAIAAAAXABMAAgABAAIAAAAXABQAAgABAAIAAAAYABEAAgACAAIAAAAYABIAAgACAAIAAAAYABMAAgACAAIAAAAYABQAAgACAAIAAAAZABEAAgACAAIAAAAZABIAAgACAAIAAAAZABMAAgACAAIAAAAZABQAAgACAAIAAAAaABEAAgACAAIAAAAaABIAAgACAAIAAAAaABMAAgACAAIAAAAaABQAAgACAAIAAAAXABAAAgABAAEAAAAYABAAAgACAAEAAAAZABAAAgACAAEAAAAaABAAAgACAAEAAAAAABYAAgACAAIAAAABABYAAgACAAIAAAACABYAAgACAAIAAAADABYAAgACAAIAAAAEABYAAgACAAIAAAAFABYAAgACAAIAAAAGABYAAgACAAIAAAAHABYAAgACAAIAAAAIABYAAgACAAIAAAAJABYAAgACAAIAAAAKABYAAgACAAIAAAALABYAAgACAAIAAAAMABYAAgACAAIAAAANABYAAgACAAIAAAAOABYAAgACAAIAAAAPABYAAgACAAIAAAAQABYAAgACAAIAAAARABYAAgACAAIAAAASABYAAgACAAIAAAATABYAAgACAAIAAAAUABYAAgACAAIAAAAVABYAAgACAAIAAAAWABYAAgACAAIAAAAXABYAAgACAAIAAAAYABYAAgACAAIAAAAZABYAAgACAAIAAAAaABYAAgACAAIAAAACABQAAgABAAEAAAAFABQAAgADAAEAAAAEABQAAgACAAEAAAADABQAAgACAAEAAAAKABQAAQACAAEAAAAZAA8AAQACAAEAAAABABQAAQACAAEAAAAJABQAAQABAAIAAAAWABQAAwADAAMAAAAEABMAAQACAAIAAAAXAA8AAQACAAIAAAAUABQAAQABAAEAAAAQABQAAQABAAEAAAAMABMAAwAGAAEAAAAaAA4AAwAGAAEAAAADABIAAwAKAAAAAAAVABMAAwAKAAAAAAAHABQAAwADAAEAAAASABQAAwADAAEAAAAOABQAAwADAAMAAAAAABQAAwABAAMAAAAYAA8AAwABAAMAAAAAABcAAgACAAIAAAABABcAAgACAAIAAAACABcAAgACAAIAAAADABcAAgACAAIAAAAEABcAAgACAAIAAAAFABcAAgACAAIAAAAGABcAAgACAAIAAAAHABcAAgACAAIAAAAIABcAAgACAAIAAAAJABcAAgACAAIAAAAKABcAAgACAAIAAAALABcAAgACAAIAAAAMABcAAgACAAIAAAANABcAAgACAAIAAAAOABcAAgACAAIAAAAPABcAAgACAAIAAAAQABcAAgACAAIAAAARABcAAgACAAIAAAASABcAAgACAAIAAAATABcAAgACAAIAAAAUABcAAgACAAIAAAAVABcAAgACAAIAAAAWABcAAgACAAIAAAAXABcAAgACAAIAAAAYABcAAgACAAIAAAAZABcAAgACAAIAAAAaABcAAgACAAIAAAAaABgAAgACAAIAAAAZABgAAgACAAIAAAAYABgAAgACAAIAAAAXABgAAgACAAIAAAAWABgAAgACAAIAAAAVABgAAgACAAIAAAAUABgAAgACAAIAAAATABgAAgACAAIAAAASABgAAgACAAIAAAARABgAAgACAAIAAAAQABgAAgACAAIAAAAPABgAAgACAAIAAAAOABgAAgACAAIAAAANABgAAgACAAIAAAAMABgAAgACAAIAAAALABgAAgACAAIAAAAKABgAAgACAAIAAAAJABgAAgACAAIAAAAIABgAAgACAAIAAAAHABgAAgACAAIAAAAGABgAAgACAAIAAAAFABgAAgACAAIAAAAEABgAAgACAAIAAAADABgAAgACAAIAAAACABgAAgACAAIAAAABABgAAgACAAIAAAAAABgAAgACAAIAAAA=")
+tile_map_data = PackedByteArray("AAARABUAAgACAAEAAAAQABUAAgACAAEAAAAPABUAAgACAAEAAAAOABUAAgACAAEAAAANABUAAgACAAEAAAAMABUAAgACAAEAAAALABUAAgACAAEAAAAKABUAAgACAAEAAAAJABUAAgACAAEAAAAIABUAAgACAAEAAAAHABUAAgACAAEAAAAGABUAAgACAAEAAAAFABUAAgAJAAMAAAAEABUAAgACAAIAAAADABUAAgACAAIAAAACABUAAgAHAAMAAAABABUAAgACAAEAAAAAABUAAgACAAEAAAASABUAAgACAAEAAAATABUAAgACAAEAAAAUABUAAgACAAEAAAAVABUAAgACAAEAAAAWABUAAgACAAEAAAAXABUAAgAHAAMAAAAYABUAAgACAAIAAAAZABUAAgACAAIAAAAaABUAAgACAAIAAAAXABEAAgABAAIAAAAXABIAAgABAAIAAAAXABMAAgABAAIAAAAXABQAAgABAAIAAAAYABEAAgACAAIAAAAYABIAAgACAAIAAAAYABMAAgACAAIAAAAYABQAAgACAAIAAAAZABEAAgACAAIAAAAZABIAAgACAAIAAAAZABMAAgACAAIAAAAZABQAAgACAAIAAAAaABEAAgACAAIAAAAaABIAAgACAAIAAAAaABMAAgACAAIAAAAaABQAAgACAAIAAAAXABAAAgABAAEAAAAYABAAAgACAAEAAAAZABAAAgACAAEAAAAaABAAAgACAAEAAAAAABYAAgACAAIAAAABABYAAgACAAIAAAACABYAAgACAAIAAAADABYAAgACAAIAAAAEABYAAgACAAIAAAAFABYAAgACAAIAAAAGABYAAgACAAIAAAAHABYAAgACAAIAAAAIABYAAgACAAIAAAAJABYAAgACAAIAAAAKABYAAgACAAIAAAALABYAAgACAAIAAAAMABYAAgACAAIAAAANABYAAgACAAIAAAAOABYAAgACAAIAAAAPABYAAgACAAIAAAAQABYAAgACAAIAAAARABYAAgACAAIAAAASABYAAgACAAIAAAATABYAAgACAAIAAAAUABYAAgACAAIAAAAVABYAAgACAAIAAAAWABYAAgACAAIAAAAXABYAAgACAAIAAAAYABYAAgACAAIAAAAZABYAAgACAAIAAAAaABYAAgACAAIAAAACABQAAgABAAEAAAAFABQAAgADAAEAAAAEABQAAgACAAEAAAADABQAAgACAAEAAAAKABQAAQACAAEAAAAZAA8AAQACAAEAAAABABQAAQACAAEAAAAJABQAAQABAAIAAAAWABQAAwADAAMAAAAEABMAAQACAAIAAAAXAA8AAQACAAIAAAAUABQAAQABAAEAAAAQABQAAQABAAEAAAAMABMAAwAGAAEAAAAaAA4AAwAGAAEAAAADABIAAwAKAAAAAAAVABMAAwAKAAAAAAAHABQAAwADAAEAAAASABQAAwADAAEAAAAOABQAAwADAAMAAAAAABQAAwABAAMAAAAYAA8AAwABAAMAAAAAABcAAgACAAIAAAABABcAAgACAAIAAAACABcAAgACAAIAAAADABcAAgACAAIAAAAEABcAAgACAAIAAAAFABcAAgACAAIAAAAGABcAAgACAAIAAAAHABcAAgACAAIAAAAIABcAAgACAAIAAAAJABcAAgACAAIAAAAKABcAAgACAAIAAAALABcAAgACAAIAAAAMABcAAgACAAIAAAANABcAAgACAAIAAAAOABcAAgACAAIAAAAPABcAAgACAAIAAAAQABcAAgACAAIAAAARABcAAgACAAIAAAASABcAAgACAAIAAAATABcAAgACAAIAAAAUABcAAgACAAIAAAAVABcAAgACAAIAAAAWABcAAgACAAIAAAAXABcAAgACAAIAAAAYABcAAgACAAIAAAAZABcAAgACAAIAAAAaABcAAgACAAIAAAAaABgAAgACAAIAAAAZABgAAgACAAIAAAAYABgAAgACAAIAAAAXABgAAgACAAIAAAAWABgAAgACAAIAAAAVABgAAgACAAIAAAAUABgAAgACAAIAAAATABgAAgACAAIAAAASABgAAgACAAIAAAARABgAAgACAAIAAAAQABgAAgACAAIAAAAPABgAAgACAAIAAAAOABgAAgACAAIAAAANABgAAgACAAIAAAAMABgAAgACAAIAAAALABgAAgACAAIAAAAKABgAAgACAAIAAAAJABgAAgACAAIAAAAIABgAAgACAAIAAAAHABgAAgACAAIAAAAGABgAAgACAAIAAAAFABgAAgACAAIAAAAEABgAAgACAAIAAAADABgAAgACAAIAAAACABgAAgACAAIAAAABABgAAgACAAIAAAAAABgAAgACAAIAAAD//xUAAgACAAEAAAD+/xUAAgACAAEAAAD9/xUAAgACAAEAAAD8/xUAAgACAAEAAAD7/xUAAgACAAEAAAD7/xYAAgACAAIAAAD7/xcAAgACAAIAAAD7/xgAAgACAAIAAAD8/xYAAgACAAIAAAD8/xcAAgACAAIAAAD8/xgAAgACAAIAAAD9/xYAAgACAAIAAAD9/xcAAgACAAIAAAD9/xgAAgACAAIAAAD+/xYAAgACAAIAAAD+/xcAAgACAAIAAAD+/xgAAgACAAIAAAD//xYAAgACAAIAAAD//xcAAgACAAIAAAD//xgAAgACAAIAAAAbABAAAgACAAEAAAAcABAAAgACAAEAAAAdABAAAgACAAEAAAAeABAAAgACAAEAAAAfABAAAgACAAEAAAAgABAAAgACAAEAAAAhABAAAgACAAEAAAAbABEAAgACAAIAAAAbABIAAgACAAIAAAAbABMAAgACAAIAAAAbABQAAgACAAIAAAAbABUAAgACAAIAAAAbABYAAgACAAIAAAAbABcAAgACAAIAAAAbABgAAgACAAIAAAAcABEAAgACAAIAAAAcABIAAgACAAIAAAAcABMAAgACAAIAAAAcABQAAgACAAIAAAAcABUAAgACAAIAAAAcABYAAgACAAIAAAAcABcAAgACAAIAAAAcABgAAgACAAIAAAAdABEAAgACAAIAAAAdABIAAgACAAIAAAAdABMAAgACAAIAAAAdABQAAgACAAIAAAAdABUAAgACAAIAAAAdABYAAgACAAIAAAAdABcAAgACAAIAAAAdABgAAgACAAIAAAAeABEAAgACAAIAAAAeABIAAgACAAIAAAAeABMAAgACAAIAAAAeABQAAgACAAIAAAAeABUAAgACAAIAAAAeABYAAgACAAIAAAAeABcAAgACAAIAAAAeABgAAgACAAIAAAAfABEAAgACAAIAAAAfABIAAgACAAIAAAAfABMAAgACAAIAAAAfABQAAgACAAIAAAAfABUAAgACAAIAAAAfABYAAgACAAIAAAAfABcAAgACAAIAAAAfABgAAgACAAIAAAAgABEAAgACAAIAAAAgABIAAgACAAIAAAAgABMAAgACAAIAAAAgABQAAgACAAIAAAAgABUAAgACAAIAAAAgABYAAgACAAIAAAAgABcAAgACAAIAAAAgABgAAgACAAIAAAAhABEAAgACAAIAAAAhABIAAgACAAIAAAAhABMAAgACAAIAAAAhABQAAgACAAIAAAAhABUAAgACAAIAAAAhABYAAgACAAIAAAAhABcAAgACAAIAAAAhABgAAgACAAIAAAA=")
 tile_set = SubResource("TileSet_43kyg")
 
 [node name="plants" type="TileMapLayer" parent="bg" unique_id=919990631]
 use_parent_material = true
 tile_set = SubResource("TileSet_43kyg")
 
-[node name="Logo" type="Sprite2D" parent="bg" unique_id=582895190]
+[node name="title_menu" type="CanvasLayer" parent="." unique_id=791938217]
+
+[node name="Logo" type="Sprite2D" parent="title_menu" unique_id=582895190]
 modulate = Color(1, 1, 1, 0)
-position = Vector2(272, 255.99998)
+position = Vector2(307, 118)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("13_vnqo2")
 
-[node name="menu_back" type="NinePatchRect" parent="." unique_id=1041018195]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -205.0
-offset_top = 22.0
-offset_right = -85.0
-offset_bottom = 126.00319
-grow_horizontal = 2
-grow_vertical = 2
+[node name="menu_back" type="NinePatchRect" parent="title_menu" unique_id=1041018195]
+offset_left = 8.0
+offset_top = 142.0
+offset_right = 128.0
+offset_bottom = 246.00351
 texture = ExtResource("9_er458")
 patch_margin_left = 4
 patch_margin_top = 4
 patch_margin_right = 4
 patch_margin_bottom = 4
 
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1504501714]
+[node name="HBoxContainer" type="HBoxContainer" parent="title_menu" unique_id=641114224]
 modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
 offset_top = 142.0
-offset_bottom = 141.99963
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 32
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=641114224]
-layout_mode = 2
+offset_right = 394.0
+offset_bottom = 216.00018
 size_flags_vertical = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=1843657386]
+[node name="VBoxContainer" type="VBoxContainer" parent="title_menu/HBoxContainer" unique_id=1843657386]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="play_btn" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=1659642088]
+[node name="play_btn" type="Button" parent="title_menu/HBoxContainer/VBoxContainer" unique_id=1659642088]
 layout_mode = 2
 theme = ExtResource("3_1xnr2")
 theme_override_colors/font_color = Color(0.50980395, 0.27450982, 0.05882353, 1)
 theme_override_font_sizes/font_size = 16
 text = "JOGAR"
 
-[node name="options_btn" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=2041453964]
+[node name="options_btn" type="Button" parent="title_menu/HBoxContainer/VBoxContainer" unique_id=2041453964]
 layout_mode = 2
 theme = ExtResource("3_1xnr2")
 theme_override_font_sizes/font_size = 16
 text = "OPÇÕES"
 
-[node name="quit_btn" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=1212860537]
+[node name="quit_btn" type="Button" parent="title_menu/HBoxContainer/VBoxContainer" unique_id=1212860537]
 layout_mode = 2
 theme = ExtResource("3_1xnr2")
 theme_override_font_sizes/font_size = 16
@@ -510,6 +495,7 @@ libraries/ = SubResource("AnimationLibrary_74c26")
 autoplay = &"reveal"
 
 [node name="opitions_menu" type="CanvasLayer" parent="." unique_id=647575046]
+visible = false
 
 [node name="back" type="ColorRect" parent="opitions_menu" unique_id=1489549830]
 anchors_preset = 15
@@ -642,10 +628,10 @@ theme = SubResource("Theme_0y8jj")
 theme_override_font_sizes/font_size = 10
 text = "X"
 
-[connection signal="button_down" from="MarginContainer/HBoxContainer/VBoxContainer/play_btn" to="." method="_on_play_btn_button_down"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/play_btn" to="." method="_on_play_btn_pressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/options_btn" to="." method="_on_options_btn_pressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/quit_btn" to="." method="_on_quit_btn_pressed"]
+[connection signal="button_down" from="title_menu/HBoxContainer/VBoxContainer/play_btn" to="." method="_on_play_btn_button_down"]
+[connection signal="pressed" from="title_menu/HBoxContainer/VBoxContainer/play_btn" to="." method="_on_play_btn_pressed"]
+[connection signal="pressed" from="title_menu/HBoxContainer/VBoxContainer/options_btn" to="." method="_on_options_btn_pressed"]
+[connection signal="pressed" from="title_menu/HBoxContainer/VBoxContainer/quit_btn" to="." method="_on_quit_btn_pressed"]
 [connection signal="animation_finished" from="anim" to="." method="_on_anim_animation_finished"]
 [connection signal="item_selected" from="opitions_menu/HBoxContainer/VBoxCenter/resolution_btn" to="." method="_on_resolution_btn_item_selected"]
 [connection signal="pressed" from="opitions_menu/HBoxTools/video_btn" to="." method="_on_video_btn_pressed"]

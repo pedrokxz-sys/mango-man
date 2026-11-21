@@ -27,6 +27,7 @@ var is_run:bool = true
 
 var dialog_is_on = false
 var dialog_direction:int = 1
+var can_anim = true
 
 var screen_ratio: float = 16.0 / 9.0
 

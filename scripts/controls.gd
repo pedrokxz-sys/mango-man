@@ -14,14 +14,14 @@ extends CanvasLayer
 
 func _physics_process(_delta: float) -> void:
 	if Globals.is_run:
-		$ui_crouch.position.x = 308
-		$ui_collect.visible = true
-		$ui_up.visible = true
+		$Control/ui_crouch.position.x = 308
+		$Control/ui_collect.visible = true
+		$Control/ui_up.visible = true
 		if Globals.can_use_long_collect:
-			$ui_long_collect.visible = true
+			$Control/ui_long_collect.visible = true
 		else:
-			$ui_long_collect.visible = false
+			$Control/ui_long_collect.visible = false
 	else:
-		$ui_crouch.position.x = 367
-		$ui_collect.visible = false
-		$ui_up.visible = false
+		$Control/ui_crouch.position.x = 367
+		$Control/ui_collect.visible = false
+		$Control/ui_up.visible = false

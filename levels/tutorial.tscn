@@ -21,26 +21,11 @@
 [ext_resource type="PackedScene" uid="uid://beyl3jjwx6hbv" path="res://actors/rabbit.tscn" id="23_gjg0y"]
 [ext_resource type="Texture2D" uid="uid://bn3mqciilesf" path="res://assets/forest/tutorial/net_launcher.png" id="23_s81kh"]
 [ext_resource type="AudioStream" uid="uid://wmaos861bg7h" path="res://sounds/achievements.wav" id="24_ak48m"]
-[ext_resource type="Script" uid="uid://laudjr4o548y" path="res://scripts/controls.gd" id="26_6vq4a"]
-[ext_resource type="Texture2D" uid="uid://b4q8ob2fxtkfx" path="res://assets/buttons/joystick.png" id="27_6q4i6"]
-[ext_resource type="Texture2D" uid="uid://cyyojcwy2qqw4" path="res://assets/buttons/ui_button_left_normal.png" id="28_ng1nq"]
-[ext_resource type="Texture2D" uid="uid://byaug8ywyngv7" path="res://assets/buttons/ui_button_left_pressed.png" id="29_nohoo"]
-[ext_resource type="Texture2D" uid="uid://bwaxhjwopi82l" path="res://assets/buttons/ui_button_right_normal.png" id="30_d1rl2"]
-[ext_resource type="Texture2D" uid="uid://dre8fvu34ohsw" path="res://assets/buttons/ui_button_right_pressed.png" id="31_srr4e"]
-[ext_resource type="Texture2D" uid="uid://bqgq2j0ty8y5j" path="res://assets/buttons/ui_button_up_normal.png" id="32_tic8t"]
-[ext_resource type="Texture2D" uid="uid://b5jd0rkilr34m" path="res://assets/buttons/ui_button_up_pressed.png" id="33_nui3a"]
-[ext_resource type="Texture2D" uid="uid://cvrf4cf3bn0ok" path="res://assets/buttons/ui_button_collect_normal.png" id="34_82twk"]
-[ext_resource type="Texture2D" uid="uid://bvfmyyd8cnrxs" path="res://assets/buttons/ui_button_collect_pressed.png" id="35_eyn6u"]
-[ext_resource type="Texture2D" uid="uid://uj3u04o52h0f" path="res://assets/buttons/ui_button_long_collect_normal.png" id="36_byx8m"]
+[ext_resource type="PackedScene" uid="uid://d2bxrecoy4s67" path="res://prefabs/controls.tscn" id="25_1s5uj"]
 [ext_resource type="Texture2D" uid="uid://g27x5jp0u1ui" path="res://assets/forest/tutorial/collect_tutorial.png" id="36_mtsth"]
-[ext_resource type="Texture2D" uid="uid://gho0klavrf76" path="res://assets/buttons/ui_button_long_collect_pressed.png" id="37_fxqau"]
 [ext_resource type="Texture2D" uid="uid://dnlt6a04hhxd5" path="res://assets/forest/tutorial/move_tutorial.png" id="37_s81kh"]
 [ext_resource type="Texture2D" uid="uid://cxfkmstp8y176" path="res://assets/forest/tutorial/up_tutorial.png" id="38_ak48m"]
-[ext_resource type="Texture2D" uid="uid://4l42oi4cajvq" path="res://assets/buttons/ui_button_crouch_normal.png" id="38_vqkt0"]
-[ext_resource type="Texture2D" uid="uid://bwh7pdrw5hb8e" path="res://assets/buttons/ui_button_crouch_pressed.png" id="39_ny43e"]
-[ext_resource type="Texture2D" uid="uid://bwktjkv6hwqm5" path="res://assets/buttons/pause_menu_normal.png" id="40_1ffjg"]
 [ext_resource type="Texture2D" uid="uid://80rqyhon6d4s" path="res://assets/buttons/icons/timer_icon.png" id="40_f4uu8"]
-[ext_resource type="Texture2D" uid="uid://bldy50jlybb1k" path="res://assets/buttons/pause_menu_pressed.png" id="41_83ps1"]
 [ext_resource type="PackedScene" uid="uid://cdur8uxwmfegp" path="res://prefabs/player_health.tscn" id="42_pot3b"]
 [ext_resource type="Script" uid="uid://c247esetbrstq" path="res://scripts/hud_manager.gd" id="43_wk52c"]
 [ext_resource type="Texture2D" uid="uid://b8eaef3k8gdhm" path="res://assets/buttons/icons/01_mango_icon.png" id="44_wj3yx"]
@@ -696,63 +681,7 @@ autoplay = &"icon_rotation"
 stream = ExtResource("24_ak48m")
 volume_db = -5.0
 
-[node name="controls" type="CanvasLayer" parent="." unique_id=426015943]
-script = ExtResource("26_6vq4a")
-
-[node name="joystick" type="Sprite2D" parent="controls" unique_id=1564176451]
-visible = false
-texture = ExtResource("27_6q4i6")
-centered = false
-
-[node name="ui_left" type="TouchScreenButton" parent="controls" unique_id=1871290726]
-position = Vector2(13, 159)
-texture_normal = ExtResource("28_ng1nq")
-texture_pressed = ExtResource("29_nohoo")
-action = "move_left"
-visibility_mode = 1
-
-[node name="ui_right" type="TouchScreenButton" parent="controls" unique_id=923374337]
-position = Vector2(53, 159)
-texture_normal = ExtResource("30_d1rl2")
-texture_pressed = ExtResource("31_srr4e")
-action = "move_right"
-visibility_mode = 1
-
-[node name="ui_up" type="TouchScreenButton" parent="controls" unique_id=370614696]
-position = Vector2(359, 147)
-texture_normal = ExtResource("32_tic8t")
-texture_pressed = ExtResource("33_nui3a")
-action = "move_up"
-visibility_mode = 1
-
-[node name="ui_collect" type="TouchScreenButton" parent="controls" unique_id=1171247986]
-position = Vector2(372, 88)
-texture_normal = ExtResource("34_82twk")
-texture_pressed = ExtResource("35_eyn6u")
-action = "ui_collect"
-visibility_mode = 1
-
-[node name="ui_long_collect" type="TouchScreenButton" parent="controls" unique_id=222877103]
-visible = false
-position = Vector2(372, 45)
-texture_normal = ExtResource("36_byx8m")
-texture_pressed = ExtResource("37_fxqau")
-action = "ui_long_collect"
-visibility_mode = 1
-
-[node name="ui_crouch" type="TouchScreenButton" parent="controls" unique_id=1341401997]
-position = Vector2(308, 158)
-texture_normal = ExtResource("38_vqkt0")
-texture_pressed = ExtResource("39_ny43e")
-action = "ui_crouch"
-visibility_mode = 1
-
-[node name="ui_cancel" type="TouchScreenButton" parent="controls" unique_id=1288393320]
-visible = false
-position = Vector2(8, 8)
-texture_normal = ExtResource("40_1ffjg")
-texture_pressed = ExtResource("41_83ps1")
-action = "ui_cancel"
+[node name="controls" parent="." unique_id=6382842 instance=ExtResource("25_1s5uj")]
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1460941086]
 

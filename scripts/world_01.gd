@@ -12,7 +12,11 @@ const  LEVEL_ID:= "res://levels/world_01.tscn"
 
 var pass_one_seg = true
 
+
 func _ready() -> void:
+	get_viewport().size_changed.connect(_on_viewport_size_changed)
+	print("Tamanho visível: ", get_viewport_rect().size)
+	print("Proporção real: ", get_viewport_rect().size.x / get_viewport_rect().size.y)
 	Globals.is_run = true
 	animator.play("start")
 
@@ -27,6 +31,11 @@ func _ready() -> void:
 
 	player.follow_camera(camera)
 	player.player_has_died.connect(reload_game)
+
+func _on_viewport_size_changed() -> void:
+	print("Tamanho da janela: ", get_window().size)
+	print("Tamanho visível: ", get_viewport_rect().size)
+	print("Proporção real: ", get_viewport_rect().size.x / get_viewport_rect().size.y)
 
 func _physics_process(_delta: float) -> void:
 	if is_instance_valid(Globals.player):

@@ -347,6 +347,16 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_gynrd")
 
+[node name="Camera2D" type="Camera2D" parent="." unique_id=702396394]
+limit_left = -16
+limit_top = -80
+limit_right = 1344
+limit_bottom = 272
+limit_smoothed = true
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+editor_draw_drag_margin = true
+
 [node name="bg" type="Control" parent="." unique_id=289607345]
 anchors_preset = 0
 offset_right = 40.0
@@ -500,7 +510,6 @@ libraries/ = SubResource("AnimationLibrary_74c26")
 autoplay = &"reveal"
 
 [node name="opitions_menu" type="CanvasLayer" parent="." unique_id=647575046]
-visible = false
 
 [node name="back" type="ColorRect" parent="opitions_menu" unique_id=1489549830]
 anchors_preset = 15
@@ -638,5 +647,6 @@ text = "X"
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/options_btn" to="." method="_on_options_btn_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/quit_btn" to="." method="_on_quit_btn_pressed"]
 [connection signal="animation_finished" from="anim" to="." method="_on_anim_animation_finished"]
+[connection signal="item_selected" from="opitions_menu/HBoxContainer/VBoxCenter/resolution_btn" to="." method="_on_resolution_btn_item_selected"]
 [connection signal="pressed" from="opitions_menu/HBoxTools/video_btn" to="." method="_on_video_btn_pressed"]
 [connection signal="pressed" from="opitions_menu/esc_btn" to="." method="_on_esc_btn_pressed"]

@@ -8,7 +8,7 @@ var dialog_05: String = "Colete todas as mangas roubadas!"
 var dialog_06: String = "Use as bandeiras como checkpoint!"
 var dialog_07: String = "Agora você está pronto pra ir!"
 var dialog_08: String = "Você está esquecendo algo!"
-var dialog_09: String = "Agora você tem um lacador de redes! Para usá-lo aperte "
+var dialog_09: String = "Agora você tem um laçador de redes! Para usá-lo aperte "
 
 var tutorial_start = false
 var dialog4_finished = false
@@ -190,7 +190,9 @@ func _physics_process(_delta: float) -> void:
 				icons_sprites.play("mobile_net")
 			else:
 				icons_sprites.play("pc_net")
-			icons_sprites.global_position = Vector2(322, 166)
+			$net_icon.global_position = get_viewport().get_visible_rect().size / 2
+			$net_icon.global_position.y -= 32
+			icons_sprites.global_position = $net_icon.global_position + Vector2(105, 78)
 			icons_sprites.visible = true
 			$achievements.play()
 			$net_icon.visible = true

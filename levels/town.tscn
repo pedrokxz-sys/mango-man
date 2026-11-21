@@ -2152,12 +2152,10 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("37_fk50t")
-text = "
-"
 
 [node name="icons_sprites" type="AnimatedSprite2D" parent="tutorial_screen" unique_id=852858844]
 visible = false
-position = Vector2(322, 141)
+position = Vector2(322, 167)
 sprite_frames = SubResource("SpriteFrames_7yl3x")
 animation = &"mobile_net"
 
@@ -2165,7 +2163,7 @@ animation = &"mobile_net"
 visible = false
 position = Vector2(217, 89)
 rotation = 0.2617994
-scale = Vector2(2, 2)
+scale = Vector2(1.9999996, 1.9999996)
 texture = ExtResource("42_p8a63")
 
 [node name="anim" type="AnimationPlayer" parent="tutorial_screen" unique_id=190854673]
